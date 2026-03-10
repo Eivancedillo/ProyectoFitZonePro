@@ -46,11 +46,83 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDashboard.Designer.cs">
+      <DependentUpon>FrmDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDatosEquipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDatosEquipos.Designer.cs">
+      <DependentUpon>FrmDatosEquipos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDatosEquiposMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDatosEquiposMantenimiento.Designer.cs">
+      <DependentUpon>FrmDatosEquiposMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDatosSocios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDatosSocios.Designer.cs">
+      <DependentUpon>FrmDatosSocios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDatosTrabajadores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDatosTrabajadores.Designer.cs">
+      <DependentUpon>FrmDatosTrabajadores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDatosUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDatosUsuarios.Designer.cs">
+      <DependentUpon>FrmDatosUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEquipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEquipos.Designer.cs">
+      <DependentUpon>FrmEquipos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMembresias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMembresias.Designer.cs">
+      <DependentUpon>FrmMembresias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSocios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSocios.Designer.cs">
+      <DependentUpon>FrmSocios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTienda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTienda.Designer.cs">
+      <DependentUpon>FrmTienda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTrabajadores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTrabajadores.Designer.cs">
+      <DependentUpon>FrmTrabajadores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUsuarios.Designer.cs">
+      <DependentUpon>FrmUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
