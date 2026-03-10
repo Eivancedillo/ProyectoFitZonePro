@@ -1,6 +1,6 @@
 ﻿namespace ProyectoFitZonePro
 {
-    partial class FrmMembresias
+    partial class FrmAsistencias
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.BtnCrear = new System.Windows.Forms.Button();
             this.DtgDatos = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.DtgDatos)).BeginInit();
             this.SuspendLayout();
             // 
+            // TxtBuscar
+            // 
+            this.TxtBuscar.Location = new System.Drawing.Point(45, 186);
+            this.TxtBuscar.Name = "TxtBuscar";
+            this.TxtBuscar.Size = new System.Drawing.Size(313, 30);
+            this.TxtBuscar.TabIndex = 12;
+            // 
             // BtnCrear
             // 
-            this.BtnCrear.Location = new System.Drawing.Point(993, 39);
+            this.BtnCrear.Location = new System.Drawing.Point(736, 63);
             this.BtnCrear.Name = "BtnCrear";
             this.BtnCrear.Size = new System.Drawing.Size(117, 62);
-            this.BtnCrear.TabIndex = 0;
+            this.BtnCrear.TabIndex = 11;
             this.BtnCrear.Text = "Crear";
             this.BtnCrear.UseVisualStyleBackColor = true;
             // 
@@ -49,60 +54,36 @@
             // 
             this.DtgDatos.AllowUserToAddRows = false;
             this.DtgDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DtgDatos.Location = new System.Drawing.Point(62, 433);
+            this.DtgDatos.Location = new System.Drawing.Point(45, 222);
             this.DtgDatos.Name = "DtgDatos";
             this.DtgDatos.ReadOnly = true;
             this.DtgDatos.RowHeadersWidth = 51;
             this.DtgDatos.RowTemplate.Height = 24;
-            this.DtgDatos.Size = new System.Drawing.Size(820, 232);
-            this.DtgDatos.TabIndex = 1;
+            this.DtgDatos.Size = new System.Drawing.Size(820, 281);
+            this.DtgDatos.TabIndex = 10;
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(94, 76);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(210, 291);
-            this.panel1.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(329, 76);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(210, 291);
-            this.panel2.TabIndex = 3;
-            // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(560, 76);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(210, 291);
-            this.panel3.TabIndex = 3;
-            // 
-            // FrmMembresias
+            // FrmAsistencias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 703);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.DtgDatos);
+            this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.BtnCrear);
+            this.Controls.Add(this.DtgDatos);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "FrmMembresias";
-            this.Text = "FrmMembresias";
+            this.Name = "FrmAsistencias";
+            this.Text = "FrmAsistencias";
             ((System.ComponentModel.ISupportInitialize)(this.DtgDatos)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.Button BtnCrear;
         private System.Windows.Forms.DataGridView DtgDatos;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
     }
 }

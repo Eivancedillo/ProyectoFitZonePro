@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Manejadores
 {
-    public class ManejadorSocios
+    public class ManejadorAsistencias
     {
         private Base b = new Base();
     }

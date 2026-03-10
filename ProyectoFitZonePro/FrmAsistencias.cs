@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace ProyectoFitZonePro
 {
-    public partial class FrmDatosTrabajadores : Form
+    public partial class FrmAsistencias : Form
     {
-        private ManejadorTrabajadores mt;
+        private ManejadorAsistencias ma;
 
-        public FrmDatosTrabajadores()
+        public FrmAsistencias()
         {
             InitializeComponent();
-            mt = new ManejadorTrabajadores();
+            ma = new ManejadorAsistencias();
         }
     }
 }

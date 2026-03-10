@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAsistencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAsistencias.Designer.cs">
+      <DependentUpon>FrmAsistencias.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmDashboard.Designer.cs">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDatosAsistencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDatosAsistencias.Designer.cs">
+      <DependentUpon>FrmDatosAsistencias.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmDatosEquipos.cs">
       <SubType>Form</SubType>
@@ -63,6 +75,12 @@
     </Compile>
     <Compile Include="FrmDatosEquiposMantenimiento.Designer.cs">
       <DependentUpon>FrmDatosEquiposMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDatosMembresias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDatosMembresias.Designer.cs">
+      <DependentUpon>FrmDatosMembresias.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmDatosSocios.cs">
       <SubType>Form</SubType>
@@ -100,6 +118,12 @@
     <Compile Include="FrmMembresias.Designer.cs">
       <DependentUpon>FrmMembresias.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSocios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +150,51 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAsistencias.resx">
+      <DependentUpon>FrmAsistencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDashboard.resx">
+      <DependentUpon>FrmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDatosAsistencias.resx">
+      <DependentUpon>FrmDatosAsistencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDatosEquipos.resx">
+      <DependentUpon>FrmDatosEquipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDatosEquiposMantenimiento.resx">
+      <DependentUpon>FrmDatosEquiposMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDatosSocios.resx">
+      <DependentUpon>FrmDatosSocios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDatosTrabajadores.resx">
+      <DependentUpon>FrmDatosTrabajadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDatosUsuarios.resx">
+      <DependentUpon>FrmDatosUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEquipos.resx">
+      <DependentUpon>FrmEquipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMembresias.resx">
+      <DependentUpon>FrmMembresias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSocios.resx">
+      <DependentUpon>FrmSocios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTrabajadores.resx">
+      <DependentUpon>FrmTrabajadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUsuarios.resx">
+      <DependentUpon>FrmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -28,12 +28,92 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.DtgDatos = new System.Windows.Forms.DataGridView();
+            this.BtnCrear = new System.Windows.Forms.Button();
+            this.TxtBuscar = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgDatos)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // DtgDatos
+            // 
+            this.DtgDatos.AllowUserToAddRows = false;
+            this.DtgDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgDatos.Location = new System.Drawing.Point(52, 168);
+            this.DtgDatos.Name = "DtgDatos";
+            this.DtgDatos.ReadOnly = true;
+            this.DtgDatos.RowHeadersWidth = 51;
+            this.DtgDatos.RowTemplate.Height = 24;
+            this.DtgDatos.Size = new System.Drawing.Size(820, 281);
+            this.DtgDatos.TabIndex = 2;
+            // 
+            // BtnCrear
+            // 
+            this.BtnCrear.Location = new System.Drawing.Point(954, 47);
+            this.BtnCrear.Name = "BtnCrear";
+            this.BtnCrear.Size = new System.Drawing.Size(117, 62);
+            this.BtnCrear.TabIndex = 3;
+            this.BtnCrear.Text = "Crear";
+            this.BtnCrear.UseVisualStyleBackColor = true;
+            // 
+            // TxtBuscar
+            // 
+            this.TxtBuscar.Location = new System.Drawing.Point(559, 132);
+            this.TxtBuscar.Name = "TxtBuscar";
+            this.TxtBuscar.Size = new System.Drawing.Size(313, 30);
+            this.TxtBuscar.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(52, 127);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(127, 35);
+            this.panel1.TabIndex = 5;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(185, 127);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(127, 35);
+            this.panel2.TabIndex = 6;
+            // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(318, 127);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(127, 35);
+            this.panel3.TabIndex = 6;
+            // 
+            // FrmUsuarios
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 703);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.TxtBuscar);
+            this.Controls.Add(this.BtnCrear);
+            this.Controls.Add(this.DtgDatos);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Name = "FrmUsuarios";
             this.Text = "FrmUsuarios";
+            ((System.ComponentModel.ISupportInitialize)(this.DtgDatos)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView DtgDatos;
+        private System.Windows.Forms.Button BtnCrear;
+        private System.Windows.Forms.TextBox TxtBuscar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }

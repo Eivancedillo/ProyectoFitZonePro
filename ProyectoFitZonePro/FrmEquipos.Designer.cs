@@ -28,12 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.TxtBuscar = new System.Windows.Forms.TextBox();
+            this.BtnCrear = new System.Windows.Forms.Button();
+            this.DtgDatos = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgDatos)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // TxtBuscar
+            // 
+            this.TxtBuscar.Location = new System.Drawing.Point(52, 206);
+            this.TxtBuscar.Name = "TxtBuscar";
+            this.TxtBuscar.Size = new System.Drawing.Size(313, 30);
+            this.TxtBuscar.TabIndex = 12;
+            // 
+            // BtnCrear
+            // 
+            this.BtnCrear.Location = new System.Drawing.Point(743, 83);
+            this.BtnCrear.Name = "BtnCrear";
+            this.BtnCrear.Size = new System.Drawing.Size(117, 62);
+            this.BtnCrear.TabIndex = 11;
+            this.BtnCrear.Text = "Crear";
+            this.BtnCrear.UseVisualStyleBackColor = true;
+            // 
+            // DtgDatos
+            // 
+            this.DtgDatos.AllowUserToAddRows = false;
+            this.DtgDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgDatos.Location = new System.Drawing.Point(52, 242);
+            this.DtgDatos.Name = "DtgDatos";
+            this.DtgDatos.ReadOnly = true;
+            this.DtgDatos.RowHeadersWidth = 51;
+            this.DtgDatos.RowTemplate.Height = 24;
+            this.DtgDatos.Size = new System.Drawing.Size(820, 281);
+            this.DtgDatos.TabIndex = 10;
+            // 
+            // FrmEquipos
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 703);
+            this.Controls.Add(this.TxtBuscar);
+            this.Controls.Add(this.BtnCrear);
+            this.Controls.Add(this.DtgDatos);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Name = "FrmEquipos";
             this.Text = "FrmEquipos";
+            ((System.ComponentModel.ISupportInitialize)(this.DtgDatos)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox TxtBuscar;
+        private System.Windows.Forms.Button BtnCrear;
+        private System.Windows.Forms.DataGridView DtgDatos;
     }
 }

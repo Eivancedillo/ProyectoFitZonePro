@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manejadores;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace ProyectoFitZonePro
 {
     public partial class FrmDashboard : Form
     {
+        private ManejadorDashboard md;
+
         public FrmDashboard()
         {
             InitializeComponent();
+            md = new ManejadorDashboard();
         }
     }
 }

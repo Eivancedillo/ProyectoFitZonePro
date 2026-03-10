@@ -1,5 +1,4 @@
-﻿using Manejadores;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,14 +10,11 @@ using System.Windows.Forms;
 
 namespace ProyectoFitZonePro
 {
-    public partial class FrmDatosTrabajadores : Form
+    public partial class FrmDatosMembresias : Form
     {
-        private ManejadorTrabajadores mt;
-
-        public FrmDatosTrabajadores()
+        public FrmDatosMembresias()
         {
             InitializeComponent();
-            mt = new ManejadorTrabajadores();
         }
     }
 }
