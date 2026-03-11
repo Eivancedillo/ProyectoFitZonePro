@@ -80,6 +80,7 @@
             this.BtnAceptar.TabIndex = 5;
             this.BtnAceptar.Text = "Aceptar";
             this.BtnAceptar.UseVisualStyleBackColor = true;
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
             // BtnCancelar
             // 
@@ -89,6 +90,7 @@
             this.BtnCancelar.TabIndex = 6;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // FrmDatosUsuarios
             // 

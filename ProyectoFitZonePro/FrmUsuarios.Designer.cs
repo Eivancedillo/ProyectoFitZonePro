@@ -31,9 +31,9 @@
             this.DtgDatos = new System.Windows.Forms.DataGridView();
             this.BtnCrear = new System.Windows.Forms.Button();
             this.TxtBuscar = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.PnlTodos = new System.Windows.Forms.Panel();
+            this.PnlActivos = new System.Windows.Forms.Panel();
+            this.PnlInactivos = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.DtgDatos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,6 +48,7 @@
             this.DtgDatos.RowTemplate.Height = 24;
             this.DtgDatos.Size = new System.Drawing.Size(820, 281);
             this.DtgDatos.TabIndex = 2;
+            this.DtgDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgDatos_CellClick);
             // 
             // BtnCrear
             // 
@@ -57,6 +58,7 @@
             this.BtnCrear.TabIndex = 3;
             this.BtnCrear.Text = "Crear";
             this.BtnCrear.UseVisualStyleBackColor = true;
+            this.BtnCrear.Click += new System.EventHandler(this.BtnCrear_Click);
             // 
             // TxtBuscar
             // 
@@ -64,36 +66,37 @@
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(313, 30);
             this.TxtBuscar.TabIndex = 4;
+            this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
-            // panel1
+            // PnlTodos
             // 
-            this.panel1.Location = new System.Drawing.Point(52, 127);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(127, 35);
-            this.panel1.TabIndex = 5;
+            this.PnlTodos.Location = new System.Drawing.Point(52, 127);
+            this.PnlTodos.Name = "PnlTodos";
+            this.PnlTodos.Size = new System.Drawing.Size(127, 35);
+            this.PnlTodos.TabIndex = 5;
             // 
-            // panel2
+            // PnlActivos
             // 
-            this.panel2.Location = new System.Drawing.Point(185, 127);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(127, 35);
-            this.panel2.TabIndex = 6;
+            this.PnlActivos.Location = new System.Drawing.Point(185, 127);
+            this.PnlActivos.Name = "PnlActivos";
+            this.PnlActivos.Size = new System.Drawing.Size(127, 35);
+            this.PnlActivos.TabIndex = 6;
             // 
-            // panel3
+            // PnlInactivos
             // 
-            this.panel3.Location = new System.Drawing.Point(318, 127);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(127, 35);
-            this.panel3.TabIndex = 6;
+            this.PnlInactivos.Location = new System.Drawing.Point(318, 127);
+            this.PnlInactivos.Name = "PnlInactivos";
+            this.PnlInactivos.Size = new System.Drawing.Size(127, 35);
+            this.PnlInactivos.TabIndex = 6;
             // 
             // FrmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 703);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.PnlInactivos);
+            this.Controls.Add(this.PnlActivos);
+            this.Controls.Add(this.PnlTodos);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.BtnCrear);
             this.Controls.Add(this.DtgDatos);
@@ -112,8 +115,8 @@
         private System.Windows.Forms.DataGridView DtgDatos;
         private System.Windows.Forms.Button BtnCrear;
         private System.Windows.Forms.TextBox TxtBuscar;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel PnlTodos;
+        private System.Windows.Forms.Panel PnlActivos;
+        private System.Windows.Forms.Panel PnlInactivos;
     }
 }
