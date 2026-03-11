@@ -31,6 +31,7 @@
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.BtnCrear = new System.Windows.Forms.Button();
             this.DtgDatos = new System.Windows.Forms.DataGridView();
+            this.CmbEstado = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DtgDatos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,6 +41,7 @@
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(313, 30);
             this.TxtBuscar.TabIndex = 12;
+            this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
             // BtnCrear
             // 
@@ -49,6 +51,7 @@
             this.BtnCrear.TabIndex = 11;
             this.BtnCrear.Text = "Crear";
             this.BtnCrear.UseVisualStyleBackColor = true;
+            this.BtnCrear.Click += new System.EventHandler(this.BtnCrear_Click);
             // 
             // DtgDatos
             // 
@@ -61,12 +64,23 @@
             this.DtgDatos.RowTemplate.Height = 24;
             this.DtgDatos.Size = new System.Drawing.Size(820, 281);
             this.DtgDatos.TabIndex = 10;
+            this.DtgDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgDatos_CellClick);
+            // 
+            // CmbEstado
+            // 
+            this.CmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbEstado.FormattingEnabled = true;
+            this.CmbEstado.Location = new System.Drawing.Point(371, 206);
+            this.CmbEstado.Name = "CmbEstado";
+            this.CmbEstado.Size = new System.Drawing.Size(121, 33);
+            this.CmbEstado.TabIndex = 13;
             // 
             // FrmEquipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 703);
+            this.Controls.Add(this.CmbEstado);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.BtnCrear);
             this.Controls.Add(this.DtgDatos);
@@ -85,5 +99,6 @@
         private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.Button BtnCrear;
         private System.Windows.Forms.DataGridView DtgDatos;
+        private System.Windows.Forms.ComboBox CmbEstado;
     }
 }

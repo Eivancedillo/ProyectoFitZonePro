@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.DtpFechaAdquisicion = new System.Windows.Forms.DateTimePicker();
-            this.CmbCategoria = new System.Windows.Forms.ComboBox();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnAceptar = new System.Windows.Forms.Button();
             this.TxtNombre = new System.Windows.Forms.TextBox();
+            this.TxtCategoria = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // DtpFechaAdquisicion
@@ -42,14 +42,6 @@
             this.DtpFechaAdquisicion.Size = new System.Drawing.Size(200, 30);
             this.DtpFechaAdquisicion.TabIndex = 32;
             // 
-            // CmbCategoria
-            // 
-            this.CmbCategoria.FormattingEnabled = true;
-            this.CmbCategoria.Location = new System.Drawing.Point(64, 161);
-            this.CmbCategoria.Name = "CmbCategoria";
-            this.CmbCategoria.Size = new System.Drawing.Size(216, 33);
-            this.CmbCategoria.TabIndex = 31;
-            // 
             // BtnCancelar
             // 
             this.BtnCancelar.Location = new System.Drawing.Point(286, 260);
@@ -58,6 +50,7 @@
             this.BtnCancelar.TabIndex = 30;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // BtnAceptar
             // 
@@ -67,6 +60,7 @@
             this.BtnAceptar.TabIndex = 29;
             this.BtnAceptar.Text = "Aceptar";
             this.BtnAceptar.UseVisualStyleBackColor = true;
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
             // TxtNombre
             // 
@@ -75,13 +69,20 @@
             this.TxtNombre.Size = new System.Drawing.Size(210, 30);
             this.TxtNombre.TabIndex = 28;
             // 
+            // TxtCategoria
+            // 
+            this.TxtCategoria.Location = new System.Drawing.Point(64, 139);
+            this.TxtCategoria.Name = "TxtCategoria";
+            this.TxtCategoria.Size = new System.Drawing.Size(210, 30);
+            this.TxtCategoria.TabIndex = 33;
+            // 
             // FrmDatosEquipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 703);
+            this.Controls.Add(this.TxtCategoria);
             this.Controls.Add(this.DtpFechaAdquisicion);
-            this.Controls.Add(this.CmbCategoria);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnAceptar);
             this.Controls.Add(this.TxtNombre);
@@ -97,9 +98,9 @@
         #endregion
 
         private System.Windows.Forms.DateTimePicker DtpFechaAdquisicion;
-        private System.Windows.Forms.ComboBox CmbCategoria;
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnAceptar;
         private System.Windows.Forms.TextBox TxtNombre;
+        private System.Windows.Forms.TextBox TxtCategoria;
     }
 }
