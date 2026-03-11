@@ -52,6 +52,12 @@
     <Compile Include="FrmAsistencias.Designer.cs">
       <DependentUpon>FrmAsistencias.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBeneficios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBeneficios.Designer.cs">
+      <DependentUpon>FrmBeneficios.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     <EmbeddedResource Include="FrmAsistencias.resx">
       <DependentUpon>FrmAsistencias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmBeneficios.resx">
+      <DependentUpon>FrmBeneficios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDashboard.resx">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDatosEquiposMantenimiento.resx">
       <DependentUpon>FrmDatosEquiposMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDatosMembresias.resx">
+      <DependentUpon>FrmDatosMembresias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDatosSocios.resx">
       <DependentUpon>FrmDatosSocios.cs</DependentUpon>
@@ -218,6 +230,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
+      <Project>{a0d589df-133b-4e83-874a-b26d9078a8b5}</Project>
+      <Name>AccesoDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{f2731720-6e37-4665-a13c-2e119ac60163}</Project>
       <Name>Entidades</Name>
