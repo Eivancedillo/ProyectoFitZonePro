@@ -40,6 +40,7 @@
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(313, 30);
             this.TxtBuscar.TabIndex = 12;
+            this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
             // BtnCrear
             // 
@@ -49,6 +50,7 @@
             this.BtnCrear.TabIndex = 11;
             this.BtnCrear.Text = "Crear";
             this.BtnCrear.UseVisualStyleBackColor = true;
+            this.BtnCrear.Click += new System.EventHandler(this.BtnCrear_Click);
             // 
             // DtgDatos
             // 

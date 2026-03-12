@@ -33,6 +33,7 @@
             this.TxtMembresia = new System.Windows.Forms.TextBox();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.TxtIdSocio = new System.Windows.Forms.TextBox();
+            this.LblEstado = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnCerrar
@@ -43,6 +44,7 @@
             this.BtnCerrar.TabIndex = 13;
             this.BtnCerrar.Text = "Cerrar";
             this.BtnCerrar.UseVisualStyleBackColor = true;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
             // TxtVigencia
             // 
@@ -72,11 +74,21 @@
             this.TxtIdSocio.Size = new System.Drawing.Size(210, 30);
             this.TxtIdSocio.TabIndex = 7;
             // 
+            // LblEstado
+            // 
+            this.LblEstado.AutoSize = true;
+            this.LblEstado.Location = new System.Drawing.Point(140, 338);
+            this.LblEstado.Name = "LblEstado";
+            this.LblEstado.Size = new System.Drawing.Size(64, 25);
+            this.LblEstado.TabIndex = 14;
+            this.LblEstado.Text = "label1";
+            // 
             // FrmDatosAsistencias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(685, 453);
+            this.Controls.Add(this.LblEstado);
             this.Controls.Add(this.BtnCerrar);
             this.Controls.Add(this.TxtVigencia);
             this.Controls.Add(this.TxtMembresia);
@@ -98,5 +110,6 @@
         private System.Windows.Forms.TextBox TxtMembresia;
         private System.Windows.Forms.TextBox TxtNombre;
         private System.Windows.Forms.TextBox TxtIdSocio;
+        private System.Windows.Forms.Label LblEstado;
     }
 }
