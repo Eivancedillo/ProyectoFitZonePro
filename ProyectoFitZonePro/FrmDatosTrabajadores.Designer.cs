@@ -35,10 +35,11 @@
             this.TxtPassword = new System.Windows.Forms.TextBox();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.CmbPermisos = new System.Windows.Forms.ComboBox();
-            this.RndVer = new System.Windows.Forms.RadioButton();
-            this.RndCrear = new System.Windows.Forms.RadioButton();
-            this.RndEliminar = new System.Windows.Forms.RadioButton();
-            this.RndEditar = new System.Windows.Forms.RadioButton();
+            this.BtnEditar = new System.Windows.Forms.Button();
+            this.ChkVer = new System.Windows.Forms.CheckBox();
+            this.ChkCrear = new System.Windows.Forms.CheckBox();
+            this.ChkEditar = new System.Windows.Forms.CheckBox();
+            this.ChkEliminar = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // BtnCancelar
@@ -49,6 +50,7 @@
             this.BtnCancelar.TabIndex = 13;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // BtnAceptar
             // 
@@ -58,6 +60,7 @@
             this.BtnAceptar.TabIndex = 12;
             this.BtnAceptar.Text = "Aceptar";
             this.BtnAceptar.UseVisualStyleBackColor = true;
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
             // TxtEmail
             // 
@@ -95,59 +98,66 @@
             this.CmbPermisos.Size = new System.Drawing.Size(192, 33);
             this.CmbPermisos.TabIndex = 14;
             // 
-            // RndVer
+            // BtnEditar
             // 
-            this.RndVer.AutoSize = true;
-            this.RndVer.Location = new System.Drawing.Point(356, 206);
-            this.RndVer.Name = "RndVer";
-            this.RndVer.Size = new System.Drawing.Size(64, 29);
-            this.RndVer.TabIndex = 15;
-            this.RndVer.TabStop = true;
-            this.RndVer.Text = "Ver";
-            this.RndVer.UseVisualStyleBackColor = true;
+            this.BtnEditar.Location = new System.Drawing.Point(599, 140);
+            this.BtnEditar.Name = "BtnEditar";
+            this.BtnEditar.Size = new System.Drawing.Size(104, 35);
+            this.BtnEditar.TabIndex = 19;
+            this.BtnEditar.Text = "Editar";
+            this.BtnEditar.UseVisualStyleBackColor = true;
+            this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
-            // RndCrear
+            // ChkVer
             // 
-            this.RndCrear.AutoSize = true;
-            this.RndCrear.Location = new System.Drawing.Point(505, 206);
-            this.RndCrear.Name = "RndCrear";
-            this.RndCrear.Size = new System.Drawing.Size(82, 29);
-            this.RndCrear.TabIndex = 16;
-            this.RndCrear.TabStop = true;
-            this.RndCrear.Text = "Crear";
-            this.RndCrear.UseVisualStyleBackColor = true;
+            this.ChkVer.AutoSize = true;
+            this.ChkVer.Location = new System.Drawing.Point(356, 207);
+            this.ChkVer.Name = "ChkVer";
+            this.ChkVer.Size = new System.Drawing.Size(131, 29);
+            this.ChkVer.TabIndex = 20;
+            this.ChkVer.Text = "checkBox1";
+            this.ChkVer.UseVisualStyleBackColor = true;
             // 
-            // RndEliminar
+            // ChkCrear
             // 
-            this.RndEliminar.AutoSize = true;
-            this.RndEliminar.Location = new System.Drawing.Point(803, 206);
-            this.RndEliminar.Name = "RndEliminar";
-            this.RndEliminar.Size = new System.Drawing.Size(102, 29);
-            this.RndEliminar.TabIndex = 18;
-            this.RndEliminar.TabStop = true;
-            this.RndEliminar.Text = "Eliminar";
-            this.RndEliminar.UseVisualStyleBackColor = true;
+            this.ChkCrear.AutoSize = true;
+            this.ChkCrear.Location = new System.Drawing.Point(505, 207);
+            this.ChkCrear.Name = "ChkCrear";
+            this.ChkCrear.Size = new System.Drawing.Size(131, 29);
+            this.ChkCrear.TabIndex = 21;
+            this.ChkCrear.Text = "checkBox2";
+            this.ChkCrear.UseVisualStyleBackColor = true;
             // 
-            // RndEditar
+            // ChkEditar
             // 
-            this.RndEditar.AutoSize = true;
-            this.RndEditar.Location = new System.Drawing.Point(654, 206);
-            this.RndEditar.Name = "RndEditar";
-            this.RndEditar.Size = new System.Drawing.Size(83, 29);
-            this.RndEditar.TabIndex = 17;
-            this.RndEditar.TabStop = true;
-            this.RndEditar.Text = "Editar";
-            this.RndEditar.UseVisualStyleBackColor = true;
+            this.ChkEditar.AutoSize = true;
+            this.ChkEditar.Location = new System.Drawing.Point(654, 207);
+            this.ChkEditar.Name = "ChkEditar";
+            this.ChkEditar.Size = new System.Drawing.Size(131, 29);
+            this.ChkEditar.TabIndex = 22;
+            this.ChkEditar.Text = "checkBox3";
+            this.ChkEditar.UseVisualStyleBackColor = true;
+            // 
+            // ChkEliminar
+            // 
+            this.ChkEliminar.AutoSize = true;
+            this.ChkEliminar.Location = new System.Drawing.Point(803, 207);
+            this.ChkEliminar.Name = "ChkEliminar";
+            this.ChkEliminar.Size = new System.Drawing.Size(131, 29);
+            this.ChkEliminar.TabIndex = 23;
+            this.ChkEliminar.Text = "checkBox4";
+            this.ChkEliminar.UseVisualStyleBackColor = true;
             // 
             // FrmDatosTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 703);
-            this.Controls.Add(this.RndEliminar);
-            this.Controls.Add(this.RndEditar);
-            this.Controls.Add(this.RndCrear);
-            this.Controls.Add(this.RndVer);
+            this.Controls.Add(this.ChkEliminar);
+            this.Controls.Add(this.ChkEditar);
+            this.Controls.Add(this.ChkCrear);
+            this.Controls.Add(this.ChkVer);
+            this.Controls.Add(this.BtnEditar);
             this.Controls.Add(this.CmbPermisos);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnAceptar);
@@ -173,9 +183,10 @@
         private System.Windows.Forms.TextBox TxtPassword;
         private System.Windows.Forms.TextBox TxtNombre;
         private System.Windows.Forms.ComboBox CmbPermisos;
-        private System.Windows.Forms.RadioButton RndVer;
-        private System.Windows.Forms.RadioButton RndCrear;
-        private System.Windows.Forms.RadioButton RndEliminar;
-        private System.Windows.Forms.RadioButton RndEditar;
+        private System.Windows.Forms.Button BtnEditar;
+        private System.Windows.Forms.CheckBox ChkVer;
+        private System.Windows.Forms.CheckBox ChkCrear;
+        private System.Windows.Forms.CheckBox ChkEditar;
+        private System.Windows.Forms.CheckBox ChkEliminar;
     }
 }

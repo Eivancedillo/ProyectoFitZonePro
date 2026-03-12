@@ -94,9 +94,7 @@
     <Compile Include="FrmDatosSocios.Designer.cs">
       <DependentUpon>FrmDatosSocios.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmDatosTrabajadores.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FrmDatosTrabajadores.cs" />
     <Compile Include="FrmDatosTrabajadores.Designer.cs">
       <DependentUpon>FrmDatosTrabajadores.cs</DependentUpon>
     </Compile>
