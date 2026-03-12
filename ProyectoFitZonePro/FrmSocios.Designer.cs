@@ -40,6 +40,7 @@
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(313, 30);
             this.TxtBuscar.TabIndex = 9;
+            this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
             // BtnCrear
             // 
@@ -49,6 +50,7 @@
             this.BtnCrear.TabIndex = 8;
             this.BtnCrear.Text = "Crear";
             this.BtnCrear.UseVisualStyleBackColor = true;
+            this.BtnCrear.Click += new System.EventHandler(this.BtnCrear_Click);
             // 
             // DtgDatos
             // 
@@ -61,6 +63,7 @@
             this.DtgDatos.RowTemplate.Height = 24;
             this.DtgDatos.Size = new System.Drawing.Size(820, 281);
             this.DtgDatos.TabIndex = 7;
+            this.DtgDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgDatos_CellClick);
             // 
             // FrmSocios
             // 

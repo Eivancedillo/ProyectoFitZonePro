@@ -13,6 +13,8 @@ namespace ProyectoFitZonePro
         // Objeto global estático para pasarlo a la ventana de edición
         public static Membresias membresiaSeleccionada = new Membresias(0, "", 0, 0, 0, "Activo");
 
+        public static bool modoSeleccion = false;
+
         public FrmMembresias()
         {
             InitializeComponent();
@@ -29,6 +31,23 @@ namespace ProyectoFitZonePro
         {
             // 1. Llenamos la tabla general
             mb.Mostrar("SELECT * FROM tbl_membresias", DtgDatos, "Membresias");
+
+            // MAGIA DE LIMPIEZA VISUAL
+            if (modoSeleccion)
+            {
+                BtnCrear.Visible = false;
+
+                int totalCols = DtgDatos.Columns.Count;
+                if (totalCols >= 2)
+                {
+                    DtgDatos.Columns[totalCols - 1].Visible = false;
+                    DtgDatos.Columns[totalCols - 2].Visible = false;
+                }
+            }
+            else
+            {
+                BtnCrear.Visible = true;
+            }
 
             // 2. Cargamos las tarjetas mágicas del Top 3
             CargarPanelesTop3();
@@ -79,6 +98,17 @@ namespace ProyectoFitZonePro
         private void DtgDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
+            if (modoSeleccion)
+            {
+                membresiaSeleccionada.IdMembresia = Convert.ToInt32(DtgDatos.Rows[e.RowIndex].Cells["idMembresia"].Value);
+                membresiaSeleccionada.Nombre = DtgDatos.Rows[e.RowIndex].Cells["nombre"].Value.ToString();
+                membresiaSeleccionada.CostoMensual = Convert.ToDouble(DtgDatos.Rows[e.RowIndex].Cells["costo_mensual"].Value);
+                membresiaSeleccionada.CostoSemestral = Convert.ToDouble(DtgDatos.Rows[e.RowIndex].Cells["costo_semestral"].Value);
+                membresiaSeleccionada.CostoAnual = Convert.ToDouble(DtgDatos.Rows[e.RowIndex].Cells["costo_anual"].Value);
+                this.Close();
+                return;
+            }
 
             int fila = e.RowIndex;
             int col = e.ColumnIndex;

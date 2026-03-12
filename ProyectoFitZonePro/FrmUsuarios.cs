@@ -11,6 +11,7 @@ namespace ProyectoFitZonePro
         private ManejadorUsuarios mu;
         public static Usuarios usuario = new Usuarios(0, "", "", "", "", "", "Activo", "");
         private string filtroActual = "Todos";
+        public static bool modoSeleccion = false;
 
         public FrmUsuarios()
         {
@@ -69,6 +70,23 @@ namespace ProyectoFitZonePro
             }
 
             mu.Mostrar(consulta, DtgDatos, "Usuarios");
+
+            // MAGIA DE LIMPIEZA VISUAL
+            if (modoSeleccion)
+            {
+                BtnCrear.Visible = false; // Ocultamos el botón Crear
+
+                int totalCols = DtgDatos.Columns.Count;
+                if (totalCols >= 2)
+                {
+                    DtgDatos.Columns[totalCols - 1].Visible = false; // Oculta botón Estado
+                    DtgDatos.Columns[totalCols - 2].Visible = false; // Oculta botón Editar
+                }
+            }
+            else
+            {
+                BtnCrear.Visible = true; // Lo regresamos a la normalidad si no estamos seleccionando
+            }
         }
 
         private void BtnCrear_Click(object sender, EventArgs e)
@@ -81,6 +99,15 @@ namespace ProyectoFitZonePro
 
         private void DtgDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (modoSeleccion)
+            {
+                // Solo guardamos el ID y Nombre y cerramos la ventana
+                usuario.IdUsuario = Convert.ToInt32(DtgDatos.Rows[e.RowIndex].Cells["idUsuario"].Value);
+                usuario.Nombre = DtgDatos.Rows[e.RowIndex].Cells["nombre"].Value.ToString();
+                this.Close();
+                return;
+            }
+
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
             int indexFila = e.RowIndex;

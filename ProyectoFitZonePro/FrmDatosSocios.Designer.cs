@@ -33,8 +33,8 @@
             this.TxtMembresia = new System.Windows.Forms.TextBox();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.TxtIdSocio = new System.Windows.Forms.TextBox();
-            this.TxtCoso = new System.Windows.Forms.TextBox();
-            this.TxtSeleccionarUsuario = new System.Windows.Forms.Button();
+            this.TxtCosto = new System.Windows.Forms.TextBox();
+            this.BtnSeleccionarUsuario = new System.Windows.Forms.Button();
             this.BtnSeleccionarMembresia = new System.Windows.Forms.Button();
             this.CmbDuracion = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
@@ -47,6 +47,7 @@
             this.BtnCancelar.TabIndex = 13;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // BtnAceptar
             // 
@@ -56,6 +57,7 @@
             this.BtnAceptar.TabIndex = 12;
             this.BtnAceptar.Text = "Aceptar";
             this.BtnAceptar.UseVisualStyleBackColor = true;
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
             // TxtMembresia
             // 
@@ -78,21 +80,22 @@
             this.TxtIdSocio.Size = new System.Drawing.Size(210, 30);
             this.TxtIdSocio.TabIndex = 7;
             // 
-            // TxtCoso
+            // TxtCosto
             // 
-            this.TxtCoso.Location = new System.Drawing.Point(41, 238);
-            this.TxtCoso.Name = "TxtCoso";
-            this.TxtCoso.Size = new System.Drawing.Size(210, 30);
-            this.TxtCoso.TabIndex = 14;
+            this.TxtCosto.Location = new System.Drawing.Point(41, 238);
+            this.TxtCosto.Name = "TxtCosto";
+            this.TxtCosto.Size = new System.Drawing.Size(210, 30);
+            this.TxtCosto.TabIndex = 14;
             // 
-            // TxtSeleccionarUsuario
+            // BtnSeleccionarUsuario
             // 
-            this.TxtSeleccionarUsuario.Location = new System.Drawing.Point(561, 73);
-            this.TxtSeleccionarUsuario.Name = "TxtSeleccionarUsuario";
-            this.TxtSeleccionarUsuario.Size = new System.Drawing.Size(119, 33);
-            this.TxtSeleccionarUsuario.TabIndex = 15;
-            this.TxtSeleccionarUsuario.Text = "Seleccionar";
-            this.TxtSeleccionarUsuario.UseVisualStyleBackColor = true;
+            this.BtnSeleccionarUsuario.Location = new System.Drawing.Point(561, 73);
+            this.BtnSeleccionarUsuario.Name = "BtnSeleccionarUsuario";
+            this.BtnSeleccionarUsuario.Size = new System.Drawing.Size(119, 33);
+            this.BtnSeleccionarUsuario.TabIndex = 15;
+            this.BtnSeleccionarUsuario.Text = "Seleccionar";
+            this.BtnSeleccionarUsuario.UseVisualStyleBackColor = true;
+            this.BtnSeleccionarUsuario.Click += new System.EventHandler(this.BtnSeleccionarUsuario_Click);
             // 
             // BtnSeleccionarMembresia
             // 
@@ -102,6 +105,7 @@
             this.BtnSeleccionarMembresia.TabIndex = 16;
             this.BtnSeleccionarMembresia.Text = "Seleccionar";
             this.BtnSeleccionarMembresia.UseVisualStyleBackColor = true;
+            this.BtnSeleccionarMembresia.Click += new System.EventHandler(this.BtnSeleccionarMembresia_Click);
             // 
             // CmbDuracion
             // 
@@ -118,8 +122,8 @@
             this.ClientSize = new System.Drawing.Size(1200, 703);
             this.Controls.Add(this.CmbDuracion);
             this.Controls.Add(this.BtnSeleccionarMembresia);
-            this.Controls.Add(this.TxtSeleccionarUsuario);
-            this.Controls.Add(this.TxtCoso);
+            this.Controls.Add(this.BtnSeleccionarUsuario);
+            this.Controls.Add(this.TxtCosto);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnAceptar);
             this.Controls.Add(this.TxtMembresia);
@@ -141,8 +145,8 @@
         private System.Windows.Forms.TextBox TxtMembresia;
         private System.Windows.Forms.TextBox TxtNombre;
         private System.Windows.Forms.TextBox TxtIdSocio;
-        private System.Windows.Forms.TextBox TxtCoso;
-        private System.Windows.Forms.Button TxtSeleccionarUsuario;
+        private System.Windows.Forms.TextBox TxtCosto;
+        private System.Windows.Forms.Button BtnSeleccionarUsuario;
         private System.Windows.Forms.Button BtnSeleccionarMembresia;
         private System.Windows.Forms.ComboBox CmbDuracion;
     }
