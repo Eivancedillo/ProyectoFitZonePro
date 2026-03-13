@@ -24,7 +24,6 @@ namespace ProyectoFitZonePro
 
         private void FrmEquipos_Shown(object sender, EventArgs e)
         {
-            // Dispara la carga inicial de la tabla cuando la ventana ya es visible
             CmbEstado.SelectedIndex = 0;
         }
 
@@ -55,9 +54,14 @@ namespace ProyectoFitZonePro
 
         private void BtnCrear_Click(object sender, EventArgs e)
         {
-            // IMPORTANTE: Reiniciamos la variable para asegurar que la ventana se abra vacía
-            equipo = new Equipos(0, "", "", "", "Activo");
+            // Validación de privilegios para creación de registros
+            if (!Sesion.TienePermiso("Equipos", "crear"))
+            {
+                MessageBox.Show("No cuenta con los privilegios suficientes para dar de alta nuevos equipos.", "Permiso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
 
+            equipo = new Equipos(0, "", "", "", "Activo");
             FrmDatosEquipos frmDatos = new FrmDatosEquipos();
             frmDatos.ShowDialog();
             ActualizarTabla();
@@ -65,13 +69,11 @@ namespace ProyectoFitZonePro
 
         private void DtgDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Validar que el clic sea dentro de los datos y no en los encabezados
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
             int indexFila = e.RowIndex;
             int indexColumna = e.ColumnIndex;
 
-            // Extraer datos de la fila seleccionada
             equipo.IdEquipo = Convert.ToInt32(DtgDatos.Rows[indexFila].Cells["idEquipo"].Value);
             equipo.Nombre = DtgDatos.Rows[indexFila].Cells["nombre_maquina"].Value.ToString();
             equipo.Categoria = DtgDatos.Rows[indexFila].Cells["categoria"].Value.ToString();
@@ -81,8 +83,14 @@ namespace ProyectoFitZonePro
 
             switch (indexColumna)
             {
-                // Editar (Columna 6)
+                // Operación: Editar
                 case 6:
+                    if (!Sesion.TienePermiso("Equipos", "editar"))
+                    {
+                        MessageBox.Show("No tiene autorización para modificar la información técnica del equipo.", "Permiso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        return;
+                    }
+
                     if (esInactivo)
                     {
                         MessageBox.Show("No se puede editar un equipo inactivo. Actívelo primero.", "Acción denegada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -94,8 +102,14 @@ namespace ProyectoFitZonePro
                     ActualizarTabla();
                     break;
 
-                // Mantenimiento (Columna 7)
+                // Operación: Gestión de Mantenimiento
                 case 7:
+                    if (!Sesion.TienePermiso("Equipos", "editar"))
+                    {
+                        MessageBox.Show("No cuenta con permisos para programar o registrar mantenimientos.", "Permiso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        return;
+                    }
+
                     if (esInactivo)
                     {
                         MessageBox.Show("No se puede programar mantenimiento a un equipo inactivo. Actívelo primero.", "Acción denegada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -107,8 +121,14 @@ namespace ProyectoFitZonePro
                     ActualizarTabla();
                     break;
 
-                // Activar / Desactivar (Columna 8)
+                // Operación: Cambio de Estado (Activar/Desactivar)
                 case 8:
+                    if (!Sesion.TienePermiso("Equipos", "eliminar"))
+                    {
+                        MessageBox.Show("No tiene autorización para cambiar el estado operativo de los activos.", "Permiso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        return;
+                    }
+
                     if (!esInactivo)
                     {
                         me.CambiarEstado(equipo.IdEquipo, true); // Desactivar

@@ -34,6 +34,12 @@ namespace ProyectoFitZonePro
 
         private void BtnCrear_Click(object sender, EventArgs e)
         {
+            if (!Sesion.TienePermiso("Asistencias", "crear"))
+            {
+                MessageBox.Show("¡Acceso Denegado! No tienes permiso para abrir el registro de asistencias.", "Acción Bloqueada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Rebotado
+            }
+
             // Este botón abrirá la pantalla de recepción (El escáner)
             FrmDatosAsistencias frmReceptor = new FrmDatosAsistencias();
             frmReceptor.ShowDialog();

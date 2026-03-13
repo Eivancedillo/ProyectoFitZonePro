@@ -31,14 +31,21 @@ namespace ProyectoFitZonePro
 
         private void ActualizarTabla()
         {
-            // ¡Mira nomás qué hermosura de consulta limpia gracias a tu Vista!
+            // Carga de datos mediante la vista configurada en la base de datos
             string consulta = $"SELECT * FROM v_vista_suscripciones WHERE Cliente LIKE '%{TxtBuscar.Text}%'";
             ms.Mostrar(consulta, DtgDatos, "Suscripciones");
         }
 
         private void BtnCrear_Click(object sender, EventArgs e)
         {
-            // Limpiamos la memoria
+            // Validación de privilegios para inscripción de nuevos socios
+            if (!Sesion.TienePermiso("Socios", "crear"))
+            {
+                MessageBox.Show("No cuenta con autorización para dar de alta nuevas suscripciones.", "Restricción de Acceso", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
+            // Reinicio de objeto para nueva captura
             socio = new Socios(0, 0, 0, "", "", "", 0.0, "Activo");
             FrmDatosSocios frmDatos = new FrmDatosSocios();
             frmDatos.ShowDialog();
@@ -53,7 +60,7 @@ namespace ProyectoFitZonePro
             int col = e.ColumnIndex;
             int totalCols = DtgDatos.Columns.Count - 2;
 
-            // Llenamos el objeto estático con la fila seleccionada
+            // Mapeo de datos de la fila seleccionada al objeto global
             socio.IdSuscripcion = Convert.ToInt32(DtgDatos.Rows[fila].Cells["idSuscripcion"].Value);
             socio.FkIdUsuario = Convert.ToInt32(DtgDatos.Rows[fila].Cells["fkIdUsuario"].Value);
             socio.FkIdMembresia = Convert.ToInt32(DtgDatos.Rows[fila].Cells["fkIdMembresia"].Value);
@@ -65,34 +72,47 @@ namespace ProyectoFitZonePro
             socio.FechaFin = Convert.ToDateTime(DtgDatos.Rows[fila].Cells["fecha_fin"].Value).ToString("yyyy-MM-dd");
 
             socio.CostoTotal = Convert.ToDouble(DtgDatos.Rows[fila].Cells["costo_total"].Value);
-            socio.estado = DtgDatos.Rows[fila].Cells["estado"].Value.ToString();
+            socio.estado = DtgDatos.Rows[fila].Cells["estado"].Value.ToString().ToLower();
 
-            // Botón Editar
+            // Operación: Editar Suscripción
             if (col == totalCols)
             {
+                if (!Sesion.TienePermiso("Socios", "editar"))
+                {
+                    MessageBox.Show("No tiene privilegios para modificar suscripciones existentes.", "Acción Denegada", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return;
+                }
+
                 if (socio.estado == "cancelado")
                 {
-                    MessageBox.Show("No se puede editar una suscripción cancelada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No se permite la edición de registros con estatus 'Cancelado'.", "Aviso de Seguridad", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 FrmDatosSocios frmDatos = new FrmDatosSocios();
                 frmDatos.ShowDialog();
                 ActualizarTabla();
             }
-            // Botón Estado (Cancelar / Renovar / Reactivar)
+            // Operación: Gestión de Estatus (Cancelar / Reactivar)
             else if (col == totalCols + 1)
             {
+                if (!Sesion.TienePermiso("Socios", "eliminar"))
+                {
+                    MessageBox.Show("No cuenta con permisos para realizar cambios de estado o cancelaciones.", "Acceso Restringido", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return;
+                }
+
                 if (socio.estado == "activo")
                 {
-                    if (MessageBox.Show("¿Desea cancelar esta suscripción?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        ms.CambiarEstado(socio.IdSuscripcion, "Cancelado");
+                    if (MessageBox.Show("¿Confirmar la cancelación de la suscripción seleccionada?", "Validación de Usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        ms.CambiarEstado(socio.IdSuscripcion, "cancelado");
+                    }
                 }
                 else if (socio.estado == "vencido" || socio.estado == "cancelado")
                 {
-                    if (MessageBox.Show("¿Desea reactivar/renovar esta suscripción? Deberá editar las fechas.", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("¿Desea reactivar la suscripción? Es necesario actualizar los periodos de vigencia posteriormente.", "Confirmar Operación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        ms.CambiarEstado(socio.IdSuscripcion, "Activo");
-                        // Aquí podríamos abrir FrmDatosSocios automáticamente para que le cobren el nuevo periodo
+                        ms.CambiarEstado(socio.IdSuscripcion, "activo");
                     }
                 }
                 ActualizarTabla();
