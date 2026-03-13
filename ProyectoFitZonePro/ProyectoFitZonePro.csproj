@@ -154,6 +154,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sesion.cs" />
     <EmbeddedResource Include="FrmAsistencias.resx">
       <DependentUpon>FrmAsistencias.cs</DependentUpon>
     </EmbeddedResource>

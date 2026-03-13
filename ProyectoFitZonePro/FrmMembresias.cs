@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using Manejadores;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -88,8 +89,16 @@ namespace ProyectoFitZonePro
 
         private void BtnCrear_Click(object sender, EventArgs e)
         {
-            // Limpiamos la memoria antes de crear una nueva
-            membresiaSeleccionada = new Membresias(0, "", 0, 0, 0, "Activo");
+            // EL CADENERO DE CREACIÓN
+            if (!Sesion.TienePermiso("Membresias", "crear"))
+            {
+                MessageBox.Show("¡Acceso Denegado! No tienes permiso para crear nuevas membresías.", "Acción Bloqueada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Lo rebotamos
+            }
+
+            membresiaSeleccionada = new Membresias(0, "", 0.0, 0.0, 0.0, "Activo");
+            membresiaSeleccionada.BeneficiosIds = new List<int>();
+
             FrmDatosMembresias frmDatos = new FrmDatosMembresias();
             frmDatos.ShowDialog();
             ActualizarTodo();
@@ -125,13 +134,17 @@ namespace ProyectoFitZonePro
             // Botón Editar
             if (col == totalColumnasOriginales)
             {
+                if (!Sesion.TienePermiso("Membresias", "editar"))
+                {
+                    MessageBox.Show("¡Acceso Denegado! No tienes permiso para modificar la información.", "Acción Bloqueada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (estatusFila == "Inactivo")
                 {
                     MessageBox.Show("Active la membresía primero para poder editarla.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
-                // ¡ESTA ES LA MAGIA! Cargamos los beneficios reales de la base de datos a la memoria
                 membresiaSeleccionada.BeneficiosIds = mb.ObtenerBeneficiosPorMembresia(membresiaSeleccionada.IdMembresia);
 
                 FrmDatosMembresias frmDatos = new FrmDatosMembresias();
@@ -141,6 +154,12 @@ namespace ProyectoFitZonePro
             // Botón Activar/Desactivar
             else if (col == totalColumnasOriginales + 1)
             {
+                if (!Sesion.TienePermiso("Membresias", "eliminar"))
+                {
+                    MessageBox.Show("¡Acceso Denegado! No tienes permiso para activar o desactivar registros.", "Acción Bloqueada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 bool mandarDesactivar = estatusFila == "Activo";
                 mb.CambiarEstado(membresiaSeleccionada.IdMembresia, mandarDesactivar);
                 ActualizarTodo();

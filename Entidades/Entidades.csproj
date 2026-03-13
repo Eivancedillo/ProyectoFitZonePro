@@ -44,6 +44,7 @@
     <Compile Include="Asistencias.cs" />
     <Compile Include="Equipos.cs" />
     <Compile Include="Membresias.cs" />
+    <Compile Include="PermisoModulo.cs" />
     <Compile Include="Socios.cs" />
     <Compile Include="Trabajadores.cs" />
     <Compile Include="Usuarios.cs" />
