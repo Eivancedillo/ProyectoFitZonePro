@@ -35,7 +35,11 @@
             this.BtnMembresias = new System.Windows.Forms.ToolStripButton();
             this.BtnUsuarios = new System.Windows.Forms.ToolStripButton();
             this.BtnMiembros = new System.Windows.Forms.ToolStripButton();
-            this.BtnTienda = new System.Windows.Forms.ToolStripButton();
+            this.BtnTienda = new System.Windows.Forms.ToolStripSplitButton();
+            this.realizarVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entradaDeInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnEquipos = new System.Windows.Forms.ToolStripButton();
             this.BtnTrabajadores = new System.Windows.Forms.ToolStripButton();
             this.BtnSalir = new System.Windows.Forms.ToolStripButton();
@@ -118,13 +122,39 @@
             // 
             // BtnTienda
             // 
-            this.BtnTienda.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.BtnTienda.Image = ((System.Drawing.Image)(resources.GetObject("BtnTienda.Image")));
-            this.BtnTienda.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnTienda.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.realizarVentaToolStripMenuItem,
+            this.verVentasToolStripMenuItem,
+            this.entradaDeInventarioToolStripMenuItem,
+            this.inventarioToolStripMenuItem});
             this.BtnTienda.Name = "BtnTienda";
-            this.BtnTienda.Size = new System.Drawing.Size(165, 24);
+            this.BtnTienda.Size = new System.Drawing.Size(165, 19);
             this.BtnTienda.Text = "BtnTienda";
-            this.BtnTienda.Click += new System.EventHandler(this.BtnTienda_Click);
+            // 
+            // realizarVentaToolStripMenuItem
+            // 
+            this.realizarVentaToolStripMenuItem.Name = "realizarVentaToolStripMenuItem";
+            this.realizarVentaToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.realizarVentaToolStripMenuItem.Text = "Realizar Venta";
+            this.realizarVentaToolStripMenuItem.Click += new System.EventHandler(this.realizarVentaToolStripMenuItem_Click);
+            // 
+            // verVentasToolStripMenuItem
+            // 
+            this.verVentasToolStripMenuItem.Name = "verVentasToolStripMenuItem";
+            this.verVentasToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.verVentasToolStripMenuItem.Text = "Ver ventas";
+            // 
+            // entradaDeInventarioToolStripMenuItem
+            // 
+            this.entradaDeInventarioToolStripMenuItem.Name = "entradaDeInventarioToolStripMenuItem";
+            this.entradaDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.entradaDeInventarioToolStripMenuItem.Text = "Entrada de Inventario";
+            // 
+            // inventarioToolStripMenuItem
+            // 
+            this.inventarioToolStripMenuItem.Name = "inventarioToolStripMenuItem";
+            this.inventarioToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.inventarioToolStripMenuItem.Text = "Inventario";
             // 
             // BtnEquipos
             // 
@@ -168,7 +198,7 @@
             // 
             // FrmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 703);
             this.Controls.Add(this.toolStrip1);
@@ -177,6 +207,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmPrincipal";
             this.Text = "FrmPrincipal";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -191,10 +222,14 @@
         private System.Windows.Forms.ToolStripButton BtnMembresias;
         private System.Windows.Forms.ToolStripButton BtnUsuarios;
         private System.Windows.Forms.ToolStripButton BtnMiembros;
-        private System.Windows.Forms.ToolStripButton BtnTienda;
         private System.Windows.Forms.ToolStripButton BtnEquipos;
         private System.Windows.Forms.ToolStripButton BtnTrabajadores;
         private System.Windows.Forms.ToolStripButton BtnSalir;
         private System.Windows.Forms.ToolStripButton BtnCerrarSesion;
+        private System.Windows.Forms.ToolStripSplitButton BtnTienda;
+        private System.Windows.Forms.ToolStripMenuItem realizarVentaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verVentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem entradaDeInventarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inventarioToolStripMenuItem;
     }
 }

@@ -48,6 +48,7 @@
     <Compile Include="ManejadorEquipos.cs" />
     <Compile Include="ManejadorLogin.cs" />
     <Compile Include="ManejadorMembresias.cs" />
+    <Compile Include="ManejadorProductos.cs" />
     <Compile Include="ManejadorSocios.cs" />
     <Compile Include="ManejadorTienda.cs" />
     <Compile Include="ManejadorTrabajadores.cs" />

@@ -83,19 +83,6 @@ namespace ProyectoFitZonePro
             miembros.Show();
         }
 
-        private void BtnTienda_Click(object sender, EventArgs e)
-        {
-            if (!Sesion.TienePermiso("Tienda", "ver"))
-            {
-                MessageBox.Show("¡Acceso Denegado! No tienes permiso para acceder a la Tienda.", "Área Restringida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
-
-            FrmTienda tienda = new FrmTienda();
-            tienda.MdiParent = this;
-            tienda.Show();
-        }
-
         private void BtnEquipos_Click(object sender, EventArgs e)
         {
             if (!Sesion.TienePermiso("Equipos", "ver"))
@@ -134,6 +121,13 @@ namespace ProyectoFitZonePro
                 // El Truco Nivel Dios: Reinicia el programa entero
                 Application.Restart();
             }
+        }
+
+        private void realizarVentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {  
+            FrmRealizarVenta venta = new FrmRealizarVenta();
+            venta.MdiParent = this;
+            venta.Show();
         }
     }
 }
