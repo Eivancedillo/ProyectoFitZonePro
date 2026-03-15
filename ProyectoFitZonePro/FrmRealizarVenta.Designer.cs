@@ -35,6 +35,7 @@
             this.BtnFinalizarVenta = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.LblTotalVenta = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DtgProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgCarrito)).BeginInit();
             this.SuspendLayout();
@@ -61,6 +62,7 @@
             this.DtgCarrito.Size = new System.Drawing.Size(584, 455);
             this.DtgCarrito.TabIndex = 1;
             this.DtgCarrito.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgCarrito_CellClick);
+            this.DtgCarrito.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgCarrito_CellEndEdit);
             // 
             // BtnCorteCaja
             // 
@@ -109,11 +111,21 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Producto:";
             // 
+            // LblTotalVenta
+            // 
+            this.LblTotalVenta.Location = new System.Drawing.Point(549, 549);
+            this.LblTotalVenta.Name = "LblTotalVenta";
+            this.LblTotalVenta.Size = new System.Drawing.Size(588, 20);
+            this.LblTotalVenta.TabIndex = 7;
+            this.LblTotalVenta.Text = ".....";
+            this.LblTotalVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FrmRealizarVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 669);
+            this.Controls.Add(this.LblTotalVenta);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TxtBusqueda);
             this.Controls.Add(this.BtnFinalizarVenta);
@@ -142,5 +154,6 @@
         private System.Windows.Forms.Button BtnFinalizarVenta;
         private System.Windows.Forms.TextBox TxtBusqueda;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblTotalVenta;
     }
 }

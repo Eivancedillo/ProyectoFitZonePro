@@ -137,9 +137,18 @@ namespace ProyectoFitZonePro
             verVentas.Show();
         }
 
-        private void FrmPrincipal_Load(object sender, EventArgs e)
+        private void entradaDeInventarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FrmEntradasInventario entradas = new FrmEntradasInventario();
+            entradas.MdiParent = this;
+            entradas.Show();
+        }
 
+        private void inventarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmInventario inventario = new FrmInventario();
+            inventario.MdiParent = this;
+            inventario.Show();
         }
     }
 }

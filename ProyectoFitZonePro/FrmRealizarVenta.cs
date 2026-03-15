@@ -32,7 +32,8 @@ namespace ProyectoFitZonePro
 
         private void BtnCorteCaja_Click(object sender, EventArgs e)
         {
-            
+            FrmCorteCaja fcc = new FrmCorteCaja();
+            fcc.ShowDialog();
         }
 
         private void TxtBusqueda_TextChanged(object sender, EventArgs e)
@@ -49,20 +50,28 @@ namespace ProyectoFitZonePro
 
         private void BtnFinalizarVenta_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in DtgCarrito.Rows)
+            if(DtgCarrito.Rows.Count > 1)
             {
-                DetalleVentas item = new DetalleVentas
+                foreach (DataGridViewRow row in DtgCarrito.Rows)
                 {
-                    FkIdProducto = Convert.ToInt32(row.Cells["IdProducto"].Value),
-                    Cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value),
-                    Precio = Convert.ToDouble(row.Cells["Precio"].Value)
-                };
-                carrito.Add(item);
+                    DetalleVentas item = new DetalleVentas
+                    {
+                        FkIdProducto = Convert.ToInt32(row.Cells["IdProducto"].Value),
+                        Cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value),
+                        Precio = Convert.ToDouble(row.Cells["Precio"].Value)
+                    };
+                    carrito.Add(item);
+                }
+                FrmConfirmarVenta fcv = new FrmConfirmarVenta();
+                if (fcv.ShowDialog() == DialogResult.OK)
+                {
+                    DtgCarrito.Rows.Clear();
+                    LblTotalVenta.Text = "Total de la venta: $0.00";
+                }
             }
-            FrmConfirmarVenta fcv = new FrmConfirmarVenta();
-            if (fcv.ShowDialog() == DialogResult.OK)
+            else
             {
-                DtgCarrito.Rows.Clear();
+                MessageBox.Show("No hay productos en el carrito para finalizar la venta.", "Carrito vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -70,8 +79,10 @@ namespace ProyectoFitZonePro
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-            if (columna == 5)
+            if (e.ColumnIndex == 5)
             {
+                int fila = e.RowIndex;
+
                 int idProducto = Convert.ToInt32(DtgProductos.Rows[fila].Cells["idProducto"].Value);
                 string nombreProducto = DtgProductos.Rows[fila].Cells["Nombre"].Value.ToString();
                 double precio = Convert.ToDouble(DtgProductos.Rows[fila].Cells["Precio"].Value);
@@ -83,7 +94,10 @@ namespace ProyectoFitZonePro
                     if (!row.IsNewRow && Convert.ToInt32(row.Cells["idProducto"].Value) == idProducto)
                     {
                         int cantidadActual = Convert.ToInt32(row.Cells["Cantidad"].Value);
-                        row.Cells["Cantidad"].Value = cantidadActual + 1;
+                        int nuevaCantidad = cantidadActual + 1;
+                        row.Cells["Cantidad"].Value = nuevaCantidad;
+                        row.Cells["Total"].Value = nuevaCantidad * precio;
+
                         productoExiste = true;
                         break;
                     }
@@ -91,8 +105,9 @@ namespace ProyectoFitZonePro
 
                 if (!productoExiste)
                 {
-                    DtgCarrito.Rows.Add(idProducto, nombreProducto, 1, precio);
+                    DtgCarrito.Rows.Add(idProducto, nombreProducto, 1, precio, precio);
                 }
+                ActualizarEtiquetaTotal();
             }
         }
 
@@ -100,12 +115,22 @@ namespace ProyectoFitZonePro
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-            fila = e.RowIndex;
-            columna = e.ColumnIndex;
-
-            if (columna == 4)
+            if (e.ColumnIndex == 5)
             {
-                DtgCarrito.Rows.RemoveAt(fila);
+                string producto = DtgCarrito.Rows[e.RowIndex].Cells["Producto"].Value.ToString();
+
+                DialogResult respuesta = MessageBox.Show(
+                    $"¿Estás seguro de que quieres quitar '{producto}' del carrito?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    DtgCarrito.Rows.RemoveAt(e.RowIndex);
+                    ActualizarEtiquetaTotal();
+                }
             }
         }
 
@@ -113,6 +138,22 @@ namespace ProyectoFitZonePro
         {
             fila = e.RowIndex;
             columna = e.ColumnIndex;
+        }
+
+        private void DtgCarrito_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && DtgCarrito.Columns[e.ColumnIndex].Name == "Cantidad")
+            {
+                DataGridViewRow fila = DtgCarrito.Rows[e.RowIndex];
+                fila.Cells["Total"].Value = mp.CalcularSubtotalRenglon(fila);
+                ActualizarEtiquetaTotal();
+            }
+        }
+
+        private void ActualizarEtiquetaTotal()
+        {
+            double totalVenta = mp.CalcularTotal(DtgCarrito);
+            LblTotalVenta.Text = $"Total de la venta: {totalVenta.ToString("C2")}";
         }
     }
 }

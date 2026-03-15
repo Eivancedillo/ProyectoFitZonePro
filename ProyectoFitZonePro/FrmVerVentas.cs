@@ -36,6 +36,8 @@ namespace ProyectoFitZonePro
             {
                 int idVenta = Convert.ToInt32(DtgVentas.Rows[fila].Cells["idVenta"].Value);
                 mv.VerDetalleVenta($"select * from v_detalleVentas where idVenta = {idVenta}", DtgDetalleVenta, "tbl_detalleVentas");
+                double total = mv.CalcularTotal(DtgDetalleVenta);
+                LblTotalVenta.Text = $"Total de la Venta: {total:C2}";
             }
         }
 

@@ -41,8 +41,7 @@
             this.CmbMetodoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbMetodoPago.FormattingEnabled = true;
             this.CmbMetodoPago.Items.AddRange(new object[] {
-            "Efectivo",
-            "Transferencia"});
+            "Efectivo"});
             this.CmbMetodoPago.Location = new System.Drawing.Point(137, 83);
             this.CmbMetodoPago.Name = "CmbMetodoPago";
             this.CmbMetodoPago.Size = new System.Drawing.Size(247, 28);

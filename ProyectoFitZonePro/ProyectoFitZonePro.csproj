@@ -70,6 +70,12 @@
     <Compile Include="FrmConfirmarVenta.Designer.cs">
       <DependentUpon>FrmConfirmarVenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCorteCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCorteCaja.Designer.cs">
+      <DependentUpon>FrmCorteCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,11 +122,23 @@
     <Compile Include="FrmDatosUsuarios.Designer.cs">
       <DependentUpon>FrmDatosUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEntradasInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEntradasInventario.Designer.cs">
+      <DependentUpon>FrmEntradasInventario.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEquipos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmEquipos.Designer.cs">
       <DependentUpon>FrmEquipos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventario.Designer.cs">
+      <DependentUpon>FrmInventario.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -133,6 +151,12 @@
     </Compile>
     <Compile Include="FrmMembresias.Designer.cs">
       <DependentUpon>FrmMembresias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmObservacionEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmObservacionEntrada.Designer.cs">
+      <DependentUpon>FrmObservacionEntrada.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
@@ -170,6 +194,12 @@
     <Compile Include="FrmUsuarios.Designer.cs">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmVerEntradas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVerEntradas.Designer.cs">
+      <DependentUpon>FrmVerEntradas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmVerVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConfirmarVenta.resx">
       <DependentUpon>FrmConfirmarVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCorteCaja.resx">
+      <DependentUpon>FrmCorteCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDashboard.resx">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
@@ -215,14 +248,23 @@
     <EmbeddedResource Include="FrmDatosUsuarios.resx">
       <DependentUpon>FrmDatosUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmEntradasInventario.resx">
+      <DependentUpon>FrmEntradasInventario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEquipos.resx">
       <DependentUpon>FrmEquipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventario.resx">
+      <DependentUpon>FrmInventario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMembresias.resx">
       <DependentUpon>FrmMembresias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmObservacionEntrada.resx">
+      <DependentUpon>FrmObservacionEntrada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
@@ -238,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUsuarios.resx">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVerEntradas.resx">
+      <DependentUpon>FrmVerEntradas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVerVentas.resx">
       <DependentUpon>FrmVerVentas.cs</DependentUpon>

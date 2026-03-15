@@ -46,6 +46,7 @@
     <Compile Include="ManejadorAsistencias.cs" />
     <Compile Include="ManejadorDashboard.cs" />
     <Compile Include="ManejadorEquipos.cs" />
+    <Compile Include="ManejadorInventarios.cs" />
     <Compile Include="ManejadorLogin.cs" />
     <Compile Include="ManejadorMembresias.cs" />
     <Compile Include="ManejadorVentas.cs" />

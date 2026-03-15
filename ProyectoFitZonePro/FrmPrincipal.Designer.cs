@@ -150,12 +150,14 @@
             this.entradaDeInventarioToolStripMenuItem.Name = "entradaDeInventarioToolStripMenuItem";
             this.entradaDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.entradaDeInventarioToolStripMenuItem.Text = "Entrada de Inventario";
+            this.entradaDeInventarioToolStripMenuItem.Click += new System.EventHandler(this.entradaDeInventarioToolStripMenuItem_Click);
             // 
             // inventarioToolStripMenuItem
             // 
             this.inventarioToolStripMenuItem.Name = "inventarioToolStripMenuItem";
             this.inventarioToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.inventarioToolStripMenuItem.Text = "Inventario";
+            this.inventarioToolStripMenuItem.Click += new System.EventHandler(this.inventarioToolStripMenuItem_Click);
             // 
             // BtnEquipos
             // 
@@ -209,7 +211,6 @@
             this.Name = "FrmPrincipal";
             this.Text = "FrmPrincipal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
