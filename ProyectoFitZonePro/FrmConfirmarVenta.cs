@@ -14,12 +14,12 @@ namespace ProyectoFitZonePro
 {
     public partial class FrmConfirmarVenta : Form
     {
-        ManejadorProductos mp;
+        ManejadorVentas mp;
         Ventas venta = new Ventas(0,0,"","");
         public FrmConfirmarVenta()
         {
             InitializeComponent();
-            mp = new ManejadorProductos();
+            mp = new ManejadorVentas();
             mp.LlenarUsarios(CmbSocios);
         }
 

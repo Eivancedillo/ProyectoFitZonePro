@@ -45,6 +45,7 @@
             this.DtgProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DtgProductos.Location = new System.Drawing.Point(12, 82);
             this.DtgProductos.Name = "DtgProductos";
+            this.DtgProductos.ReadOnly = true;
             this.DtgProductos.Size = new System.Drawing.Size(521, 455);
             this.DtgProductos.TabIndex = 0;
             this.DtgProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgProductos_CellClick);
@@ -56,8 +57,10 @@
             this.DtgCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DtgCarrito.Location = new System.Drawing.Point(553, 82);
             this.DtgCarrito.Name = "DtgCarrito";
+            this.DtgCarrito.ReadOnly = true;
             this.DtgCarrito.Size = new System.Drawing.Size(584, 455);
             this.DtgCarrito.TabIndex = 1;
+            this.DtgCarrito.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgCarrito_CellClick);
             // 
             // BtnCorteCaja
             // 

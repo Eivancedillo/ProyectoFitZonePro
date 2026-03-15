@@ -129,5 +129,17 @@ namespace ProyectoFitZonePro
             venta.MdiParent = this;
             venta.Show();
         }
+
+        private void verVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmVerVentas verVentas = new FrmVerVentas();
+            verVentas.MdiParent = this;
+            verVentas.Show();
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

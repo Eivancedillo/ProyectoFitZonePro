@@ -14,13 +14,13 @@ namespace ProyectoFitZonePro
 {
     public partial class FrmRealizarVenta : Form
     {
-        ManejadorProductos mp;
+        ManejadorVentas mp;
         public static List<DetalleVentas> carrito = new List<DetalleVentas>();
         int fila = 0 , columna = 0;
         public FrmRealizarVenta()
         {
             InitializeComponent();
-            mp = new ManejadorProductos();
+            mp = new ManejadorVentas();
             mp.GridCarrito(DtgCarrito);
         }
 
@@ -93,6 +93,19 @@ namespace ProyectoFitZonePro
                 {
                     DtgCarrito.Rows.Add(idProducto, nombreProducto, 1, precio);
                 }
+            }
+        }
+
+        private void DtgCarrito_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
+            fila = e.RowIndex;
+            columna = e.ColumnIndex;
+
+            if (columna == 4)
+            {
+                DtgCarrito.Rows.RemoveAt(fila);
             }
         }
 

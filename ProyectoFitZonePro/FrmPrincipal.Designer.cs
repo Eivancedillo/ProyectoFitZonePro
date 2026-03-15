@@ -143,6 +143,7 @@
             this.verVentasToolStripMenuItem.Name = "verVentasToolStripMenuItem";
             this.verVentasToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.verVentasToolStripMenuItem.Text = "Ver ventas";
+            this.verVentasToolStripMenuItem.Click += new System.EventHandler(this.verVentasToolStripMenuItem_Click);
             // 
             // entradaDeInventarioToolStripMenuItem
             // 
@@ -208,6 +209,7 @@
             this.Name = "FrmPrincipal";
             this.Text = "FrmPrincipal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);

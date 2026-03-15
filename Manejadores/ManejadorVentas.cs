@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Manejadores
 {
-    public class ManejadorProductos
+    public class ManejadorVentas
     {
         private Base b = new Base();
 
@@ -97,6 +97,7 @@ namespace Manejadores
             tabla.Columns["Precio"].ReadOnly = true;
 
             tabla.Columns["Precio"].DefaultCellStyle.Format = "C2";
+            tabla.Columns.Insert(4, Boton("-", Color.DarkRed));
         }
 
         //Guardar venta
@@ -106,9 +107,34 @@ namespace Manejadores
         }
 
         //Guardar detalle venta
-        public void GuardarDetalleVenta(int idProducto,int cantidad,double precio)
+        public void GuardarDetalleVenta(int idProducto, int cantidad, double precio)
         {
             b.Comando($"call p_insertDetalleVenta({idProducto},{cantidad},{precio})");
+        }
+
+        //Lenar grid ventas
+        public void VerVentas(string consulta, DataGridView tabla, string datos)
+        {
+            tabla.Columns.Clear();
+            tabla.DataSource = b.Consultar(consulta, datos).Tables[0];
+            tabla.Columns["idVenta"].Visible = false;
+            tabla.Columns.Insert(4, Boton("Ver Detalle", Color.DarkGreen));
+            tabla.AutoResizeColumns();
+            tabla.AutoResizeRows();
+        }
+
+        //Ver detalle de venta
+        public void VerDetalleVenta(string consulta, DataGridView tabla, string datos)
+        {
+            tabla.Columns.Clear();
+            tabla.DataSource = b.Consultar(consulta, datos).Tables[0];
+            tabla.Columns["idDetalle"].Visible = false;
+            tabla.Columns["idVenta"].Visible = false;
+            tabla.Columns["idProducto"].Visible = false;
+            tabla.Columns["Precio"].DefaultCellStyle.Format = "C2";
+            tabla.Columns["Total"].DefaultCellStyle.Format = "C2";
+            tabla.AutoResizeColumns();
+            tabla.AutoResizeRows();
         }
     }
 }

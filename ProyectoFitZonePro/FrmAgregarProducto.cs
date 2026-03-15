@@ -16,11 +16,11 @@ namespace Manejadores
     public partial class FrmAgregarProducto : Form
     {
         Productos producto = new Productos(0, "", "", 0.0);
-        ManejadorProductos mp;
+        ManejadorVentas mp;
         public FrmAgregarProducto()
         {
             InitializeComponent();
-            mp = new ManejadorProductos();
+            mp = new ManejadorVentas();
             mp.VerProductos("select * from v_productos", DtgProductos, "tbl_productos");
         }
 
