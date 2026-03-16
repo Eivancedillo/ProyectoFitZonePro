@@ -144,6 +144,7 @@
             this.DtgProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DtgProductos.Location = new System.Drawing.Point(12, 78);
             this.DtgProductos.Name = "DtgProductos";
+            this.DtgProductos.ReadOnly = true;
             this.DtgProductos.Size = new System.Drawing.Size(589, 512);
             this.DtgProductos.TabIndex = 4;
             this.DtgProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgProductos_CellClick);
