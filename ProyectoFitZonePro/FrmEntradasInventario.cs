@@ -94,27 +94,46 @@ namespace ProyectoFitZonePro
 
         private void BtnRealizarEntrada_Click(object sender, EventArgs e)
         {
-            if (DtgEntrada.Rows.Count > 0)
+            if (DtgEntrada.Rows.Count == 0 || (DtgEntrada.Rows.Count == 1 && DtgEntrada.Rows[0].IsNewRow))
             {
-                foreach(DataGridViewRow row in DtgEntrada.Rows)
-                {
-                    DetalleEntrada item = new DetalleEntrada
-                    {
-                        FkIdProduto = Convert.ToInt32(row.Cells["IdProducto"].Value),
-                        Cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value),
-                        Precio_Unitario = Convert.ToDouble(row.Cells["Precio"].Value)
-                    };
-                    de.Add(item);
-                }
-                FrmObservacionEntrada foe = new FrmObservacionEntrada();
-                if (foe.ShowDialog() == DialogResult.OK)
-                {
-                    DtgEntrada.Rows.Clear();
-                }
+                MessageBox.Show("No hay productos registrados para dar de entrada.", "Entrada vacía", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
             }
-            else
+
+            de.Clear();
+
+            foreach (DataGridViewRow row in DtgEntrada.Rows)
             {
-                MessageBox.Show("No hay productos registrados.", "Entrada vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                string cantidadTexto = row.Cells["Cantidad"].Value?.ToString();
+                string precioTexto = row.Cells["Precio"].Value?.ToString();
+                string nombreProd = row.Cells["Producto"].Value?.ToString(); 
+
+                if (!int.TryParse(cantidadTexto, out int cantidadValidada) || cantidadValidada <= 0)
+                {
+                    MessageBox.Show($"La cantidad ingresada para '{nombreProd}' no es un número válido mayor a 0.", "Error de captura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (!double.TryParse(precioTexto, out double precioValidado) || precioValidado < 0)
+                {
+                    MessageBox.Show($"El precio de costo para '{nombreProd}' está vacío o es incorrecto.", "Error de captura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                DetalleEntrada item = new DetalleEntrada
+                {
+                    FkIdProduto = Convert.ToInt32(row.Cells["IdProducto"].Value),
+                    Cantidad = cantidadValidada,      
+                    Precio_Unitario = precioValidado
+                };
+
+                de.Add(item);
+            }
+
+            // Solo si TODO el ciclo terminó sin errores, abrimos la ventana de observación
+            FrmObservacionEntrada foe = new FrmObservacionEntrada();
+            if (foe.ShowDialog() == DialogResult.OK)
+            {
+                DtgEntrada.Rows.Clear();
             }
         }
 

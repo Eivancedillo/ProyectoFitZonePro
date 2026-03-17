@@ -50,7 +50,7 @@ namespace ProyectoFitZonePro
 
         private void BtnFinalizarVenta_Click(object sender, EventArgs e)
         {
-            if(DtgCarrito.Rows.Count > 1)
+            if(DtgCarrito.Rows.Count > 0)
             {
                 foreach (DataGridViewRow row in DtgCarrito.Rows)
                 {
