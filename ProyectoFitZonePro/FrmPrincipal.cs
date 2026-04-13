@@ -26,8 +26,10 @@ namespace ProyectoFitZonePro
                 return;
             }
 
+            CerrarFormulariosAbiertos();
             FrmDashboard dashboard = new FrmDashboard();
             dashboard.MdiParent = this;
+            dashboard.StartPosition = FormStartPosition.CenterScreen;
             dashboard.Show();
             ActivarBotonMenu(BtnDashboard);
         }
@@ -40,8 +42,10 @@ namespace ProyectoFitZonePro
                 return;
             }
 
+            CerrarFormulariosAbiertos();
             FrmAsistencias asistencias = new FrmAsistencias();
             asistencias.MdiParent = this;
+            asistencias.StartPosition = FormStartPosition.CenterScreen;
             asistencias.Show();
             ActivarBotonMenu(BtnAsistencias);
         }
@@ -54,11 +58,12 @@ namespace ProyectoFitZonePro
                 return;
             }
 
+            CerrarFormulariosAbiertos();
             FrmMembresias membresias = new FrmMembresias();
             membresias.MdiParent = this;
+            membresias.StartPosition = FormStartPosition.CenterScreen;
             membresias.Show();
             ActivarBotonMenu(BtnMembresias);
-
         }
 
         private void BtnUsuarios_Click(object sender, EventArgs e)
@@ -69,23 +74,26 @@ namespace ProyectoFitZonePro
                 return;
             }
 
+            CerrarFormulariosAbiertos();
             FrmUsuarios usuarios = new FrmUsuarios();
             usuarios.MdiParent = this;
+            usuarios.StartPosition = FormStartPosition.CenterScreen;
             usuarios.Show();
             ActivarBotonMenu(BtnUsuarios);
         }
 
         private void BtnMiembros_Click(object sender, EventArgs e)
         {
-            // OJO: Aquí usamos "Socios" porque así lo guardamos en tu lista de módulos mágicos
             if (!Sesion.TienePermiso("Socios", "ver"))
             {
                 MessageBox.Show("¡Acceso Denegado! No tienes permiso para acceder a los Socios.", "Área Restringida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
+            CerrarFormulariosAbiertos();
             FrmSocios miembros = new FrmSocios();
             miembros.MdiParent = this;
+            miembros.StartPosition = FormStartPosition.CenterScreen;
             miembros.Show();
             ActivarBotonMenu(BtnMiembros);
         }
@@ -98,8 +106,10 @@ namespace ProyectoFitZonePro
                 return;
             }
 
+            CerrarFormulariosAbiertos();
             FrmEquipos equipos = new FrmEquipos();
             equipos.MdiParent = this;
+            equipos.StartPosition = FormStartPosition.CenterScreen;
             equipos.Show();
             ActivarBotonMenu(BtnEquipos);
         }
@@ -112,8 +122,10 @@ namespace ProyectoFitZonePro
                 return;
             }
 
+            CerrarFormulariosAbiertos();
             FrmTrabajadores trabajadores = new FrmTrabajadores();
             trabajadores.MdiParent = this;
+            trabajadores.StartPosition = FormStartPosition.CenterScreen;
             trabajadores.Show();
             ActivarBotonMenu(BtnTrabajadores);
         }
@@ -162,6 +174,16 @@ namespace ProyectoFitZonePro
             inventario.Show();
             ActivarBotonMenu(inventarioToolStripMenuItem);
         }
+
+        private void CerrarFormulariosAbiertos()
+        {
+            // Recorre todos los formularios "hijos" que estén abiertos y los cierra
+            foreach (Form frm in this.MdiChildren)
+            {
+                frm.Close();
+            }
+        }
+
         private void ActivarBotonMenu(ToolStripItem botonSeleccionado)
         {
             foreach (ToolStripItem item in toolStrip1.Items)
@@ -173,7 +195,6 @@ namespace ProyectoFitZonePro
                     else
                         boton.Checked = false;
                 }
-
                 else if (item is ToolStripSplitButton splitButton)
                 {
                     foreach (ToolStripItem subItem in splitButton.DropDownItems)
@@ -191,16 +212,19 @@ namespace ProyectoFitZonePro
                 }
             }
         }
+
         public class MenuColorTable : ProfessionalColorTable
         {
             //(Checked)
             public override Color ButtonCheckedHighlight => Color.FromArgb(94, 166, 121);
+
             public override Color ButtonCheckedGradientBegin => Color.FromArgb(94, 166, 121);
             public override Color ButtonCheckedGradientMiddle => Color.FromArgb(94, 166, 121);
             public override Color ButtonCheckedGradientEnd => Color.FromArgb(94, 166, 121);
 
             //(Hover)
             public override Color ButtonSelectedHighlight => Color.FromArgb(55, 65, 75);
+
             public override Color ButtonSelectedGradientBegin => Color.FromArgb(55, 65, 75);
             public override Color ButtonSelectedGradientMiddle => Color.FromArgb(55, 65, 75);
             public override Color ButtonSelectedGradientEnd => Color.FromArgb(55, 65, 75);
@@ -225,7 +249,7 @@ namespace ProyectoFitZonePro
             public override Color ImageMarginGradientBegin => Color.Transparent;
             public override Color ImageMarginGradientMiddle => Color.Transparent;
             public override Color ImageMarginGradientEnd => Color.Transparent;
- 
+
             public override Color CheckBackground => Color.FromArgb(94, 166, 121);
             public override Color CheckSelectedBackground => Color.FromArgb(94, 166, 121);
             public override Color CheckPressedBackground => Color.FromArgb(94, 166, 121);
