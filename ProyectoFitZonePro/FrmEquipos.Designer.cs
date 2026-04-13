@@ -39,7 +39,7 @@
             // 
             this.TxtBuscar.Location = new System.Drawing.Point(52, 206);
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(313, 30);
+            this.TxtBuscar.Size = new System.Drawing.Size(313, 26);
             this.TxtBuscar.TabIndex = 12;
             this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
@@ -72,19 +72,21 @@
             this.CmbEstado.FormattingEnabled = true;
             this.CmbEstado.Location = new System.Drawing.Point(371, 206);
             this.CmbEstado.Name = "CmbEstado";
-            this.CmbEstado.Size = new System.Drawing.Size(121, 33);
+            this.CmbEstado.Size = new System.Drawing.Size(121, 28);
             this.CmbEstado.TabIndex = 13;
             // 
             // FrmEquipos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1200, 703);
             this.Controls.Add(this.CmbEstado);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.BtnCrear);
             this.Controls.Add(this.DtgDatos);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmEquipos";
             this.Text = "FrmEquipos";

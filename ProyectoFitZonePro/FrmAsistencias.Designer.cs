@@ -38,7 +38,7 @@
             // 
             this.TxtBuscar.Location = new System.Drawing.Point(45, 186);
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(313, 30);
+            this.TxtBuscar.Size = new System.Drawing.Size(313, 26);
             this.TxtBuscar.TabIndex = 12;
             this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
@@ -66,13 +66,14 @@
             // 
             // FrmAsistencias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 703);
+            this.ClientSize = new System.Drawing.Size(895, 611);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.BtnCrear);
             this.Controls.Add(this.DtgDatos);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmAsistencias";
             this.Text = "FrmAsistencias";

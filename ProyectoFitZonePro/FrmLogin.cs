@@ -17,9 +17,6 @@ namespace ProyectoFitZonePro
             Ml = new ManejadorLogin();
             this.DoubleBuffered = true; //para eliminar los parpadeos, hace que lo dibuje en memoria antes de mostrarlo
 
-            // Para que la contraseña salga con asteriscos (por si no lo configuraste en el diseño)
-            TxtPassword.PasswordChar = '*';
-
             // Un buen detalle de UX: si presiona Enter en la contraseña, que intente loguearse
             TxtPassword.KeyPress += TxtPassword_KeyPress;
         }
@@ -74,21 +71,20 @@ namespace ProyectoFitZonePro
             int radioBorde = 5; // Puedes hacer este número más grande para más curva
 
             // Creamos la ruta del tamaño exacto del panel
-            Rectangle areaPanel = new Rectangle(0, 0, panel2.Width, panel2.Height);
-            GraphicsPath rutaPanel = CrearRutaRedondeada(areaPanel, radioBorde);
+            Rectangle areaPanel2 = new Rectangle(0, 0, panel2.Width, panel2.Height);
+            Rectangle areaPanel3 = new Rectangle(0, 0, panel3.Width, panel3.Height);
+            GraphicsPath rutaPanel2 = CrearRutaRedondeada(areaPanel2, radioBorde);
+            GraphicsPath rutaPanel3 = CrearRutaRedondeada(areaPanel3, radioBorde);
+
 
             // Aplicamos el recorte al panel
-            panel2.Region = new Region(rutaPanel);
-            panel3.Region = new Region(rutaPanel);
+            panel2.Region = new Region(rutaPanel2);
+            panel3.Region = new Region(rutaPanel3);
         
         panel3.BackColor = Color.FromArgb(40, Color.Black);
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
         private GraphicsPath CrearRutaRedondeada(Rectangle rect, int radio)
         {
             GraphicsPath ruta = new GraphicsPath();
@@ -102,6 +98,19 @@ namespace ProyectoFitZonePro
 
             ruta.CloseFigure(); // Cerramos la figura uniendo los arcos
             return ruta;
+        }
+
+        private void TxtUsuario_Click(object sender, EventArgs e)
+        {
+            TxtUsuario.Text = "";
+            TxtUsuario.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
+        }
+
+        private void TxtPassword_Click(object sender, EventArgs e)
+        {
+            TxtPassword.Text = "";
+            TxtPassword.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
+            TxtPassword.PasswordChar = '*';
         }
     }
 }

@@ -321,5 +321,41 @@
   <ItemGroup>
     <None Include="Resources\Recurso 1%404x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-diseño-del-tablero-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-diseño-del-tablero-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-tarjeta-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-llamada-de-conferencia-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-agregar-usuario-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-tienda-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-caja-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-administrador-del-sistema-macho-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-salir-redondeado-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-salida-50 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-profile-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-asistencia-50.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
