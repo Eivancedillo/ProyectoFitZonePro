@@ -78,7 +78,7 @@
             // 
             // LblTotalVenta
             // 
-            this.LblTotalVenta.Location = new System.Drawing.Point(462, 524);
+            this.LblTotalVenta.Location = new System.Drawing.Point(462, 539);
             this.LblTotalVenta.Name = "LblTotalVenta";
             this.LblTotalVenta.Size = new System.Drawing.Size(634, 20);
             this.LblTotalVenta.TabIndex = 8;

@@ -71,17 +71,16 @@ namespace ProyectoFitZonePro
             int radioBorde = 5; // Puedes hacer este número más grande para más curva
 
             // Creamos la ruta del tamaño exacto del panel
-            Rectangle areaPanel2 = new Rectangle(0, 0, panel2.Width, panel2.Height);
-            Rectangle areaPanel3 = new Rectangle(0, 0, panel3.Width, panel3.Height);
-            GraphicsPath rutaPanel2 = CrearRutaRedondeada(areaPanel2, radioBorde);
-            GraphicsPath rutaPanel3 = CrearRutaRedondeada(areaPanel3, radioBorde);
+            GraphicsPath rutaPanel2 = CrearRutaRedondeada(new Rectangle(0, 0, panel2.Width, panel2.Height), radioBorde);
+            GraphicsPath rutaPanel3 = CrearRutaRedondeada(new Rectangle(0, 0, panel3.Width, panel3.Height), radioBorde);
 
 
             // Aplicamos el recorte al panel
             panel2.Region = new Region(rutaPanel2);
             panel3.Region = new Region(rutaPanel3);
-        
-        panel3.BackColor = Color.FromArgb(40, Color.Black);
+
+            //Este es el para el panel de la sombre
+            panel3.BackColor = Color.FromArgb(40, Color.Black);
 
         }
 

@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Entidades;
+using Manejadores;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Manejadores;
-using Entidades;
 
 namespace ProyectoFitZonePro
 {
@@ -141,6 +142,42 @@ namespace ProyectoFitZonePro
         {
             FrmVerEntradas fve = new FrmVerEntradas();
             fve.ShowDialog();
+        }
+
+        private void FrmEntradasInventario_Load(object sender, EventArgs e)
+        {
+            int radioBorde = 5;
+            GraphicsPath rutaPanel1 = CrearRutaRedondeada(new Rectangle(0, 0, Pdel.Width, Pdel.Height), radioBorde);
+            GraphicsPath rutaPanel2 = CrearRutaRedondeada(new Rectangle(0, 0, PSom.Width, PSom.Height), radioBorde);
+            GraphicsPath rutaPanel3 = CrearRutaRedondeada(new Rectangle(0, 0, Pdel2.Width, Pdel2.Height), radioBorde);
+            GraphicsPath rutaPanel4 = CrearRutaRedondeada(new Rectangle(0, 0, PSom2.Width, PSom2.Height), radioBorde);
+            GraphicsPath rutaBoton1 = CrearRutaRedondeada(new Rectangle(0, 0, BtnRealizarEntrada.Width, BtnRealizarEntrada.Height), radioBorde);
+
+            Pdel.Region = new Region(rutaPanel1);
+            PSom.Region = new Region(rutaPanel2);
+            Pdel2.Region = new Region(rutaPanel3);
+            PSom2.Region = new Region(rutaPanel4);
+            BtnRealizarEntrada.Region = new Region(rutaBoton1);
+            BtnVerEntradas.Region = new Region(rutaBoton1);
+
+            Pdel.BackColor = Color.White;
+            Pdel2.BackColor = Color.White;
+            PSom.BackColor = Color.FromArgb(20, Color.Black);
+            PSom2.BackColor = Color.FromArgb(20, Color.Black);
+        }
+        private GraphicsPath CrearRutaRedondeada(Rectangle rect, int radio)
+        {
+            GraphicsPath ruta = new GraphicsPath();
+            int diametro = radio * 2;
+
+            // Dibujamos los 4 arcos de las esquinas
+            ruta.AddArc(rect.X, rect.Y, diametro, diametro, 180, 90); // Arriba Izquierda
+            ruta.AddArc(rect.Right - diametro, rect.Y, diametro, diametro, 270, 90); // Arriba Derecha
+            ruta.AddArc(rect.Right - diametro, rect.Bottom - diametro, diametro, diametro, 0, 90); // Abajo Derecha
+            ruta.AddArc(rect.X, rect.Bottom - diametro, diametro, diametro, 90, 90); // Abajo Izquierda
+
+            ruta.CloseFigure(); // Cerramos la figura uniendo los arcos
+            return ruta;
         }
 
         private void DtgProductos_CellEnter(object sender, DataGridViewCellEventArgs e)

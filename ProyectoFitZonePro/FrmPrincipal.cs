@@ -12,12 +12,59 @@ namespace ProyectoFitZonePro
 {
     public partial class FrmPrincipal : Form
     {
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int wMsg, bool wParam, int lParam);
+        private const int WM_SETREDRAW = 11;
+
         public FrmPrincipal()
         {
+            this.DoubleBuffered = true;
             InitializeComponent();
             toolStrip1.Renderer = new ToolStripProfessionalRenderer(new MenuColorTable());
-        }
+            foreach (Control control in this.Controls)
+            {
+                // Buscamos la "sábana" oculta de Windows (MdiClient)
+                if (control is MdiClient client)
+                {
+                    // La pintamos con el color de tu tema oscuro
+                    client.BackColor = Color.White;
 
+                    // Rompemos el ciclo porque solo hay un MdiClient
+                    break;
+                }
+            }
+        }
+        private void AbrirFormularioHijo(Form nuevoFormulario, ToolStripItem botonMenu)
+        {
+            // Evita recargar si el formulario ya está abierto
+            if (this.ActiveMdiChild != null && this.ActiveMdiChild.GetType() == nuevoFormulario.GetType())
+            {
+                return;
+            }
+
+            // 1. Congelamos la pantalla
+            SendMessage(this.Handle, WM_SETREDRAW, false, 0);
+
+            try
+            {
+                // 2. Cerramos lo anterior
+                CerrarFormulariosAbiertos();
+
+                // 3. Configuramos y mostramos el nuevo
+                nuevoFormulario.MdiParent = this;
+                nuevoFormulario.Dock = DockStyle.Fill;
+                nuevoFormulario.Show();
+
+                // 4. Actualizamos visualmente el menú
+                ActivarBotonMenu(botonMenu);
+            }
+            finally
+            {
+                // 5. Descongelamos y forzamos el redibujado limpio
+                SendMessage(this.Handle, WM_SETREDRAW, true, 0);
+                this.Refresh();
+            }
+        }
         private void BtnDashboard_Click(object sender, EventArgs e)
         {
             if (!Sesion.TienePermiso("Dashboard", "ver"))
@@ -25,13 +72,7 @@ namespace ProyectoFitZonePro
                 MessageBox.Show("¡Acceso Denegado! No tienes permiso para ver el Dashboard.", "Área Restringida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
-
-            CerrarFormulariosAbiertos();
-            FrmDashboard dashboard = new FrmDashboard();
-            dashboard.MdiParent = this;
-            dashboard.StartPosition = FormStartPosition.CenterScreen;
-            dashboard.Show();
-            ActivarBotonMenu(BtnDashboard);
+            AbrirFormularioHijo(new FrmDashboard(), BtnDashboard);
         }
 
         private void BtnAsistencias_Click(object sender, EventArgs e)
@@ -41,13 +82,7 @@ namespace ProyectoFitZonePro
                 MessageBox.Show("¡Acceso Denegado! No tienes permiso para acceder a las Asistencias.", "Área Restringida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
-
-            CerrarFormulariosAbiertos();
-            FrmAsistencias asistencias = new FrmAsistencias();
-            asistencias.MdiParent = this;
-            asistencias.StartPosition = FormStartPosition.CenterScreen;
-            asistencias.Show();
-            ActivarBotonMenu(BtnAsistencias);
+            AbrirFormularioHijo(new FrmAsistencias(), BtnAsistencias);
         }
 
         private void BtnMembresias_Click(object sender, EventArgs e)
@@ -57,13 +92,7 @@ namespace ProyectoFitZonePro
                 MessageBox.Show("¡Acceso Denegado! No tienes permiso para acceder a las Membresías.", "Área Restringida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
-
-            CerrarFormulariosAbiertos();
-            FrmMembresias membresias = new FrmMembresias();
-            membresias.MdiParent = this;
-            membresias.StartPosition = FormStartPosition.CenterScreen;
-            membresias.Show();
-            ActivarBotonMenu(BtnMembresias);
+            AbrirFormularioHijo(new FrmMembresias(), BtnMembresias);
         }
 
         private void BtnUsuarios_Click(object sender, EventArgs e)
@@ -73,13 +102,7 @@ namespace ProyectoFitZonePro
                 MessageBox.Show("¡Acceso Denegado! No tienes permiso para acceder a los Usuarios.", "Área Restringida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
-
-            CerrarFormulariosAbiertos();
-            FrmUsuarios usuarios = new FrmUsuarios();
-            usuarios.MdiParent = this;
-            usuarios.StartPosition = FormStartPosition.CenterScreen;
-            usuarios.Show();
-            ActivarBotonMenu(BtnUsuarios);
+            AbrirFormularioHijo(new FrmUsuarios(), BtnUsuarios);
         }
 
         private void BtnMiembros_Click(object sender, EventArgs e)
@@ -89,13 +112,7 @@ namespace ProyectoFitZonePro
                 MessageBox.Show("¡Acceso Denegado! No tienes permiso para acceder a los Socios.", "Área Restringida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
-
-            CerrarFormulariosAbiertos();
-            FrmSocios miembros = new FrmSocios();
-            miembros.MdiParent = this;
-            miembros.StartPosition = FormStartPosition.CenterScreen;
-            miembros.Show();
-            ActivarBotonMenu(BtnMiembros);
+            AbrirFormularioHijo(new FrmSocios(), BtnMiembros);
         }
 
         private void BtnEquipos_Click(object sender, EventArgs e)
@@ -105,13 +122,7 @@ namespace ProyectoFitZonePro
                 MessageBox.Show("¡Acceso Denegado! No tienes permiso para acceder a los Equipos.", "Área Restringida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
-
-            CerrarFormulariosAbiertos();
-            FrmEquipos equipos = new FrmEquipos();
-            equipos.MdiParent = this;
-            equipos.StartPosition = FormStartPosition.CenterScreen;
-            equipos.Show();
-            ActivarBotonMenu(BtnEquipos);
+            AbrirFormularioHijo(new FrmEquipos(), BtnEquipos);
         }
 
         private void BtnTrabajadores_Click(object sender, EventArgs e)
@@ -121,15 +132,28 @@ namespace ProyectoFitZonePro
                 MessageBox.Show("¡Acceso Denegado! Esta área es solo para Administradores.", "Seguridad Máxima", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            CerrarFormulariosAbiertos();
-            FrmTrabajadores trabajadores = new FrmTrabajadores();
-            trabajadores.MdiParent = this;
-            trabajadores.StartPosition = FormStartPosition.CenterScreen;
-            trabajadores.Show();
-            ActivarBotonMenu(BtnTrabajadores);
+            AbrirFormularioHijo(new FrmTrabajadores(), BtnTrabajadores);
         }
 
+        private void realizarVentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo(new FrmRealizarVenta(), realizarVentaToolStripMenuItem);
+        }
+
+        private void verVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo(new FrmVerVentas(), verVentasToolStripMenuItem);
+        }
+
+        private void entradaDeInventarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo(new FrmEntradasInventario(), entradaDeInventarioToolStripMenuItem);
+        }
+
+        private void inventarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo(new FrmInventario(), inventarioToolStripMenuItem);
+        }
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -142,42 +166,8 @@ namespace ProyectoFitZonePro
                 Application.Restart();
             }
         }
-
-        private void realizarVentaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmRealizarVenta venta = new FrmRealizarVenta();
-            venta.MdiParent = this;
-            venta.Show();
-            ActivarBotonMenu(realizarVentaToolStripMenuItem);
-        }
-
-        private void verVentasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmVerVentas verVentas = new FrmVerVentas();
-            verVentas.MdiParent = this;
-            verVentas.Show();
-            ActivarBotonMenu(verVentasToolStripMenuItem);
-        }
-
-        private void entradaDeInventarioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmEntradasInventario entradas = new FrmEntradasInventario();
-            entradas.MdiParent = this;
-            entradas.Show();
-            ActivarBotonMenu(entradaDeInventarioToolStripMenuItem);
-        }
-
-        private void inventarioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmInventario inventario = new FrmInventario();
-            inventario.MdiParent = this;
-            inventario.Show();
-            ActivarBotonMenu(inventarioToolStripMenuItem);
-        }
-
         private void CerrarFormulariosAbiertos()
         {
-            // Recorre todos los formularios "hijos" que estén abiertos y los cierra
             foreach (Form frm in this.MdiChildren)
             {
                 frm.Close();
@@ -190,10 +180,7 @@ namespace ProyectoFitZonePro
             {
                 if (item is ToolStripButton boton)
                 {
-                    if (boton == botonSeleccionado)
-                        boton.Checked = true;
-                    else
-                        boton.Checked = false;
+                    boton.Checked = (boton == botonSeleccionado);
                 }
                 else if (item is ToolStripSplitButton splitButton)
                 {
@@ -201,30 +188,22 @@ namespace ProyectoFitZonePro
                     {
                         if (subItem is ToolStripMenuItem subMenuBoton)
                         {
-                            if (subMenuBoton == botonSeleccionado)
-                            {
-                                subMenuBoton.Checked = true;
-                            }
-                            else
-                                subMenuBoton.Checked = false;
+                            subMenuBoton.Checked = (subMenuBoton == botonSeleccionado);
                         }
                     }
                 }
             }
         }
-
         public class MenuColorTable : ProfessionalColorTable
         {
             //(Checked)
             public override Color ButtonCheckedHighlight => Color.FromArgb(94, 166, 121);
-
             public override Color ButtonCheckedGradientBegin => Color.FromArgb(94, 166, 121);
             public override Color ButtonCheckedGradientMiddle => Color.FromArgb(94, 166, 121);
             public override Color ButtonCheckedGradientEnd => Color.FromArgb(94, 166, 121);
 
             //(Hover)
             public override Color ButtonSelectedHighlight => Color.FromArgb(55, 65, 75);
-
             public override Color ButtonSelectedGradientBegin => Color.FromArgb(55, 65, 75);
             public override Color ButtonSelectedGradientMiddle => Color.FromArgb(55, 65, 75);
             public override Color ButtonSelectedGradientEnd => Color.FromArgb(55, 65, 75);
@@ -239,7 +218,7 @@ namespace ProyectoFitZonePro
             public override Color ButtonPressedHighlightBorder => Color.Transparent;
             public override Color ButtonSelectedBorder => Color.Transparent;
 
-            public override Color ToolStripDropDownBackground => Color.FromArgb(16, 24, 40); // Usa el color oscuro de tu sidebar
+            public override Color ToolStripDropDownBackground => Color.FromArgb(16, 24, 40);
 
             public override Color MenuItemSelected => Color.FromArgb(55, 65, 75);
             public override Color MenuItemSelectedGradientBegin => Color.FromArgb(55, 65, 75);

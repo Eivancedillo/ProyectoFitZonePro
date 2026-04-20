@@ -3,6 +3,8 @@ using Manejadores;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace ProyectoFitZonePro
@@ -21,6 +23,7 @@ namespace ProyectoFitZonePro
             InitializeComponent();
             mb = new ManejadorMembresias();
             this.Shown += FrmMembresias_Shown;
+
         }
 
         private void FrmMembresias_Shown(object sender, EventArgs e)
@@ -164,6 +167,50 @@ namespace ProyectoFitZonePro
                 mb.CambiarEstado(membresiaSeleccionada.IdMembresia, mandarDesactivar);
                 ActualizarTodo();
             }
+        }
+
+        private void FrmMembresias_Load(object sender, EventArgs e)
+        {
+            int radioBorde = 5; // Puedes hacer este número más grande para más curva
+
+            // Creamos la ruta del tamaño exacto del panel
+            GraphicsPath rutaPanel1 = CrearRutaRedondeada(new Rectangle(0, 0, Ps1.Width, Ps1.Height), radioBorde);
+            GraphicsPath rutaPanel2 = CrearRutaRedondeada(new Rectangle(0, 0, PTop4.Width, PTop4.Height), radioBorde);
+            GraphicsPath rutaPanel3 = CrearRutaRedondeada(new Rectangle(0, 0, PTop1.Width, PTop1.Height), radioBorde);
+            GraphicsPath rutaBoton1 = CrearRutaRedondeada(new Rectangle(0, 0, BtnCrear.Width, BtnCrear.Height), radioBorde);
+
+
+            // Aplicamos el recorte al panel
+            Ps1.Region = new Region(rutaPanel1);
+            Ps2.Region = new Region(rutaPanel1);
+            Ps3.Region = new Region(rutaPanel1);
+            PTop1.Region = new Region(rutaPanel3);
+            PTop2.Region = new Region(rutaPanel3);
+            PTop3.Region = new Region(rutaPanel3);
+            PTop4.Region = new Region(rutaPanel2);
+            PTop5.Region = new Region(rutaPanel2);
+            PTop6.Region = new Region(rutaPanel2);
+            BtnCrear.Region = new Region(rutaBoton1);
+
+
+            //Este es el para el panel de la sombre
+            Ps1.BackColor = Color.FromArgb(20, Color.Black);
+            Ps2.BackColor = Color.FromArgb(20, Color.Black);
+            Ps3.BackColor = Color.FromArgb(20, Color.Black);
+        }
+        private GraphicsPath CrearRutaRedondeada(Rectangle rect, int radio)
+        {
+            GraphicsPath ruta = new GraphicsPath();
+            int diametro = radio * 2;
+
+            // Dibujamos los 4 arcos de las esquinas
+            ruta.AddArc(rect.X, rect.Y, diametro, diametro, 180, 90); // Arriba Izquierda
+            ruta.AddArc(rect.Right - diametro, rect.Y, diametro, diametro, 270, 90); // Arriba Derecha
+            ruta.AddArc(rect.Right - diametro, rect.Bottom - diametro, diametro, diametro, 0, 90); // Abajo Derecha
+            ruta.AddArc(rect.X, rect.Bottom - diametro, diametro, diametro, 90, 90); // Abajo Izquierda
+
+            ruta.CloseFigure(); // Cerramos la figura uniendo los arcos
+            return ruta;
         }
     }
 }

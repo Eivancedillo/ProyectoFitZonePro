@@ -29,20 +29,11 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.LblUsuario = new System.Windows.Forms.Label();
-            this.LblEstado = new System.Windows.Forms.Label();
             this.BtnDashboard = new System.Windows.Forms.ToolStripButton();
-            this.BtnAsistencias = new System.Windows.Forms.ToolStripButton();
             this.BtnMembresias = new System.Windows.Forms.ToolStripButton();
             this.BtnUsuarios = new System.Windows.Forms.ToolStripButton();
             this.BtnMiembros = new System.Windows.Forms.ToolStripButton();
+            this.BtnAsistencias = new System.Windows.Forms.ToolStripButton();
             this.BtnTienda = new System.Windows.Forms.ToolStripSplitButton();
             this.realizarVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,13 +42,22 @@
             this.BtnEquipos = new System.Windows.Forms.ToolStripButton();
             this.BtnTrabajadores = new System.Windows.Forms.ToolStripButton();
             this.BtnCerrarSesion = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.BtnSalir = new System.Windows.Forms.ToolStripButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LblEstado = new System.Windows.Forms.Label();
+            this.LblUsuario = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -89,104 +89,6 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.AutoSize = false;
-            this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(177, 76);
-            this.toolStripLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(250)))), ((int)(((byte)(251)))));
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.LblEstado);
-            this.panel1.Controls.Add(this.LblUsuario);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1080, 54);
-            this.panel1.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(180, 54);
-            this.panel2.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(24)))), ((int)(((byte)(40)))));
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(180, 53);
-            this.panel3.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cascadia Code Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(12, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Gym•Tenni•Pool\n";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(166)))), ((int)(((byte)(121)))));
-            this.label2.Location = new System.Drawing.Point(12, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "FitZone Pro\n";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(186, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 21);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "¡Bienvenido!";
-            // 
-            // LblUsuario
-            // 
-            this.LblUsuario.AutoSize = true;
-            this.LblUsuario.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblUsuario.Location = new System.Drawing.Point(972, 8);
-            this.LblUsuario.Name = "LblUsuario";
-            this.LblUsuario.Size = new System.Drawing.Size(55, 21);
-            this.LblUsuario.TabIndex = 3;
-            this.LblUsuario.Text = "Admin";
-            // 
-            // LblEstado
-            // 
-            this.LblEstado.AutoSize = true;
-            this.LblEstado.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblEstado.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.LblEstado.Location = new System.Drawing.Point(972, 29);
-            this.LblEstado.Name = "LblEstado";
-            this.LblEstado.Size = new System.Drawing.Size(56, 17);
-            this.LblEstado.TabIndex = 3;
-            this.LblEstado.Text = "Activo";
-            // 
             // BtnDashboard
             // 
             this.BtnDashboard.AutoSize = false;
@@ -201,21 +103,6 @@
             this.BtnDashboard.Size = new System.Drawing.Size(177, 49);
             this.BtnDashboard.Text = "  Dashboard";
             this.BtnDashboard.Click += new System.EventHandler(this.BtnDashboard_Click);
-            // 
-            // BtnAsistencias
-            // 
-            this.BtnAsistencias.AutoSize = false;
-            this.BtnAsistencias.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAsistencias.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnAsistencias.Image = global::ProyectoFitZonePro.Properties.Resources.icons8_asistencia_50;
-            this.BtnAsistencias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAsistencias.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BtnAsistencias.Margin = new System.Windows.Forms.Padding(80, 1, 0, 2);
-            this.BtnAsistencias.Name = "BtnAsistencias";
-            this.BtnAsistencias.RightToLeftAutoMirrorImage = true;
-            this.BtnAsistencias.Size = new System.Drawing.Size(177, 49);
-            this.BtnAsistencias.Text = "  Asistencias";
-            this.BtnAsistencias.Click += new System.EventHandler(this.BtnAsistencias_Click);
             // 
             // BtnMembresias
             // 
@@ -258,6 +145,21 @@
             this.BtnMiembros.Size = new System.Drawing.Size(177, 49);
             this.BtnMiembros.Text = "  Miembros";
             this.BtnMiembros.Click += new System.EventHandler(this.BtnMiembros_Click);
+            // 
+            // BtnAsistencias
+            // 
+            this.BtnAsistencias.AutoSize = false;
+            this.BtnAsistencias.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAsistencias.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnAsistencias.Image = global::ProyectoFitZonePro.Properties.Resources.icons8_asistencia_50;
+            this.BtnAsistencias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAsistencias.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnAsistencias.Margin = new System.Windows.Forms.Padding(80, 1, 0, 2);
+            this.BtnAsistencias.Name = "BtnAsistencias";
+            this.BtnAsistencias.RightToLeftAutoMirrorImage = true;
+            this.BtnAsistencias.Size = new System.Drawing.Size(177, 49);
+            this.BtnAsistencias.Text = "  Asistencias";
+            this.BtnAsistencias.Click += new System.EventHandler(this.BtnAsistencias_Click);
             // 
             // BtnTienda
             // 
@@ -354,6 +256,15 @@
             this.BtnCerrarSesion.Text = "  Cerrar sesion";
             this.BtnCerrarSesion.Click += new System.EventHandler(this.BtnCerrarSesion_Click);
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.AutoSize = false;
+            this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(177, 76);
+            this.toolStripLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // BtnSalir
             // 
             this.BtnSalir.AutoSize = false;
@@ -368,6 +279,20 @@
             this.BtnSalir.Text = "  Salir";
             this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(250)))), ((int)(((byte)(251)))));
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.LblEstado);
+            this.panel1.Controls.Add(this.LblUsuario);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1080, 54);
+            this.panel1.TabIndex = 2;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::ProyectoFitZonePro.Properties.Resources.icons8_profile_48;
@@ -377,6 +302,81 @@
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
+            // 
+            // LblEstado
+            // 
+            this.LblEstado.AutoSize = true;
+            this.LblEstado.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEstado.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.LblEstado.Location = new System.Drawing.Point(972, 29);
+            this.LblEstado.Name = "LblEstado";
+            this.LblEstado.Size = new System.Drawing.Size(56, 17);
+            this.LblEstado.TabIndex = 3;
+            this.LblEstado.Text = "Activo";
+            // 
+            // LblUsuario
+            // 
+            this.LblUsuario.AutoSize = true;
+            this.LblUsuario.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblUsuario.Location = new System.Drawing.Point(972, 8);
+            this.LblUsuario.Name = "LblUsuario";
+            this.LblUsuario.Size = new System.Drawing.Size(55, 21);
+            this.LblUsuario.TabIndex = 3;
+            this.LblUsuario.Text = "Admin";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(186, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(118, 21);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "¡Bienvenido!";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(180, 54);
+            this.panel2.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(24)))), ((int)(((byte)(40)))));
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(180, 53);
+            this.panel3.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(166)))), ((int)(((byte)(121)))));
+            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "FitZone Pro\n";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cascadia Code Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(12, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Gym•Tenni•Pool\n";
             // 
             // FrmPrincipal
             // 
@@ -397,10 +397,10 @@
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

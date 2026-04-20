@@ -2,6 +2,7 @@
 using Manejadores;
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace ProyectoFitZonePro
@@ -34,11 +35,11 @@ namespace ProyectoFitZonePro
         {
             Panel panelClickeado = (Panel)sender;
 
-            PnlTodos.BackColor = Color.LightGray;
-            PnlActivos.BackColor = Color.LightGray;
-            PnlInactivos.BackColor = Color.LightGray;
+            PnlTodos.BackColor = Color.White;
+            PnlActivos.BackColor = Color.White;
+            PnlInactivos.BackColor = Color.White;
 
-            panelClickeado.BackColor = Color.DeepSkyBlue;
+            panelClickeado.BackColor = Color.FromArgb(94, 166, 121);
 
             if (panelClickeado.Name == "PnlTodos") filtroActual = "Todos";
             else if (panelClickeado.Name == "PnlActivos") filtroActual = "Activo";
@@ -154,6 +155,81 @@ namespace ProyectoFitZonePro
                 mu.CambiarEstado(usuario.IdUsuario, mandarDesactivar);
                 ActualizarTabla();
             }
+        }
+
+        private void FrmUsuarios_Load(object sender, EventArgs e)
+        {
+            int radioBorde = 5;
+            GraphicsPath rutaPanel1 = CrearRutaRedondeadaIzquierda(new Rectangle(0, 0, PnlTodos.Width, PnlTodos.Height), radioBorde);
+            GraphicsPath rutaPanel2 = CrearRutaRedondeadaDerecha(new Rectangle(0, 0, PnlInactivos.Width, PnlInactivos.Height), radioBorde);
+            GraphicsPath rutaPanel3 = CrearRutaRedondeada(new Rectangle(0, 0, panel1.Width, panel1.Height), radioBorde);
+            GraphicsPath rutaPanel4 = CrearRutaRedondeada(new Rectangle(0, 0, panel2.Width, panel2.Height), radioBorde);
+            GraphicsPath rutaPanel5 = CrearRutaRedondeada(new Rectangle(0, 0, panel3.Width, panel3.Height), radioBorde);
+            GraphicsPath rutaBoton1 = CrearRutaRedondeada(new Rectangle(0, 0, BtnCrear.Width, BtnCrear.Height), radioBorde);
+
+            panel1.Region = new Region(rutaPanel3);
+            panel2.Region = new Region(rutaPanel4);
+            panel3.Region = new Region(rutaPanel5);
+            PnlTodos.Region = new Region(rutaPanel1);
+            PnlInactivos.Region = new Region(rutaPanel2);
+            BtnCrear.Region = new Region(rutaBoton1);
+
+            panel1.BackColor = Color.White;
+            panel2.BackColor = Color.FromArgb(20, Color.Black);
+        }
+        private GraphicsPath CrearRutaRedondeadaIzquierda(Rectangle rect, int radio)
+        {
+            GraphicsPath ruta = new GraphicsPath();
+            int diametro = radio * 2;
+
+            // 1. Arco Arriba-Izquierda
+            ruta.AddArc(rect.X, rect.Y, diametro, diametro, 180, 90);
+            // 2. Esquina Arriba-Derecha (Plana)
+            ruta.AddLine(rect.X + radio, rect.Y, rect.Right, rect.Y);
+            // 3. Esquina Abajo-Derecha (Plana)
+            ruta.AddLine(rect.Right, rect.Y, rect.Right, rect.Bottom);
+            // 4. Arco Abajo-Izquierda
+            ruta.AddLine(rect.Right, rect.Bottom, rect.X + radio, rect.Bottom);
+            ruta.AddArc(rect.X, rect.Bottom - diametro, diametro, diametro, 90, 90);
+
+            ruta.CloseFigure();
+            return ruta;
+        }
+        private GraphicsPath CrearRutaRedondeada(Rectangle rect, int radio)
+        {
+            GraphicsPath ruta = new GraphicsPath();
+            int diametro = radio * 2;
+
+            // Dibujamos los 4 arcos de las esquinas
+            ruta.AddArc(rect.X, rect.Y, diametro, diametro, 180, 90); // Arriba Izquierda
+            ruta.AddArc(rect.Right - diametro, rect.Y, diametro, diametro, 270, 90); // Arriba Derecha
+            ruta.AddArc(rect.Right - diametro, rect.Bottom - diametro, diametro, diametro, 0, 90); // Abajo Derecha
+            ruta.AddArc(rect.X, rect.Bottom - diametro, diametro, diametro, 90, 90); // Abajo Izquierda
+
+            ruta.CloseFigure(); // Cerramos la figura uniendo los arcos
+            return ruta;
+        }
+        private GraphicsPath CrearRutaRedondeadaDerecha(Rectangle rect, int radio)
+        {
+            GraphicsPath ruta = new GraphicsPath();
+            int diametro = radio * 2;
+
+            // 1. Esquina Arriba-Izquierda (Plana)
+            ruta.AddLine(rect.X, rect.Y, rect.Right - radio, rect.Y);
+            // 2. Arco Arriba-Derecha
+            ruta.AddArc(rect.Right - diametro, rect.Y, diametro, diametro, 270, 90);
+            // 3. Arco Abajo-Derecha
+            ruta.AddArc(rect.Right - diametro, rect.Bottom - diametro, diametro, diametro, 0, 90);
+            // 4. Esquina Abajo-Izquierda (Plana)
+            ruta.AddLine(rect.Right - radio, rect.Bottom, rect.X, rect.Bottom);
+            ruta.CloseFigure();
+
+            return ruta;
+        }
+
+        private void TxtBuscar_Click(object sender, EventArgs e)
+        {
+            TxtBuscar.Text = string.Empty;
         }
     }
 }
