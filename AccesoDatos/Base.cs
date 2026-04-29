@@ -16,7 +16,7 @@ namespace AccesoDatos
 
         public Base()
         {
-            con = new MySqlConnection("server=localhost; port=3306; user=root; password=; database=fitZone;");
+            con = new MySqlConnection("server=localhost; port=3306; user=root; password=; database=fitZone; Charset=utf8mb4;");
         }
 
         public void Comando(string query, bool mantenerConexion = false)

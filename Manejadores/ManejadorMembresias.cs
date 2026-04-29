@@ -23,16 +23,42 @@ namespace Manejadores
             if (tabla.Columns.Contains("updated_at")) tabla.Columns["updated_at"].Visible = false;
             if (tabla.Columns.Contains("idMembresia")) tabla.Columns["idMembresia"].Visible = false;
 
-            if (tabla.Columns.Contains("idMembresia")) tabla.Columns["idMembresia"].DefaultCellStyle.Format = "MEM-00";
+            // --- MAGIA VISUAL: NOMBRES PROFESIONALES Y FORMATO DE MONEDA ---
+            if (tabla.Columns.Contains("nombre"))
+                tabla.Columns["nombre"].HeaderText = "Membresía";
+
+            if (tabla.Columns.Contains("costo_mensual"))
+            {
+                tabla.Columns["costo_mensual"].HeaderText = "Mensualidad";
+                tabla.Columns["costo_mensual"].DefaultCellStyle.Format = "C2"; // Le pone el signo de pesos ($)
+            }
+
+            if (tabla.Columns.Contains("costo_semestral"))
+            {
+                tabla.Columns["costo_semestral"].HeaderText = "Semestral";
+                tabla.Columns["costo_semestral"].DefaultCellStyle.Format = "C2";
+            }
+
+            if (tabla.Columns.Contains("costo_anual"))
+            {
+                tabla.Columns["costo_anual"].HeaderText = "Anualidad";
+                tabla.Columns["costo_anual"].DefaultCellStyle.Format = "C2";
+            }
+            // ---------------------------------------------------------------
 
             if (tabla.Rows.Count > 0)
             {
                 int colIndex = tabla.Columns.Count;
 
-                tabla.Columns.Insert(colIndex, Boton("Editar", Color.Green));
+                // Botón Editar
+                DataGridViewButtonColumn btnEditar = Boton("Editar", Color.Green);
+                btnEditar.HeaderText = "Modificar"; // Título para la columna del botón
+                tabla.Columns.Insert(colIndex, btnEditar);
 
+                // Botón Estado
                 DataGridViewButtonColumn btnEstado = Boton("Estado", Color.Gray);
                 btnEstado.UseColumnTextForButtonValue = false;
+                btnEstado.HeaderText = "Acción"; // Título para la columna del botón
                 tabla.Columns.Insert(colIndex + 1, btnEstado);
 
                 foreach (DataGridViewRow fila in tabla.Rows)

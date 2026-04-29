@@ -14,6 +14,7 @@ namespace ProyectoFitZonePro
     {
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int wMsg, bool wParam, int lParam);
+
         private const int WM_SETREDRAW = 11;
 
         public FrmPrincipal()
@@ -21,6 +22,7 @@ namespace ProyectoFitZonePro
             this.DoubleBuffered = true;
             InitializeComponent();
             toolStrip1.Renderer = new ToolStripProfessionalRenderer(new MenuColorTable());
+            LblUsuario.Text = Sesion.Nombre;
             foreach (Control control in this.Controls)
             {
                 // Buscamos la "sábana" oculta de Windows (MdiClient)
@@ -34,6 +36,7 @@ namespace ProyectoFitZonePro
                 }
             }
         }
+
         private void AbrirFormularioHijo(Form nuevoFormulario, ToolStripItem botonMenu)
         {
             // Evita recargar si el formulario ya está abierto
@@ -65,6 +68,7 @@ namespace ProyectoFitZonePro
                 this.Refresh();
             }
         }
+
         private void BtnDashboard_Click(object sender, EventArgs e)
         {
             if (!Sesion.TienePermiso("Dashboard", "ver"))
@@ -154,6 +158,7 @@ namespace ProyectoFitZonePro
         {
             AbrirFormularioHijo(new FrmInventario(), inventarioToolStripMenuItem);
         }
+
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -166,6 +171,7 @@ namespace ProyectoFitZonePro
                 Application.Restart();
             }
         }
+
         private void CerrarFormulariosAbiertos()
         {
             foreach (Form frm in this.MdiChildren)
@@ -194,16 +200,19 @@ namespace ProyectoFitZonePro
                 }
             }
         }
+
         public class MenuColorTable : ProfessionalColorTable
         {
             //(Checked)
             public override Color ButtonCheckedHighlight => Color.FromArgb(94, 166, 121);
+
             public override Color ButtonCheckedGradientBegin => Color.FromArgb(94, 166, 121);
             public override Color ButtonCheckedGradientMiddle => Color.FromArgb(94, 166, 121);
             public override Color ButtonCheckedGradientEnd => Color.FromArgb(94, 166, 121);
 
             //(Hover)
             public override Color ButtonSelectedHighlight => Color.FromArgb(55, 65, 75);
+
             public override Color ButtonSelectedGradientBegin => Color.FromArgb(55, 65, 75);
             public override Color ButtonSelectedGradientMiddle => Color.FromArgb(55, 65, 75);
             public override Color ButtonSelectedGradientEnd => Color.FromArgb(55, 65, 75);

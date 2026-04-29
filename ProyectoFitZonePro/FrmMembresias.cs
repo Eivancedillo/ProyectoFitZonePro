@@ -23,7 +23,6 @@ namespace ProyectoFitZonePro
             InitializeComponent();
             mb = new ManejadorMembresias();
             this.Shown += FrmMembresias_Shown;
-
         }
 
         private void FrmMembresias_Shown(object sender, EventArgs e)
@@ -61,33 +60,67 @@ namespace ProyectoFitZonePro
         {
             DataTable dtTop = mb.ObtenerTop3();
 
-            // Si hay al menos 1 registro, llenamos el Panel 1
+            // Arreglo de labels para facilitar el llenado mediante un ciclo o bloques
+            // Bloque para Panel 1
             if (dtTop.Rows.Count > 0)
             {
-                DataRow fila1 = dtTop.Rows[0];
-                // Asegúrate de tener un LblNombreTop1, LblPreciosTop1 y LblBeneficiosTop1 dentro de tu primer panel
-                LblNombreTop1.Text = fila1["nombre"].ToString().ToUpper();
-                LblPreciosTop1.Text = $"1M: ${fila1["costo_mensual"]} | 6M: ${fila1["costo_semestral"]} | 12M: ${fila1["costo_anual"]}";
-                LblBeneficiosTop1.Text = fila1["beneficios"].ToString();
+                DataRow fila = dtTop.Rows[0];
+                LblNombreTop1.Text = fila["nombre"].ToString().ToUpper();
+
+                // Asignación individual de costos con formato de moneda
+                LblMensualTop1.Text = $"1 Mes: {Convert.ToDouble(fila["costo_mensual"]):C2}";
+                LblSemestralTop1.Text = $"6 Meses: {Convert.ToDouble(fila["costo_semestral"]):C2}";
+                LblAnualTop1.Text = $"1 Año: {Convert.ToDouble(fila["costo_anual"]):C2}";
+
+                // Formateo profesional de beneficios
+                LblBeneficiosTop1.Text = FormatearBeneficios(fila["beneficios"].ToString());
             }
 
-            // Si hay 2 registros, llenamos el Panel 2
+            // Bloque para Panel 2
             if (dtTop.Rows.Count > 1)
             {
-                DataRow fila2 = dtTop.Rows[1];
-                LblNombreTop2.Text = fila2["nombre"].ToString().ToUpper();
-                LblPreciosTop2.Text = $"1M: ${fila2["costo_mensual"]} | 6M: ${fila2["costo_semestral"]} | 12M: ${fila2["costo_anual"]}";
-                LblBeneficiosTop2.Text = fila2["beneficios"].ToString();
+                DataRow fila = dtTop.Rows[1];
+                LblNombreTop2.Text = fila["nombre"].ToString().ToUpper();
+
+                LblMensualTop2.Text = $"1 Mes: {Convert.ToDouble(fila["costo_mensual"]):C2}";
+                LblSemestralTop2.Text = $"6 Meses: {Convert.ToDouble(fila["costo_semestral"]):C2}";
+                LblAnualTop2.Text = $"1 Año: {Convert.ToDouble(fila["costo_anual"]):C2}";
+
+                LblBeneficiosTop2.Text = FormatearBeneficios(fila["beneficios"].ToString());
             }
 
-            // Si hay 3 registros, llenamos el Panel 3
+            // Bloque para Panel 3
             if (dtTop.Rows.Count > 2)
             {
-                DataRow fila3 = dtTop.Rows[2];
-                LblNombreTop3.Text = fila3["nombre"].ToString().ToUpper();
-                LblPreciosTop3.Text = $"1M: ${fila3["costo_mensual"]} | 6M: ${fila3["costo_semestral"]} | 12M: ${fila3["costo_anual"]}";
-                LblBeneficiosTop3.Text = fila3["beneficios"].ToString();
+                DataRow fila = dtTop.Rows[2];
+                LblNombreTop3.Text = fila["nombre"].ToString().ToUpper();
+
+                LblMensualTop3.Text = $"1 Mes: {Convert.ToDouble(fila["costo_mensual"]):C2}";
+                LblSemestralTop3.Text = $"6 Meses: {Convert.ToDouble(fila["costo_semestral"]):C2}";
+                LblAnualTop3.Text = $"1 Año: {Convert.ToDouble(fila["costo_anual"]):C2}";
+
+                LblBeneficiosTop3.Text = FormatearBeneficios(fila["beneficios"].ToString());
             }
+        }
+
+        /// <summary>
+        /// Convierte una cadena de beneficios separada por comas en una lista con viñetas profesional.
+        /// </summary>
+        private string FormatearBeneficios(string textoOriginal)
+        {
+            if (string.IsNullOrWhiteSpace(textoOriginal) || textoOriginal == "Sin beneficios asignados")
+                return "Sin beneficios registrados.";
+
+            // Aquí está la magia: le decimos que corte exactamente donde vea los " ??? "
+            string[] beneficios = textoOriginal.Split(new string[] { " ??? " }, StringSplitOptions.RemoveEmptyEntries);
+
+            // Limpiamos espacios y agregamos viñetas (•)
+            for (int i = 0; i < beneficios.Length; i++)
+            {
+                beneficios[i] = "• " + beneficios[i].Trim();
+            }
+
+            return string.Join(Environment.NewLine, beneficios);
         }
 
         private void BtnCrear_Click(object sender, EventArgs e)
@@ -179,7 +212,6 @@ namespace ProyectoFitZonePro
             GraphicsPath rutaPanel3 = CrearRutaRedondeada(new Rectangle(0, 0, PTop1.Width, PTop1.Height), radioBorde);
             GraphicsPath rutaBoton1 = CrearRutaRedondeada(new Rectangle(0, 0, BtnCrear.Width, BtnCrear.Height), radioBorde);
 
-
             // Aplicamos el recorte al panel
             Ps1.Region = new Region(rutaPanel1);
             Ps2.Region = new Region(rutaPanel1);
@@ -192,12 +224,12 @@ namespace ProyectoFitZonePro
             PTop6.Region = new Region(rutaPanel2);
             BtnCrear.Region = new Region(rutaBoton1);
 
-
             //Este es el para el panel de la sombre
             Ps1.BackColor = Color.FromArgb(20, Color.Black);
             Ps2.BackColor = Color.FromArgb(20, Color.Black);
             Ps3.BackColor = Color.FromArgb(20, Color.Black);
         }
+
         private GraphicsPath CrearRutaRedondeada(Rectangle rect, int radio)
         {
             GraphicsPath ruta = new GraphicsPath();
