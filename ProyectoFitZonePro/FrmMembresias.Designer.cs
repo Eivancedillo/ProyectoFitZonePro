@@ -32,48 +32,46 @@
             this.DtgDatos = new System.Windows.Forms.DataGridView();
             this.PTop4 = new System.Windows.Forms.Panel();
             this.PTop1 = new System.Windows.Forms.Panel();
+            this.PnlContenedorBeneficios1 = new System.Windows.Forms.Panel();
             this.LblBeneficiosTop1 = new System.Windows.Forms.Label();
+            this.LblAnualTop1 = new System.Windows.Forms.Label();
+            this.LblSemestralTop1 = new System.Windows.Forms.Label();
             this.LblMensualTop1 = new System.Windows.Forms.Label();
             this.LblNombreTop1 = new System.Windows.Forms.Label();
             this.PTop5 = new System.Windows.Forms.Panel();
             this.PTop2 = new System.Windows.Forms.Panel();
+            this.PnlContenedorBeneficios = new System.Windows.Forms.Panel();
             this.LblBeneficiosTop2 = new System.Windows.Forms.Label();
+            this.LblAnualTop2 = new System.Windows.Forms.Label();
+            this.LblSemestralTop2 = new System.Windows.Forms.Label();
             this.LblNombreTop2 = new System.Windows.Forms.Label();
+            this.LblMensualTop2 = new System.Windows.Forms.Label();
             this.PTop6 = new System.Windows.Forms.Panel();
             this.PTop3 = new System.Windows.Forms.Panel();
+            this.PnlContenedorBeneficio3 = new System.Windows.Forms.Panel();
             this.LblBeneficiosTop3 = new System.Windows.Forms.Label();
+            this.LblAnualTop3 = new System.Windows.Forms.Label();
+            this.LblSemestralTop3 = new System.Windows.Forms.Label();
             this.LblNombreTop3 = new System.Windows.Forms.Label();
+            this.LblMensualTop3 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.LblEstado = new System.Windows.Forms.Label();
             this.Ps1 = new System.Windows.Forms.Panel();
             this.Ps2 = new System.Windows.Forms.Panel();
             this.Ps3 = new System.Windows.Forms.Panel();
-            this.LblSemestralTop1 = new System.Windows.Forms.Label();
-            this.LblAnualTop1 = new System.Windows.Forms.Label();
-            this.LblAnualTop2 = new System.Windows.Forms.Label();
-            this.LblSemestralTop2 = new System.Windows.Forms.Label();
-            this.LblMensualTop2 = new System.Windows.Forms.Label();
-            this.LblAnualTop3 = new System.Windows.Forms.Label();
-            this.LblSemestralTop3 = new System.Windows.Forms.Label();
-            this.LblMensualTop3 = new System.Windows.Forms.Label();
-            this.PnlContenedorBeneficios1 = new System.Windows.Forms.Panel();
-            this.PnlContenedorBeneficios = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.PnlContenedorBeneficio3 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DtgDatos)).BeginInit();
             this.PTop4.SuspendLayout();
             this.PTop1.SuspendLayout();
+            this.PnlContenedorBeneficios1.SuspendLayout();
             this.PTop5.SuspendLayout();
             this.PTop2.SuspendLayout();
+            this.PnlContenedorBeneficios.SuspendLayout();
             this.PTop6.SuspendLayout();
             this.PTop3.SuspendLayout();
+            this.PnlContenedorBeneficio3.SuspendLayout();
             this.Ps1.SuspendLayout();
             this.Ps2.SuspendLayout();
             this.Ps3.SuspendLayout();
-            this.PnlContenedorBeneficios1.SuspendLayout();
-            this.PnlContenedorBeneficios.SuspendLayout();
-            this.PnlContenedorBeneficio3.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnCrear
@@ -126,6 +124,16 @@
             this.PTop1.Size = new System.Drawing.Size(228, 289);
             this.PTop1.TabIndex = 3;
             // 
+            // PnlContenedorBeneficios1
+            // 
+            this.PnlContenedorBeneficios1.AutoScroll = true;
+            this.PnlContenedorBeneficios1.BackColor = System.Drawing.Color.Transparent;
+            this.PnlContenedorBeneficios1.Controls.Add(this.LblBeneficiosTop1);
+            this.PnlContenedorBeneficios1.Location = new System.Drawing.Point(6, 170);
+            this.PnlContenedorBeneficios1.Name = "PnlContenedorBeneficios1";
+            this.PnlContenedorBeneficios1.Size = new System.Drawing.Size(219, 100);
+            this.PnlContenedorBeneficios1.TabIndex = 9;
+            // 
             // LblBeneficiosTop1
             // 
             this.LblBeneficiosTop1.AutoEllipsis = true;
@@ -135,6 +143,24 @@
             this.LblBeneficiosTop1.Size = new System.Drawing.Size(100, 25);
             this.LblBeneficiosTop1.TabIndex = 2;
             this.LblBeneficiosTop1.Text = "beneficios";
+            // 
+            // LblAnualTop1
+            // 
+            this.LblAnualTop1.AutoSize = true;
+            this.LblAnualTop1.Location = new System.Drawing.Point(3, 127);
+            this.LblAnualTop1.Name = "LblAnualTop1";
+            this.LblAnualTop1.Size = new System.Drawing.Size(126, 25);
+            this.LblAnualTop1.TabIndex = 4;
+            this.LblAnualTop1.Text = "preciosAnual";
+            // 
+            // LblSemestralTop1
+            // 
+            this.LblSemestralTop1.AutoSize = true;
+            this.LblSemestralTop1.Location = new System.Drawing.Point(3, 93);
+            this.LblSemestralTop1.Name = "LblSemestralTop1";
+            this.LblSemestralTop1.Size = new System.Drawing.Size(163, 25);
+            this.LblSemestralTop1.TabIndex = 3;
+            this.LblSemestralTop1.Text = "preciosSemestral";
             // 
             // LblMensualTop1
             // 
@@ -168,7 +194,6 @@
             this.PTop2.BackColor = System.Drawing.Color.White;
             this.PTop2.Controls.Add(this.PnlContenedorBeneficios);
             this.PTop2.Controls.Add(this.LblAnualTop2);
-            this.PTop2.Controls.Add(this.LblBeneficiosTop2);
             this.PTop2.Controls.Add(this.LblSemestralTop2);
             this.PTop2.Controls.Add(this.LblNombreTop2);
             this.PTop2.Controls.Add(this.LblMensualTop2);
@@ -177,14 +202,43 @@
             this.PTop2.Size = new System.Drawing.Size(228, 289);
             this.PTop2.TabIndex = 6;
             // 
+            // PnlContenedorBeneficios
+            // 
+            this.PnlContenedorBeneficios.AutoScroll = true;
+            this.PnlContenedorBeneficios.BackColor = System.Drawing.Color.Transparent;
+            this.PnlContenedorBeneficios.Controls.Add(this.LblBeneficiosTop2);
+            this.PnlContenedorBeneficios.Location = new System.Drawing.Point(3, 168);
+            this.PnlContenedorBeneficios.Name = "PnlContenedorBeneficios";
+            this.PnlContenedorBeneficios.Size = new System.Drawing.Size(219, 100);
+            this.PnlContenedorBeneficios.TabIndex = 10;
+            // 
             // LblBeneficiosTop2
             // 
             this.LblBeneficiosTop2.AutoEllipsis = true;
-            this.LblBeneficiosTop2.Location = new System.Drawing.Point(3, 170);
+            this.LblBeneficiosTop2.AutoSize = true;
+            this.LblBeneficiosTop2.Location = new System.Drawing.Point(0, 2);
             this.LblBeneficiosTop2.Name = "LblBeneficiosTop2";
-            this.LblBeneficiosTop2.Size = new System.Drawing.Size(211, 100);
-            this.LblBeneficiosTop2.TabIndex = 5;
-            this.LblBeneficiosTop2.Text = "xxx";
+            this.LblBeneficiosTop2.Size = new System.Drawing.Size(100, 25);
+            this.LblBeneficiosTop2.TabIndex = 2;
+            this.LblBeneficiosTop2.Text = "beneficios";
+            // 
+            // LblAnualTop2
+            // 
+            this.LblAnualTop2.AutoSize = true;
+            this.LblAnualTop2.Location = new System.Drawing.Point(3, 127);
+            this.LblAnualTop2.Name = "LblAnualTop2";
+            this.LblAnualTop2.Size = new System.Drawing.Size(126, 25);
+            this.LblAnualTop2.TabIndex = 7;
+            this.LblAnualTop2.Text = "preciosAnual";
+            // 
+            // LblSemestralTop2
+            // 
+            this.LblSemestralTop2.AutoSize = true;
+            this.LblSemestralTop2.Location = new System.Drawing.Point(3, 93);
+            this.LblSemestralTop2.Name = "LblSemestralTop2";
+            this.LblSemestralTop2.Size = new System.Drawing.Size(163, 25);
+            this.LblSemestralTop2.TabIndex = 6;
+            this.LblSemestralTop2.Text = "preciosSemestral";
             // 
             // LblNombreTop2
             // 
@@ -194,6 +248,15 @@
             this.LblNombreTop2.Size = new System.Drawing.Size(42, 25);
             this.LblNombreTop2.TabIndex = 3;
             this.LblNombreTop2.Text = "xxx";
+            // 
+            // LblMensualTop2
+            // 
+            this.LblMensualTop2.AutoSize = true;
+            this.LblMensualTop2.Location = new System.Drawing.Point(3, 58);
+            this.LblMensualTop2.Name = "LblMensualTop2";
+            this.LblMensualTop2.Size = new System.Drawing.Size(150, 25);
+            this.LblMensualTop2.TabIndex = 5;
+            this.LblMensualTop2.Text = "preciosMensual";
             // 
             // PTop6
             // 
@@ -209,7 +272,6 @@
             this.PTop3.BackColor = System.Drawing.Color.White;
             this.PTop3.Controls.Add(this.PnlContenedorBeneficio3);
             this.PTop3.Controls.Add(this.LblAnualTop3);
-            this.PTop3.Controls.Add(this.LblBeneficiosTop3);
             this.PTop3.Controls.Add(this.LblSemestralTop3);
             this.PTop3.Controls.Add(this.LblNombreTop3);
             this.PTop3.Controls.Add(this.LblMensualTop3);
@@ -218,14 +280,43 @@
             this.PTop3.Size = new System.Drawing.Size(228, 289);
             this.PTop3.TabIndex = 9;
             // 
+            // PnlContenedorBeneficio3
+            // 
+            this.PnlContenedorBeneficio3.AutoScroll = true;
+            this.PnlContenedorBeneficio3.BackColor = System.Drawing.Color.Transparent;
+            this.PnlContenedorBeneficio3.Controls.Add(this.LblBeneficiosTop3);
+            this.PnlContenedorBeneficio3.Location = new System.Drawing.Point(3, 170);
+            this.PnlContenedorBeneficio3.Name = "PnlContenedorBeneficio3";
+            this.PnlContenedorBeneficio3.Size = new System.Drawing.Size(219, 100);
+            this.PnlContenedorBeneficio3.TabIndex = 10;
+            // 
             // LblBeneficiosTop3
             // 
             this.LblBeneficiosTop3.AutoEllipsis = true;
-            this.LblBeneficiosTop3.Location = new System.Drawing.Point(3, 170);
+            this.LblBeneficiosTop3.AutoSize = true;
+            this.LblBeneficiosTop3.Location = new System.Drawing.Point(0, 0);
             this.LblBeneficiosTop3.Name = "LblBeneficiosTop3";
-            this.LblBeneficiosTop3.Size = new System.Drawing.Size(222, 100);
-            this.LblBeneficiosTop3.TabIndex = 8;
-            this.LblBeneficiosTop3.Text = "xxx";
+            this.LblBeneficiosTop3.Size = new System.Drawing.Size(100, 25);
+            this.LblBeneficiosTop3.TabIndex = 2;
+            this.LblBeneficiosTop3.Text = "beneficios";
+            // 
+            // LblAnualTop3
+            // 
+            this.LblAnualTop3.AutoSize = true;
+            this.LblAnualTop3.Location = new System.Drawing.Point(3, 127);
+            this.LblAnualTop3.Name = "LblAnualTop3";
+            this.LblAnualTop3.Size = new System.Drawing.Size(126, 25);
+            this.LblAnualTop3.TabIndex = 10;
+            this.LblAnualTop3.Text = "preciosAnual";
+            // 
+            // LblSemestralTop3
+            // 
+            this.LblSemestralTop3.AutoSize = true;
+            this.LblSemestralTop3.Location = new System.Drawing.Point(3, 93);
+            this.LblSemestralTop3.Name = "LblSemestralTop3";
+            this.LblSemestralTop3.Size = new System.Drawing.Size(163, 25);
+            this.LblSemestralTop3.TabIndex = 9;
+            this.LblSemestralTop3.Text = "preciosSemestral";
             // 
             // LblNombreTop3
             // 
@@ -235,6 +326,15 @@
             this.LblNombreTop3.Size = new System.Drawing.Size(42, 25);
             this.LblNombreTop3.TabIndex = 6;
             this.LblNombreTop3.Text = "xxx";
+            // 
+            // LblMensualTop3
+            // 
+            this.LblMensualTop3.AutoSize = true;
+            this.LblMensualTop3.Location = new System.Drawing.Point(3, 58);
+            this.LblMensualTop3.Name = "LblMensualTop3";
+            this.LblMensualTop3.Size = new System.Drawing.Size(150, 25);
+            this.LblMensualTop3.TabIndex = 8;
+            this.LblMensualTop3.Text = "preciosMensual";
             // 
             // label3
             // 
@@ -281,128 +381,6 @@
             this.Ps3.Size = new System.Drawing.Size(240, 301);
             this.Ps3.TabIndex = 8;
             // 
-            // LblSemestralTop1
-            // 
-            this.LblSemestralTop1.AutoSize = true;
-            this.LblSemestralTop1.Location = new System.Drawing.Point(3, 93);
-            this.LblSemestralTop1.Name = "LblSemestralTop1";
-            this.LblSemestralTop1.Size = new System.Drawing.Size(163, 25);
-            this.LblSemestralTop1.TabIndex = 3;
-            this.LblSemestralTop1.Text = "preciosSemestral";
-            // 
-            // LblAnualTop1
-            // 
-            this.LblAnualTop1.AutoSize = true;
-            this.LblAnualTop1.Location = new System.Drawing.Point(3, 127);
-            this.LblAnualTop1.Name = "LblAnualTop1";
-            this.LblAnualTop1.Size = new System.Drawing.Size(126, 25);
-            this.LblAnualTop1.TabIndex = 4;
-            this.LblAnualTop1.Text = "preciosAnual";
-            // 
-            // LblAnualTop2
-            // 
-            this.LblAnualTop2.AutoSize = true;
-            this.LblAnualTop2.Location = new System.Drawing.Point(3, 127);
-            this.LblAnualTop2.Name = "LblAnualTop2";
-            this.LblAnualTop2.Size = new System.Drawing.Size(126, 25);
-            this.LblAnualTop2.TabIndex = 7;
-            this.LblAnualTop2.Text = "preciosAnual";
-            // 
-            // LblSemestralTop2
-            // 
-            this.LblSemestralTop2.AutoSize = true;
-            this.LblSemestralTop2.Location = new System.Drawing.Point(3, 93);
-            this.LblSemestralTop2.Name = "LblSemestralTop2";
-            this.LblSemestralTop2.Size = new System.Drawing.Size(163, 25);
-            this.LblSemestralTop2.TabIndex = 6;
-            this.LblSemestralTop2.Text = "preciosSemestral";
-            // 
-            // LblMensualTop2
-            // 
-            this.LblMensualTop2.AutoSize = true;
-            this.LblMensualTop2.Location = new System.Drawing.Point(3, 58);
-            this.LblMensualTop2.Name = "LblMensualTop2";
-            this.LblMensualTop2.Size = new System.Drawing.Size(150, 25);
-            this.LblMensualTop2.TabIndex = 5;
-            this.LblMensualTop2.Text = "preciosMensual";
-            // 
-            // LblAnualTop3
-            // 
-            this.LblAnualTop3.AutoSize = true;
-            this.LblAnualTop3.Location = new System.Drawing.Point(3, 127);
-            this.LblAnualTop3.Name = "LblAnualTop3";
-            this.LblAnualTop3.Size = new System.Drawing.Size(126, 25);
-            this.LblAnualTop3.TabIndex = 10;
-            this.LblAnualTop3.Text = "preciosAnual";
-            // 
-            // LblSemestralTop3
-            // 
-            this.LblSemestralTop3.AutoSize = true;
-            this.LblSemestralTop3.Location = new System.Drawing.Point(3, 93);
-            this.LblSemestralTop3.Name = "LblSemestralTop3";
-            this.LblSemestralTop3.Size = new System.Drawing.Size(163, 25);
-            this.LblSemestralTop3.TabIndex = 9;
-            this.LblSemestralTop3.Text = "preciosSemestral";
-            // 
-            // LblMensualTop3
-            // 
-            this.LblMensualTop3.AutoSize = true;
-            this.LblMensualTop3.Location = new System.Drawing.Point(3, 58);
-            this.LblMensualTop3.Name = "LblMensualTop3";
-            this.LblMensualTop3.Size = new System.Drawing.Size(150, 25);
-            this.LblMensualTop3.TabIndex = 8;
-            this.LblMensualTop3.Text = "preciosMensual";
-            // 
-            // PnlContenedorBeneficios1
-            // 
-            this.PnlContenedorBeneficios1.AutoScroll = true;
-            this.PnlContenedorBeneficios1.BackColor = System.Drawing.Color.Transparent;
-            this.PnlContenedorBeneficios1.Controls.Add(this.LblBeneficiosTop1);
-            this.PnlContenedorBeneficios1.Location = new System.Drawing.Point(6, 170);
-            this.PnlContenedorBeneficios1.Name = "PnlContenedorBeneficios1";
-            this.PnlContenedorBeneficios1.Size = new System.Drawing.Size(219, 100);
-            this.PnlContenedorBeneficios1.TabIndex = 9;
-            // 
-            // PnlContenedorBeneficios
-            // 
-            this.PnlContenedorBeneficios.AutoScroll = true;
-            this.PnlContenedorBeneficios.BackColor = System.Drawing.Color.Transparent;
-            this.PnlContenedorBeneficios.Controls.Add(this.label1);
-            this.PnlContenedorBeneficios.Location = new System.Drawing.Point(3, 170);
-            this.PnlContenedorBeneficios.Name = "PnlContenedorBeneficios";
-            this.PnlContenedorBeneficios.Size = new System.Drawing.Size(219, 100);
-            this.PnlContenedorBeneficios.TabIndex = 10;
-            // 
-            // label1
-            // 
-            this.label1.AutoEllipsis = true;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "beneficios";
-            // 
-            // PnlContenedorBeneficio3
-            // 
-            this.PnlContenedorBeneficio3.AutoScroll = true;
-            this.PnlContenedorBeneficio3.BackColor = System.Drawing.Color.Transparent;
-            this.PnlContenedorBeneficio3.Controls.Add(this.label2);
-            this.PnlContenedorBeneficio3.Location = new System.Drawing.Point(3, 170);
-            this.PnlContenedorBeneficio3.Name = "PnlContenedorBeneficio3";
-            this.PnlContenedorBeneficio3.Size = new System.Drawing.Size(219, 100);
-            this.PnlContenedorBeneficio3.TabIndex = 10;
-            // 
-            // label2
-            // 
-            this.label2.AutoEllipsis = true;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 25);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "beneficios";
-            // 
             // FrmMembresias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -426,21 +404,21 @@
             this.PTop4.ResumeLayout(false);
             this.PTop1.ResumeLayout(false);
             this.PTop1.PerformLayout();
+            this.PnlContenedorBeneficios1.ResumeLayout(false);
+            this.PnlContenedorBeneficios1.PerformLayout();
             this.PTop5.ResumeLayout(false);
             this.PTop2.ResumeLayout(false);
             this.PTop2.PerformLayout();
+            this.PnlContenedorBeneficios.ResumeLayout(false);
+            this.PnlContenedorBeneficios.PerformLayout();
             this.PTop6.ResumeLayout(false);
             this.PTop3.ResumeLayout(false);
             this.PTop3.PerformLayout();
+            this.PnlContenedorBeneficio3.ResumeLayout(false);
+            this.PnlContenedorBeneficio3.PerformLayout();
             this.Ps1.ResumeLayout(false);
             this.Ps2.ResumeLayout(false);
             this.Ps3.ResumeLayout(false);
-            this.PnlContenedorBeneficios1.ResumeLayout(false);
-            this.PnlContenedorBeneficios1.PerformLayout();
-            this.PnlContenedorBeneficios.ResumeLayout(false);
-            this.PnlContenedorBeneficios.PerformLayout();
-            this.PnlContenedorBeneficio3.ResumeLayout(false);
-            this.PnlContenedorBeneficio3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,9 +434,7 @@
         private System.Windows.Forms.Label LblBeneficiosTop1;
         private System.Windows.Forms.Label LblMensualTop1;
         private System.Windows.Forms.Label LblNombreTop1;
-        private System.Windows.Forms.Label LblBeneficiosTop2;
         private System.Windows.Forms.Label LblNombreTop2;
-        private System.Windows.Forms.Label LblBeneficiosTop3;
         private System.Windows.Forms.Label LblNombreTop3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label LblEstado;
@@ -478,8 +454,8 @@
         private System.Windows.Forms.Label LblMensualTop3;
         private System.Windows.Forms.Panel PnlContenedorBeneficios1;
         private System.Windows.Forms.Panel PnlContenedorBeneficios;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblBeneficiosTop2;
         private System.Windows.Forms.Panel PnlContenedorBeneficio3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LblBeneficiosTop3;
     }
 }
