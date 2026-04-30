@@ -112,6 +112,7 @@
             this.BtnCrear.TabIndex = 14;
             this.BtnCrear.Text = "Crear nuevo trabajdor";
             this.BtnCrear.UseVisualStyleBackColor = false;
+            this.BtnCrear.Click += new System.EventHandler(this.BtnCrear_Click);
             // 
             // FrmTrabajadores
             // 

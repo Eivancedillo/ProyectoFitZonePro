@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace ProyectoFitZonePro
@@ -113,6 +115,32 @@ namespace ProyectoFitZonePro
         {
             // Los cambios ya se hicieron en la memoria de "membresiaSeleccionada", solo cerramos
             Close();
+        }
+
+        private void FrmBeneficios_Load(object sender, EventArgs e)
+        {
+            int radioBorde = 5; // Puedes hacer este número más grande para más curva
+
+            GraphicsPath rutaBoton1 = CrearRutaRedondeada(new Rectangle(0, 0, BtnAceptar.Width, BtnAceptar.Height), radioBorde);
+            GraphicsPath rutaBoton2 = CrearRutaRedondeada(new Rectangle(0, 0, BtnAgregar.Width, BtnAgregar.Height), radioBorde);
+
+            BtnAceptar.Region = new Region(rutaBoton1);
+            BtnCancelar.Region = new Region(rutaBoton1);
+            BtnAgregar.Region = new Region(rutaBoton2);
+        }
+        private GraphicsPath CrearRutaRedondeada(Rectangle rect, int radio)
+        {
+            GraphicsPath ruta = new GraphicsPath();
+            int diametro = radio * 2;
+
+            // Dibujamos los 4 arcos de las esquinas
+            ruta.AddArc(rect.X, rect.Y, diametro, diametro, 180, 90); // Arriba Izquierda
+            ruta.AddArc(rect.Right - diametro, rect.Y, diametro, diametro, 270, 90); // Arriba Derecha
+            ruta.AddArc(rect.Right - diametro, rect.Bottom - diametro, diametro, diametro, 0, 90); // Abajo Derecha
+            ruta.AddArc(rect.X, rect.Bottom - diametro, diametro, diametro, 90, 90); // Abajo Izquierda
+
+            ruta.CloseFigure(); // Cerramos la figura uniendo los arcos
+            return ruta;
         }
     }
 }

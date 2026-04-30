@@ -39,9 +39,9 @@
             this.LblEstado = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.TxtBuscar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DtgDatos)).BeginInit();
             this.PnlTodos.SuspendLayout();
             this.PnlActivos.SuspendLayout();
@@ -173,6 +173,14 @@
             this.panel1.Size = new System.Drawing.Size(801, 459);
             this.panel1.TabIndex = 9;
             // 
+            // TxtBuscar
+            // 
+            this.TxtBuscar.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBuscar.Location = new System.Drawing.Point(502, 25);
+            this.TxtBuscar.Name = "TxtBuscar";
+            this.TxtBuscar.Size = new System.Drawing.Size(277, 26);
+            this.TxtBuscar.TabIndex = 13;
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkGray;
@@ -192,14 +200,6 @@
             this.panel2.Size = new System.Drawing.Size(809, 467);
             this.panel2.TabIndex = 0;
             // 
-            // TxtBuscar
-            // 
-            this.TxtBuscar.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBuscar.Location = new System.Drawing.Point(502, 25);
-            this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(277, 26);
-            this.TxtBuscar.TabIndex = 13;
-            // 
             // FrmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -215,6 +215,7 @@
             this.Location = new System.Drawing.Point(40, 103);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmUsuarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmUsuarios";
             this.Load += new System.EventHandler(this.FrmUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DtgDatos)).EndInit();

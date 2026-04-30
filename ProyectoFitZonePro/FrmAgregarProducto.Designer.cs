@@ -39,11 +39,11 @@
             this.DtgProductos = new System.Windows.Forms.DataGridView();
             this.PSom2 = new System.Windows.Forms.Panel();
             this.Pdel2 = new System.Windows.Forms.Panel();
+            this.BtnActualizar = new System.Windows.Forms.Button();
             this.PSom = new System.Windows.Forms.Panel();
             this.Pdel = new System.Windows.Forms.Panel();
             this.LblEstado = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.BtnActualizar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DtgProductos)).BeginInit();
             this.PSom2.SuspendLayout();
@@ -169,6 +169,21 @@
             this.Pdel2.Size = new System.Drawing.Size(400, 417);
             this.Pdel2.TabIndex = 9;
             // 
+            // BtnActualizar
+            // 
+            this.BtnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(166)))), ((int)(((byte)(121)))));
+            this.BtnActualizar.FlatAppearance.BorderSize = 0;
+            this.BtnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnActualizar.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold);
+            this.BtnActualizar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BtnActualizar.Location = new System.Drawing.Point(200, 344);
+            this.BtnActualizar.Name = "BtnActualizar";
+            this.BtnActualizar.Size = new System.Drawing.Size(184, 46);
+            this.BtnActualizar.TabIndex = 18;
+            this.BtnActualizar.Text = "Finalizar venta";
+            this.BtnActualizar.UseVisualStyleBackColor = false;
+            this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
+            // 
             // PSom
             // 
             this.PSom.Controls.Add(this.Pdel);
@@ -206,24 +221,9 @@
             this.label4.TabIndex = 20;
             this.label4.Text = "Vista de ventas";
             // 
-            // BtnActualizar
-            // 
-            this.BtnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(166)))), ((int)(((byte)(121)))));
-            this.BtnActualizar.FlatAppearance.BorderSize = 0;
-            this.BtnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnActualizar.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold);
-            this.BtnActualizar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnActualizar.Location = new System.Drawing.Point(200, 344);
-            this.BtnActualizar.Name = "BtnActualizar";
-            this.BtnActualizar.Size = new System.Drawing.Size(184, 46);
-            this.BtnActualizar.TabIndex = 18;
-            this.BtnActualizar.Text = "Finalizar venta";
-            this.BtnActualizar.UseVisualStyleBackColor = false;
-            this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(805, 41);
+            this.button1.Location = new System.Drawing.Point(787, 30);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 22;
