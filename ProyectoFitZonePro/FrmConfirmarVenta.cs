@@ -14,8 +14,9 @@ namespace ProyectoFitZonePro
 {
     public partial class FrmConfirmarVenta : Form
     {
-        ManejadorVentas mp;
-        Ventas venta = new Ventas(0,0,"","");
+        private ManejadorVentas mp;
+        private Ventas venta = new Ventas(0, 0, "", "");
+
         public FrmConfirmarVenta()
         {
             InitializeComponent();
@@ -25,6 +26,14 @@ namespace ProyectoFitZonePro
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
+            // --- CANDADO DE RESPALDO ---
+            if (!Sesion.TienePermiso("Tienda", "crear"))
+            {
+                MessageBox.Show("Operación bloqueada por falta de permisos.", "Seguridad", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            // ---------------------------
+
             if (CmbSocios.SelectedIndex == -1 || CmbSocios.SelectedValue == null)
             {
                 MessageBox.Show("Por favor, seleccione un socio válido para continuar con la venta.", "Validación de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);

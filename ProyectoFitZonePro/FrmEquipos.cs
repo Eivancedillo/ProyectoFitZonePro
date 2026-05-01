@@ -83,10 +83,13 @@ namespace ProyectoFitZonePro
 
             bool esInactivo = CmbEstado.Text.Equals("Inactivos");
 
-            switch (indexColumna)
+            // MAGIA DE CÓDIGO INMORTAL: Leemos el título de la columna en vez de adivinar el número
+            string tituloColumna = DtgDatos.Columns[indexColumna].HeaderText;
+
+            switch (tituloColumna)
             {
                 // Operación: Editar
-                case 6:
+                case "Modificar":
                     if (!Sesion.TienePermiso("Equipos", "editar"))
                     {
                         MessageBox.Show("No tiene autorización para modificar la información técnica del equipo.", "Permiso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -105,7 +108,7 @@ namespace ProyectoFitZonePro
                     break;
 
                 // Operación: Gestión de Mantenimiento
-                case 7:
+                case "Servicio":
                     if (!Sesion.TienePermiso("Equipos", "editar"))
                     {
                         MessageBox.Show("No cuenta con permisos para programar o registrar mantenimientos.", "Permiso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -124,7 +127,7 @@ namespace ProyectoFitZonePro
                     break;
 
                 // Operación: Cambio de Estado (Activar/Desactivar)
-                case 8:
+                case "Acción":
                     if (!Sesion.TienePermiso("Equipos", "eliminar"))
                     {
                         MessageBox.Show("No tiene autorización para cambiar el estado operativo de los activos.", "Permiso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -158,6 +161,7 @@ namespace ProyectoFitZonePro
             Pdel.BackColor = Color.White;
             PSom.BackColor = Color.FromArgb(20, Color.Black);
         }
+
         private GraphicsPath CrearRutaRedondeada(Rectangle rect, int radio)
         {
             GraphicsPath ruta = new GraphicsPath();

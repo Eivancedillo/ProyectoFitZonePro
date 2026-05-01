@@ -245,9 +245,9 @@
             this.LblNombreTop2.AutoSize = true;
             this.LblNombreTop2.Location = new System.Drawing.Point(3, 21);
             this.LblNombreTop2.Name = "LblNombreTop2";
-            this.LblNombreTop2.Size = new System.Drawing.Size(42, 25);
+            this.LblNombreTop2.Size = new System.Drawing.Size(32, 25);
             this.LblNombreTop2.TabIndex = 3;
-            this.LblNombreTop2.Text = "xxx";
+            this.LblNombreTop2.Text = "xx";
             // 
             // LblMensualTop2
             // 

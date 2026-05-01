@@ -14,29 +14,49 @@ namespace Manejadores
         public void Mostrar(string consulta, DataGridView tabla, string dato)
         {
             tabla.Columns.Clear();
+            tabla.RowHeadersVisible = false; // ¡Adiós al fantasma de la flechita!
             tabla.DataSource = b.Consultar(consulta, dato).Tables[0];
 
-            // Ocultamos las columnas internas (verifica que el nombre coincida con tu BD)
-            if (tabla.Columns.Contains("estado")) tabla.Columns["estado"].Visible = false;
+            // 1. OCULTAMOS LO QUE HACE BULTO
             if (tabla.Columns.Contains("created_at")) tabla.Columns["created_at"].Visible = false;
             if (tabla.Columns.Contains("updated_at")) tabla.Columns["updated_at"].Visible = false;
+            if (tabla.Columns.Contains("curp")) tabla.Columns["curp"].Visible = false;
+            if (tabla.Columns.Contains("fecha_nacimiento")) tabla.Columns["fecha_nacimiento"].Visible = false;
+            if (tabla.Columns.Contains("fecha_registro")) tabla.Columns["fecha_registro"].Visible = false;
 
-            // Formato pro para el ID
-            if (tabla.Columns.Contains("idUsuario")) tabla.Columns["idUsuario"].DefaultCellStyle.Format = "U-0000";
+            // 2. MAGIA VISUAL: NOMBRES PROFESIONALES Y FORMATOS
+            if (tabla.Columns.Contains("idUsuario"))
+            {
+                tabla.Columns["idUsuario"].HeaderText = "Folio";
+                tabla.Columns["idUsuario"].DefaultCellStyle.Format = "U-0000"; // <-- AQUÍ ESTÁ DE REGRESO TU FORMATO VIP
+            }
 
+            if (tabla.Columns.Contains("nombre"))
+                tabla.Columns["nombre"].HeaderText = "Nombre Completo";
+
+            if (tabla.Columns.Contains("telefono"))
+                tabla.Columns["telefono"].HeaderText = "Teléfono";
+
+            if (tabla.Columns.Contains("email"))
+                tabla.Columns["email"].HeaderText = "Correo";
+
+            if (tabla.Columns.Contains("estatus"))
+                tabla.Columns["estatus"].HeaderText = "Estado";
+
+            // 3. AGREGAMOS LOS BOTONES
             if (tabla.Rows.Count > 0)
             {
                 int colIndex = tabla.Columns.Count;
 
-                // 1. Botón Editar
-                tabla.Columns.Insert(colIndex, Boton("Editar", Color.Green));
+                DataGridViewButtonColumn btnEditar = Boton("Editar", Color.Green);
+                btnEditar.HeaderText = "Modificar";
+                tabla.Columns.Insert(colIndex, btnEditar);
 
-                // 2. Botón Estado (dinámico)
                 DataGridViewButtonColumn btnEstado = Boton("Estado", Color.Gray);
-                btnEstado.UseColumnTextForButtonValue = false; // Permite texto diferente por fila
+                btnEstado.UseColumnTextForButtonValue = false;
+                btnEstado.HeaderText = "Acción";
                 tabla.Columns.Insert(colIndex + 1, btnEstado);
 
-                // Recorremos para poner "Activar" o "Desactivar" según el caso
                 foreach (DataGridViewRow fila in tabla.Rows)
                 {
                     if (fila.Cells["estatus"].Value != null && fila.Cells["estatus"].Value.ToString() == "Activo")
@@ -52,8 +72,16 @@ namespace Manejadores
                 }
             }
 
-            tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            tabla.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            // 4. TRUCO DE DISEÑO
+            tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+            // Hacemos que la columna de Nombre rellene el espacio que sobre
+            if (tabla.Columns.Contains("nombre"))
+            {
+                tabla.Columns["nombre"].MinimumWidth = 200; // Su salvavidas
+                tabla.Columns["nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
             tabla.ClearSelection();
         }
 

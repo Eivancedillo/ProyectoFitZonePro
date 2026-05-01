@@ -58,7 +58,7 @@
             this.TxtMembresia.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtMembresia.Location = new System.Drawing.Point(217, 231);
             this.TxtMembresia.Name = "TxtMembresia";
-            this.TxtMembresia.Size = new System.Drawing.Size(210, 26);
+            this.TxtMembresia.Size = new System.Drawing.Size(210, 31);
             this.TxtMembresia.TabIndex = 10;
             // 
             // TxtNombre
@@ -66,23 +66,25 @@
             this.TxtNombre.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtNombre.Location = new System.Drawing.Point(217, 129);
             this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(210, 26);
+            this.TxtNombre.Size = new System.Drawing.Size(210, 31);
             this.TxtNombre.TabIndex = 8;
             // 
             // TxtIdSocio
             // 
+            this.TxtIdSocio.Enabled = false;
             this.TxtIdSocio.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtIdSocio.Location = new System.Drawing.Point(30, 129);
             this.TxtIdSocio.Name = "TxtIdSocio";
-            this.TxtIdSocio.Size = new System.Drawing.Size(163, 26);
+            this.TxtIdSocio.Size = new System.Drawing.Size(163, 31);
             this.TxtIdSocio.TabIndex = 7;
             // 
             // TxtCosto
             // 
+            this.TxtCosto.Enabled = false;
             this.TxtCosto.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtCosto.Location = new System.Drawing.Point(30, 336);
             this.TxtCosto.Name = "TxtCosto";
-            this.TxtCosto.Size = new System.Drawing.Size(210, 26);
+            this.TxtCosto.Size = new System.Drawing.Size(210, 31);
             this.TxtCosto.TabIndex = 14;
             // 
             // CmbDuracion
@@ -91,7 +93,7 @@
             this.CmbDuracion.FormattingEnabled = true;
             this.CmbDuracion.Location = new System.Drawing.Point(30, 231);
             this.CmbDuracion.Name = "CmbDuracion";
-            this.CmbDuracion.Size = new System.Drawing.Size(163, 29);
+            this.CmbDuracion.Size = new System.Drawing.Size(163, 35);
             this.CmbDuracion.TabIndex = 17;
             // 
             // panel1
@@ -132,7 +134,7 @@
             this.label6.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(30, 312);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 21);
+            this.label6.Size = new System.Drawing.Size(72, 27);
             this.label6.TabIndex = 18;
             this.label6.Text = "Costo";
             // 
@@ -142,7 +144,7 @@
             this.label5.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(217, 207);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 21);
+            this.label5.Size = new System.Drawing.Size(120, 27);
             this.label5.TabIndex = 18;
             this.label5.Text = "Membresia";
             // 
@@ -152,7 +154,7 @@
             this.label4.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(30, 207);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 21);
+            this.label4.Size = new System.Drawing.Size(108, 27);
             this.label4.TabIndex = 18;
             this.label4.Text = "Duración";
             // 
@@ -162,7 +164,7 @@
             this.label2.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(217, 105);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 21);
+            this.label2.Size = new System.Drawing.Size(84, 27);
             this.label2.TabIndex = 18;
             this.label2.Text = "Nombre";
             // 
@@ -172,7 +174,7 @@
             this.label1.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(30, 105);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 21);
+            this.label1.Size = new System.Drawing.Size(156, 27);
             this.label1.TabIndex = 18;
             this.label1.Text = "ID del socio";
             // 
@@ -254,7 +256,7 @@
             this.LblEstado.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.LblEstado.Location = new System.Drawing.Point(10, 35);
             this.LblEstado.Name = "LblEstado";
-            this.LblEstado.Size = new System.Drawing.Size(440, 17);
+            this.LblEstado.Size = new System.Drawing.Size(550, 22);
             this.LblEstado.TabIndex = 21;
             this.LblEstado.Text = "Complementa la información  para el socio del sistema.";
             // 
@@ -264,7 +266,7 @@
             this.label3.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(10, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(309, 25);
+            this.label3.Size = new System.Drawing.Size(392, 32);
             this.label3.TabIndex = 20;
             this.label3.Text = "Registrar / Editar miembros";
             // 
@@ -278,7 +280,7 @@
             // 
             // FrmDatosSocios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Magenta;
             this.ClientSize = new System.Drawing.Size(600, 521);

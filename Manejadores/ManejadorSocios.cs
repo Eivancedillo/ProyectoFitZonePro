@@ -14,29 +14,63 @@ namespace Manejadores
         public void Mostrar(string consulta, DataGridView tabla, string dato)
         {
             tabla.Columns.Clear();
+            tabla.RowHeadersVisible = false; // <-- ESTA ES LA LÍNEA MÁGICA
             tabla.DataSource = b.Consultar(consulta, dato).Tables[0];
 
-            // Ocultamos columnas internas o IDs crudos si los trajimos
+            // 1. OCULTAMOS COLUMNAS INTERNAS
             if (tabla.Columns.Contains("fkIdUsuario")) tabla.Columns["fkIdUsuario"].Visible = false;
             if (tabla.Columns.Contains("fkIdMembresia")) tabla.Columns["fkIdMembresia"].Visible = false;
 
-            // Formato pro para el ID del Socio
-            if (tabla.Columns.Contains("idSuscripcion")) tabla.Columns["idSuscripcion"].DefaultCellStyle.Format = "S-0000";
-            if (tabla.Columns.Contains("costo_total")) tabla.Columns["costo_total"].DefaultCellStyle.Format = "C2"; // Formato moneda
+            // 2. FORMATOS PRO (Rescatados de tu código original)
+            if (tabla.Columns.Contains("idSuscripcion"))
+            {
+                tabla.Columns["idSuscripcion"].HeaderText = "Folio";
+                tabla.Columns["idSuscripcion"].DefaultCellStyle.Format = "S-0000";
+            }
+            if (tabla.Columns.Contains("costo_total"))
+            {
+                tabla.Columns["costo_total"].HeaderText = "Total";
+                tabla.Columns["costo_total"].DefaultCellStyle.Format = "C2"; // Formato moneda
+            }
 
+            // 3. MAGIA VISUAL: NOMBRES PROFESIONALES Y CORTOS
+            if (tabla.Columns.Contains("Cliente"))
+                tabla.Columns["Cliente"].HeaderText = "Socio";
+
+            if (tabla.Columns.Contains("Paquete"))
+                tabla.Columns["Paquete"].HeaderText = "Membresía";
+
+            if (tabla.Columns.Contains("Duracion"))
+                tabla.Columns["Duracion"].HeaderText = "Periodo";
+
+            if (tabla.Columns.Contains("fecha_inicio"))
+                tabla.Columns["fecha_inicio"].HeaderText = "Inicio";
+
+            if (tabla.Columns.Contains("fecha_fin"))
+                tabla.Columns["fecha_fin"].HeaderText = "Vencimiento";
+
+            if (tabla.Columns.Contains("estado"))
+                tabla.Columns["estado"].HeaderText = "Estatus";
+
+            // 4. AGREGAMOS LOS BOTONES
             if (tabla.Rows.Count > 0)
             {
                 int colIndex = tabla.Columns.Count;
 
-                tabla.Columns.Insert(colIndex, Boton("Editar", Color.Orange));
+                // Botón Editar
+                DataGridViewButtonColumn btnEditar = Boton("Editar", Color.Orange);
+                btnEditar.HeaderText = "Modificar";
+                tabla.Columns.Insert(colIndex, btnEditar);
 
+                // Botón Estado
                 DataGridViewButtonColumn btnEstado = Boton("Estado", Color.Gray);
                 btnEstado.UseColumnTextForButtonValue = false;
+                btnEstado.HeaderText = "Acción";
                 tabla.Columns.Insert(colIndex + 1, btnEstado);
 
                 foreach (DataGridViewRow fila in tabla.Rows)
                 {
-                    // Le agregamos .ToLower() para asegurar que siempre esté en minúsculas
+                    // Lógica original de 3 estados
                     string estadoSocio = fila.Cells["estado"].Value?.ToString().ToLower() ?? "";
 
                     if (estadoSocio == "activo")
@@ -56,7 +90,17 @@ namespace Manejadores
                     }
                 }
             }
-            tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            // 5. TRUCO DE DISEÑO ANTI-SCROLL
+            tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+            // Hacemos que la columna del Socio rellene el espacio vacío, PERO sin desaparecer
+            if (tabla.Columns.Contains("Cliente"))
+            {
+                tabla.Columns["Cliente"].MinimumWidth = 150; // <-- EL SALVAVIDAS (Mínimo 150 píxeles)
+                tabla.Columns["Cliente"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
             tabla.ClearSelection();
         }
 

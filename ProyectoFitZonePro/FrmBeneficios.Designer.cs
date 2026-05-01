@@ -33,14 +33,14 @@
             this.DtgDatosAgregados = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.BtnCancelar = new System.Windows.Forms.Button();
+            this.BtnAgregar = new System.Windows.Forms.Button();
             this.BtnAceptar = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.LblEstado = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.BtnAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DtgDatosExistentes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgDatosAgregados)).BeginInit();
             this.panel1.SuspendLayout();
@@ -53,7 +53,7 @@
             this.TxtNombre.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtNombre.Location = new System.Drawing.Point(15, 131);
             this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(257, 26);
+            this.TxtNombre.Size = new System.Drawing.Size(257, 31);
             this.TxtNombre.TabIndex = 0;
             // 
             // DtgDatosExistentes
@@ -63,6 +63,7 @@
             this.DtgDatosExistentes.Location = new System.Drawing.Point(6, 178);
             this.DtgDatosExistentes.Name = "DtgDatosExistentes";
             this.DtgDatosExistentes.ReadOnly = true;
+            this.DtgDatosExistentes.RowHeadersVisible = false;
             this.DtgDatosExistentes.RowHeadersWidth = 51;
             this.DtgDatosExistentes.RowTemplate.Height = 24;
             this.DtgDatosExistentes.Size = new System.Drawing.Size(287, 211);
@@ -76,6 +77,7 @@
             this.DtgDatosAgregados.Location = new System.Drawing.Point(299, 178);
             this.DtgDatosAgregados.Name = "DtgDatosAgregados";
             this.DtgDatosAgregados.ReadOnly = true;
+            this.DtgDatosAgregados.RowHeadersVisible = false;
             this.DtgDatosAgregados.RowHeadersWidth = 51;
             this.DtgDatosAgregados.RowTemplate.Height = 24;
             this.DtgDatosAgregados.Size = new System.Drawing.Size(287, 211);
@@ -107,6 +109,16 @@
             this.panel3.Size = new System.Drawing.Size(590, 511);
             this.panel3.TabIndex = 7;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 107);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 27);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Nombre";
+            // 
             // BtnCancelar
             // 
             this.BtnCancelar.BackColor = System.Drawing.Color.IndianRed;
@@ -121,6 +133,21 @@
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = false;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
+            // BtnAgregar
+            // 
+            this.BtnAgregar.BackColor = System.Drawing.Color.Black;
+            this.BtnAgregar.FlatAppearance.BorderSize = 0;
+            this.BtnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAgregar.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold);
+            this.BtnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BtnAgregar.Location = new System.Drawing.Point(287, 131);
+            this.BtnAgregar.Name = "BtnAgregar";
+            this.BtnAgregar.Size = new System.Drawing.Size(56, 26);
+            this.BtnAgregar.TabIndex = 8;
+            this.BtnAgregar.Text = "+";
+            this.BtnAgregar.UseVisualStyleBackColor = false;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // BtnAceptar
             // 
@@ -155,7 +182,7 @@
             this.LblEstado.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.LblEstado.Location = new System.Drawing.Point(10, 35);
             this.LblEstado.Name = "LblEstado";
-            this.LblEstado.Size = new System.Drawing.Size(440, 17);
+            this.LblEstado.Size = new System.Drawing.Size(550, 22);
             this.LblEstado.TabIndex = 21;
             this.LblEstado.Text = "Complementa la información  para el socio del sistema.";
             // 
@@ -165,7 +192,7 @@
             this.label3.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(10, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(485, 25);
+            this.label3.Size = new System.Drawing.Size(616, 32);
             this.label3.TabIndex = 20;
             this.label3.Text = "Registrar / Editar beneficios de membresias";
             // 
@@ -177,34 +204,9 @@
             this.panel2.Size = new System.Drawing.Size(594, 515);
             this.panel2.TabIndex = 37;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 107);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 21);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Nombre";
-            // 
-            // BtnAgregar
-            // 
-            this.BtnAgregar.BackColor = System.Drawing.Color.Black;
-            this.BtnAgregar.FlatAppearance.BorderSize = 0;
-            this.BtnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAgregar.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold);
-            this.BtnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnAgregar.Location = new System.Drawing.Point(287, 131);
-            this.BtnAgregar.Name = "BtnAgregar";
-            this.BtnAgregar.Size = new System.Drawing.Size(56, 26);
-            this.BtnAgregar.TabIndex = 8;
-            this.BtnAgregar.Text = "+";
-            this.BtnAgregar.UseVisualStyleBackColor = false;
-            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
-            // 
             // FrmBeneficios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Magenta;
             this.ClientSize = new System.Drawing.Size(600, 521);

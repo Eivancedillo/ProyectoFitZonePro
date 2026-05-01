@@ -34,6 +34,7 @@ namespace ProyectoFitZonePro
         {
             // 1. Llenamos la tabla general
             mb.Mostrar("SELECT * FROM tbl_membresias", DtgDatos, "Membresias");
+            DtgDatos.ClearSelection();
 
             // MAGIA DE LIMPIEZA VISUAL
             if (modoSeleccion)
@@ -60,7 +61,34 @@ namespace ProyectoFitZonePro
         {
             DataTable dtTop = mb.ObtenerTop3();
 
-            // Arreglo de labels para facilitar el llenado mediante un ciclo o bloques
+            // --- 1. LIMPIEZA PROFESIONAL (Matamos las notas de dev) ---
+            string tituloVacio = "AÚN SIN DATOS";
+            string precioVacio = "$0.00";
+            string beneficioVacio = "Sin beneficios registrados.";
+
+            // Limpiamos el Panel 1
+            LblNombreTop1.Text = tituloVacio;
+            LblMensualTop1.Text = $"1 Mes: {precioVacio}";
+            LblSemestralTop1.Text = $"6 Meses: {precioVacio}";
+            LblAnualTop1.Text = $"1 Año: {precioVacio}";
+            LblBeneficiosTop1.Text = beneficioVacio;
+
+            // Limpiamos el Panel 2
+            LblNombreTop2.Text = tituloVacio;
+            LblMensualTop2.Text = $"1 Mes: {precioVacio}";
+            LblSemestralTop2.Text = $"6 Meses: {precioVacio}";
+            LblAnualTop2.Text = $"1 Año: {precioVacio}";
+            LblBeneficiosTop2.Text = beneficioVacio;
+
+            // Limpiamos el Panel 3
+            LblNombreTop3.Text = tituloVacio;
+            LblMensualTop3.Text = $"1 Mes: {precioVacio}";
+            LblSemestralTop3.Text = $"6 Meses: {precioVacio}";
+            LblAnualTop3.Text = $"1 Año: {precioVacio}";
+            LblBeneficiosTop3.Text = beneficioVacio;
+
+            // --- 2. LLENADO SEGURO (Solo se llenan los que sí traen datos de la BD) ---
+
             // Bloque para Panel 1
             if (dtTop.Rows.Count > 0)
             {
@@ -103,9 +131,6 @@ namespace ProyectoFitZonePro
             }
         }
 
-        /// <summary>
-        /// Convierte una cadena de beneficios separada por comas en una lista con viñetas profesional.
-        /// </summary>
         private string FormatearBeneficios(string textoOriginal)
         {
             if (string.IsNullOrWhiteSpace(textoOriginal) || textoOriginal == "Sin beneficios asignados")
@@ -204,6 +229,8 @@ namespace ProyectoFitZonePro
 
         private void FrmMembresias_Load(object sender, EventArgs e)
         {
+            mb.AplicarEstiloFigma(DtgDatos);
+
             int radioBorde = 5; // Puedes hacer este número más grande para más curva
 
             // Creamos la ruta del tamaño exacto del panel

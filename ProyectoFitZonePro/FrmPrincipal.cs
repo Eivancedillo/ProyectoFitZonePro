@@ -141,21 +141,41 @@ namespace ProyectoFitZonePro
 
         private void realizarVentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!Sesion.TienePermiso("Tienda", "ver"))
+            {
+                MessageBox.Show("¡Acceso Denegado! No tienes permiso para acceder al módulo de Tienda.", "Área Restringida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
             AbrirFormularioHijo(new FrmRealizarVenta(), realizarVentaToolStripMenuItem);
         }
 
         private void verVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!Sesion.TienePermiso("Tienda", "ver"))
+            {
+                MessageBox.Show("¡Acceso Denegado! No tienes permiso para ver el historial de ventas.", "Área Restringida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
             AbrirFormularioHijo(new FrmVerVentas(), verVentasToolStripMenuItem);
         }
 
         private void entradaDeInventarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!Sesion.TienePermiso("Tienda", "ver"))
+            {
+                MessageBox.Show("¡Acceso Denegado! No tienes permiso para acceder al Inventario.", "Área Restringida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
             AbrirFormularioHijo(new FrmEntradasInventario(), entradaDeInventarioToolStripMenuItem);
         }
 
         private void inventarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!Sesion.TienePermiso("Tienda", "ver"))
+            {
+                MessageBox.Show("¡Acceso Denegado! No tienes permiso para acceder al Inventario.", "Área Restringida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
             AbrirFormularioHijo(new FrmInventario(), inventarioToolStripMenuItem);
         }
 

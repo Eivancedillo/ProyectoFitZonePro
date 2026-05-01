@@ -12,6 +12,7 @@ namespace ProyectoFitZonePro
     public partial class FrmDatosTrabajadores : Form
     {
         private ManejadorTrabajadores mt;
+        private bool permisosBloqueados = false; // <-- LA NUEVA BANDERA
 
         // ¡NUESTRA MEMORIA MÁGICA!
         private Dictionary<string, PermisosTemp> dictPermisos = new Dictionary<string, PermisosTemp>();
@@ -98,13 +99,44 @@ namespace ProyectoFitZonePro
             ChkEditar.Enabled = habilitar;
             ChkEliminar.Enabled = habilitar;
             BtnAceptar.Enabled = habilitar;
+            CmbPermisos.Enabled = habilitar;
         }
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
-            // NOTA PARA EL FUTURO: Aquí validaremos si el "Usuario Logueado" tiene permiso de editar Trabajadores
+            if (!Sesion.TienePermiso("Trabajadores", "editar"))
+            {
+                MessageBox.Show("¡Acceso Denegado! No tienes permiso para editar trabajadores.", "Seguridad", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             BloquearControles(true);
-            MessageBox.Show("Edición habilitada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            int idSeleccionado = FrmTrabajadores.trabajador.IdTrabajador;
+            bool esElMismoUsuario = (idSeleccionado == Sesion.IdTrabajador);
+            bool esAdminPrincipal = (idSeleccionado == 1);
+
+            if (esElMismoUsuario || esAdminPrincipal)
+            {
+                permisosBloqueados = true; // <-- ACTIVAMOS EL CANDADO MÁGICO
+
+                // Apagamos las cajitas para el primer módulo visible
+                ChkVer.Enabled = false;
+                ChkCrear.Enabled = false;
+                ChkEditar.Enabled = false;
+                ChkEliminar.Enabled = false;
+
+                string mensaje = esAdminPrincipal
+                    ? "Edición habilitada.\nPor seguridad del sistema, los PERMISOS del Administrador Principal no pueden ser modificados."
+                    : "Edición habilitada.\nPor seguridad, no puedes modificar tus PROPIOS permisos.";
+
+                MessageBox.Show(mensaje, "Protección de Permisos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                permisosBloqueados = false; // Nos aseguramos que esté apagado
+                MessageBox.Show("Edición habilitada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         // --- LA MAGIA DE CAMBIAR DE MÓDULO ---
@@ -121,6 +153,16 @@ namespace ProyectoFitZonePro
             ChkCrear.Checked = dictPermisos[moduloSeleccionado].Crear;
             ChkEditar.Checked = dictPermisos[moduloSeleccionado].Editar;
             ChkEliminar.Checked = dictPermisos[moduloSeleccionado].Eliminar;
+
+            // --- EL CANDADO FINAL ---
+            if (permisosBloqueados)
+            {
+                ChkVer.Enabled = false;
+                ChkCrear.Enabled = false;
+                ChkEditar.Enabled = false;
+                ChkEliminar.Enabled = false;
+            }
+            // ------------------------
 
             cargandoPermisos = false;
         }
@@ -200,6 +242,7 @@ namespace ProyectoFitZonePro
             BtnCancelar.Region = new Region(rutaBoton1);
             BtnEditar.Region = new Region(rutaBoton2);
         }
+
         private GraphicsPath CrearRutaRedondeada(Rectangle rect, int radio)
         {
             GraphicsPath ruta = new GraphicsPath();
@@ -216,6 +259,7 @@ namespace ProyectoFitZonePro
         }
     }
 }
+
 // Creamos una clase pequeñita aquí mismo para guardar los permisos en la memoria
 public class PermisosTemp
 {

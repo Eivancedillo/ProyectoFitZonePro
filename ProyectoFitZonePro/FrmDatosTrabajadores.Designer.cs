@@ -61,7 +61,7 @@
             this.TxtEmail.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtEmail.Location = new System.Drawing.Point(306, 201);
             this.TxtEmail.Name = "TxtEmail";
-            this.TxtEmail.Size = new System.Drawing.Size(210, 26);
+            this.TxtEmail.Size = new System.Drawing.Size(210, 31);
             this.TxtEmail.TabIndex = 10;
             // 
             // TxtNumero
@@ -69,7 +69,7 @@
             this.TxtNumero.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtNumero.Location = new System.Drawing.Point(30, 201);
             this.TxtNumero.Name = "TxtNumero";
-            this.TxtNumero.Size = new System.Drawing.Size(210, 26);
+            this.TxtNumero.Size = new System.Drawing.Size(210, 31);
             this.TxtNumero.TabIndex = 9;
             // 
             // TxtPassword
@@ -77,7 +77,7 @@
             this.TxtPassword.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtPassword.Location = new System.Drawing.Point(306, 129);
             this.TxtPassword.Name = "TxtPassword";
-            this.TxtPassword.Size = new System.Drawing.Size(210, 26);
+            this.TxtPassword.Size = new System.Drawing.Size(210, 31);
             this.TxtPassword.TabIndex = 8;
             // 
             // TxtNombre
@@ -85,16 +85,17 @@
             this.TxtNombre.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtNombre.Location = new System.Drawing.Point(30, 129);
             this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(210, 26);
+            this.TxtNombre.Size = new System.Drawing.Size(210, 31);
             this.TxtNombre.TabIndex = 7;
             // 
             // CmbPermisos
             // 
+            this.CmbPermisos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbPermisos.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmbPermisos.FormattingEnabled = true;
             this.CmbPermisos.Location = new System.Drawing.Point(30, 273);
             this.CmbPermisos.Name = "CmbPermisos";
-            this.CmbPermisos.Size = new System.Drawing.Size(192, 29);
+            this.CmbPermisos.Size = new System.Drawing.Size(192, 35);
             this.CmbPermisos.TabIndex = 14;
             // 
             // ChkVer
@@ -103,7 +104,7 @@
             this.ChkVer.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChkVer.Location = new System.Drawing.Point(101, 357);
             this.ChkVer.Name = "ChkVer";
-            this.ChkVer.Size = new System.Drawing.Size(56, 25);
+            this.ChkVer.Size = new System.Drawing.Size(70, 31);
             this.ChkVer.TabIndex = 20;
             this.ChkVer.Text = "Ver";
             this.ChkVer.UseVisualStyleBackColor = true;
@@ -114,7 +115,7 @@
             this.ChkCrear.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChkCrear.Location = new System.Drawing.Point(168, 357);
             this.ChkCrear.Name = "ChkCrear";
-            this.ChkCrear.Size = new System.Drawing.Size(74, 25);
+            this.ChkCrear.Size = new System.Drawing.Size(94, 31);
             this.ChkCrear.TabIndex = 21;
             this.ChkCrear.Text = "Crear";
             this.ChkCrear.UseVisualStyleBackColor = true;
@@ -125,7 +126,7 @@
             this.ChkEditar.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChkEditar.Location = new System.Drawing.Point(253, 357);
             this.ChkEditar.Name = "ChkEditar";
-            this.ChkEditar.Size = new System.Drawing.Size(83, 25);
+            this.ChkEditar.Size = new System.Drawing.Size(106, 31);
             this.ChkEditar.TabIndex = 22;
             this.ChkEditar.Text = "Editar";
             this.ChkEditar.UseVisualStyleBackColor = true;
@@ -136,7 +137,7 @@
             this.ChkEliminar.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChkEliminar.Location = new System.Drawing.Point(347, 357);
             this.ChkEliminar.Name = "ChkEliminar";
-            this.ChkEliminar.Size = new System.Drawing.Size(101, 25);
+            this.ChkEliminar.Size = new System.Drawing.Size(130, 31);
             this.ChkEliminar.TabIndex = 23;
             this.ChkEliminar.Text = "Eliminar";
             this.ChkEliminar.UseVisualStyleBackColor = true;
@@ -182,7 +183,7 @@
             this.label6.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(306, 177);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 21);
+            this.label6.Size = new System.Drawing.Size(72, 27);
             this.label6.TabIndex = 24;
             this.label6.Text = "Email";
             // 
@@ -192,7 +193,7 @@
             this.label5.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(306, 105);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 21);
+            this.label5.Size = new System.Drawing.Size(132, 27);
             this.label5.TabIndex = 24;
             this.label5.Text = "Contraseña";
             // 
@@ -202,7 +203,7 @@
             this.label4.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(30, 251);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 21);
+            this.label4.Size = new System.Drawing.Size(108, 27);
             this.label4.TabIndex = 24;
             this.label4.Text = "Permisos";
             // 
@@ -212,7 +213,7 @@
             this.label2.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(26, 177);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 21);
+            this.label2.Size = new System.Drawing.Size(84, 27);
             this.label2.TabIndex = 24;
             this.label2.Text = "Numero";
             // 
@@ -222,7 +223,7 @@
             this.label1.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(30, 105);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 21);
+            this.label1.Size = new System.Drawing.Size(84, 27);
             this.label1.TabIndex = 24;
             this.label1.Text = "Nombre";
             // 
@@ -252,7 +253,7 @@
             this.BtnEditar.Name = "BtnEditar";
             this.BtnEditar.Size = new System.Drawing.Size(107, 28);
             this.BtnEditar.TabIndex = 8;
-            this.BtnEditar.Text = "Guardar";
+            this.BtnEditar.Text = "Editar";
             this.BtnEditar.UseVisualStyleBackColor = false;
             this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
@@ -289,7 +290,7 @@
             this.LblEstado.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.LblEstado.Location = new System.Drawing.Point(10, 35);
             this.LblEstado.Name = "LblEstado";
-            this.LblEstado.Size = new System.Drawing.Size(440, 17);
+            this.LblEstado.Size = new System.Drawing.Size(550, 22);
             this.LblEstado.TabIndex = 21;
             this.LblEstado.Text = "Complementa la información  para el socio del sistema.";
             // 
@@ -299,7 +300,7 @@
             this.label3.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(10, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(309, 25);
+            this.label3.Size = new System.Drawing.Size(392, 32);
             this.label3.TabIndex = 20;
             this.label3.Text = "Registrar / Editar miembros";
             // 
@@ -313,7 +314,7 @@
             // 
             // FrmDatosTrabajadores
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Magenta;
             this.ClientSize = new System.Drawing.Size(600, 521);

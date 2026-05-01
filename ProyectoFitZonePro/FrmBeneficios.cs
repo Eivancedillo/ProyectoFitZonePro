@@ -128,6 +128,7 @@ namespace ProyectoFitZonePro
             BtnCancelar.Region = new Region(rutaBoton1);
             BtnAgregar.Region = new Region(rutaBoton2);
         }
+
         private GraphicsPath CrearRutaRedondeada(Rectangle rect, int radio)
         {
             GraphicsPath ruta = new GraphicsPath();

@@ -15,9 +15,10 @@ namespace ProyectoFitZonePro
 {
     public partial class FrmRealizarVenta : Form
     {
-        ManejadorVentas mp;
+        private ManejadorVentas mp;
         public static List<DetalleVentas> carrito = new List<DetalleVentas>();
-        int fila = 0, columna = 0;
+        private int fila = 0, columna = 0;
+
         public FrmRealizarVenta()
         {
             InitializeComponent();
@@ -27,6 +28,14 @@ namespace ProyectoFitZonePro
 
         private void BtnAgregarProducto_Click(object sender, EventArgs e)
         {
+            // --- CANDADO: ¿Tiene permiso de crear productos/tienda? ---
+            if (!Sesion.TienePermiso("Tienda", "crear"))
+            {
+                MessageBox.Show("¡Acceso Denegado! No tienes autorización para agregar nuevos productos al catálogo.", "Seguridad", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            // ----------------------------------------------------------
+
             FrmAgregarProducto fap = new FrmAgregarProducto();
             fap.ShowDialog();
         }
@@ -51,6 +60,14 @@ namespace ProyectoFitZonePro
 
         private void BtnFinalizarVenta_Click(object sender, EventArgs e)
         {
+            // --- CANDADO: ¿Tiene permiso para registrar ventas? ---
+            if (!Sesion.TienePermiso("Tienda", "crear"))
+            {
+                MessageBox.Show("¡Acceso Denegado! Tu usuario no tiene permisos para cobrar ni registrar ventas.", "Seguridad", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            // ------------------------------------------------------
+
             if (DtgCarrito.Rows.Count > 0)
             {
                 foreach (DataGridViewRow row in DtgCarrito.Rows)
@@ -171,6 +188,7 @@ namespace ProyectoFitZonePro
             PSom.BackColor = Color.FromArgb(20, Color.Black);
             PSom2.BackColor = Color.FromArgb(20, Color.Black);
         }
+
         private GraphicsPath CrearRutaRedondeada(Rectangle rect, int radio)
         {
             GraphicsPath ruta = new GraphicsPath();

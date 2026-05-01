@@ -14,9 +14,10 @@ namespace ProyectoFitZonePro
 {
     public partial class FrmObservacionEntrada : Form
     {
-        ManejadorInventarios mi;
-        Entradas entradas = new Entradas(0,"","");
-        DetalleEntrada detalle = new DetalleEntrada();
+        private ManejadorInventarios mi;
+        private Entradas entradas = new Entradas(0, "", "");
+        private DetalleEntrada detalle = new DetalleEntrada();
+
         public FrmObservacionEntrada()
         {
             InitializeComponent();
@@ -31,11 +32,19 @@ namespace ProyectoFitZonePro
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
+            // --- CANDADO: ¿Tiene permiso para meter inventario? ---
+            if (!Sesion.TienePermiso("Tienda", "crear")) // O si le creaste un módulo "Inventario", cambias la palabra "Tienda" por "Inventario"
+            {
+                MessageBox.Show("¡Acceso Denegado! No tienes permisos para registrar entradas de inventario.", "Seguridad", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            // ------------------------------------------------------
+
             if (string.IsNullOrWhiteSpace(TxtObservacion.Text))
             {
                 MessageBox.Show("¡No puedes guardar sin una observación! Escribe una descripción válida.", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 TxtObservacion.Focus();
-                return; 
+                return;
             }
             try
             {

@@ -4,7 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace Manejadores
 {
@@ -15,68 +18,65 @@ namespace Manejadores
         public void Mostrar(string consulta, DataGridView tabla, string dato)
         {
             tabla.Columns.Clear();
+            tabla.RowHeadersVisible = false;
             tabla.DataSource = b.Consultar(consulta, dato).Tables[0];
 
-            // Ocultamos columnas internas
-            if (tabla.Columns.Contains("estatus")) tabla.Columns["estatus"].Visible = false;
-            if (tabla.Columns.Contains("created_at")) tabla.Columns["created_at"].Visible = false;
-            if (tabla.Columns.Contains("updated_at")) tabla.Columns["updated_at"].Visible = false;
+            // 1. OCULTAR COLUMNAS INTERNAS
             if (tabla.Columns.Contains("idMembresia")) tabla.Columns["idMembresia"].Visible = false;
+            if (tabla.Columns.Contains("beneficios")) tabla.Columns["beneficios"].Visible = false;
+            if (tabla.Columns.Contains("estatus")) tabla.Columns["estatus"].HeaderText = "Estado";
 
-            // --- MAGIA VISUAL: NOMBRES PROFESIONALES Y FORMATO DE MONEDA ---
-            if (tabla.Columns.Contains("nombre"))
-                tabla.Columns["nombre"].HeaderText = "Membresía";
-
+            // 2. RENOMBRAR COLUMNAS PARA QUE SE VEAN PRO
+            if (tabla.Columns.Contains("nombre")) tabla.Columns["nombre"].HeaderText = "Membresía";
             if (tabla.Columns.Contains("costo_mensual"))
             {
                 tabla.Columns["costo_mensual"].HeaderText = "Mensualidad";
-                tabla.Columns["costo_mensual"].DefaultCellStyle.Format = "C2"; // Le pone el signo de pesos ($)
+                tabla.Columns["costo_mensual"].DefaultCellStyle.Format = "C2";
             }
-
             if (tabla.Columns.Contains("costo_semestral"))
             {
                 tabla.Columns["costo_semestral"].HeaderText = "Semestral";
                 tabla.Columns["costo_semestral"].DefaultCellStyle.Format = "C2";
             }
-
             if (tabla.Columns.Contains("costo_anual"))
             {
                 tabla.Columns["costo_anual"].HeaderText = "Anualidad";
                 tabla.Columns["costo_anual"].DefaultCellStyle.Format = "C2";
             }
-            // ---------------------------------------------------------------
 
+            // 3. AGREGAR BOTONES CON ESTILO PLANO (FIGMA)
             if (tabla.Rows.Count > 0)
             {
                 int colIndex = tabla.Columns.Count;
 
                 // Botón Editar
-                DataGridViewButtonColumn btnEditar = Boton("Editar", Color.Green);
-                btnEditar.HeaderText = "Modificar"; // Título para la columna del botón
+                DataGridViewButtonColumn btnEditar = Boton("Editar", Color.FromArgb(108, 169, 129)); // Verde FitZone
+                btnEditar.HeaderText = "Modificar";
+                btnEditar.FlatStyle = FlatStyle.Flat;
+                // El truco: Color de selección igual al color de fondo del botón
+                btnEditar.DefaultCellStyle.SelectionBackColor = Color.FromArgb(108, 169, 129);
+                btnEditar.DefaultCellStyle.SelectionForeColor = Color.White;
                 tabla.Columns.Insert(colIndex, btnEditar);
 
                 // Botón Estado
-                DataGridViewButtonColumn btnEstado = Boton("Estado", Color.Gray);
-                btnEstado.UseColumnTextForButtonValue = false;
-                btnEstado.HeaderText = "Acción"; // Título para la columna del botón
+                DataGridViewButtonColumn btnEstado = Boton("Desactivar", Color.FromArgb(235, 110, 110)); // Rojo suave
+                btnEstado.HeaderText = "Acción";
+                btnEstado.FlatStyle = FlatStyle.Flat;
+                btnEstado.DefaultCellStyle.SelectionBackColor = Color.FromArgb(235, 110, 110);
+                btnEstado.DefaultCellStyle.SelectionForeColor = Color.White;
                 tabla.Columns.Insert(colIndex + 1, btnEstado);
 
+                // Ajustar texto dinámico según el estatus
                 foreach (DataGridViewRow fila in tabla.Rows)
                 {
-                    if (fila.Cells["estatus"].Value != null && fila.Cells["estatus"].Value.ToString() == "Activo")
-                    {
-                        fila.Cells[colIndex + 1].Value = "Desactivar";
-                        fila.Cells[colIndex + 1].Style.BackColor = Color.Red;
-                    }
-                    else
+                    if (fila.Cells["estatus"].Value.ToString() == "Inactivo")
                     {
                         fila.Cells[colIndex + 1].Value = "Activar";
-                        fila.Cells[colIndex + 1].Style.BackColor = Color.Blue;
+                        fila.Cells[colIndex + 1].Style.BackColor = Color.FromArgb(70, 130, 180); // Azul acero para activar
+                        fila.Cells[colIndex + 1].Style.SelectionBackColor = Color.FromArgb(70, 130, 180);
                     }
                 }
             }
-            tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            tabla.ClearSelection();
         }
 
         public List<int> ObtenerBeneficiosPorMembresia(int idMembresia)
@@ -95,7 +95,17 @@ namespace Manejadores
         // --- MAGIA DEL TOP 3 (Usando tu nueva Vista) ---
         public DataTable ObtenerTop3()
         {
-            string query = "SELECT nombre, costo_mensual, costo_semestral, costo_anual, beneficios FROM v_vista_membresias_beneficios WHERE estatus = 'Activo' ORDER BY idMembresia DESC LIMIT 3";
+            // MAGIA SQL: Traemos los mismos datos, pero los cruzamos con las suscripciones reales,
+            // contamos cuántas tiene cada una (COUNT) y las ordenamos de la que más tiene a la que menos (DESC).
+            string query = @"
+                SELECT m.nombre, m.costo_mensual, m.costo_semestral, m.costo_anual, m.beneficios
+                FROM v_vista_membresias_beneficios m
+                LEFT JOIN tbl_suscripcionesSocios s ON m.idMembresia = s.fkIdMembresia
+                WHERE m.estatus = 'Activo'
+                GROUP BY m.idMembresia, m.nombre, m.costo_mensual, m.costo_semestral, m.costo_anual, m.beneficios
+                ORDER BY COUNT(s.fkIdMembresia) DESC
+                LIMIT 3";
+
             return b.Consultar(query, "TopMembresias").Tables[0];
         }
 
@@ -146,6 +156,40 @@ namespace Manejadores
             btn.DefaultCellStyle.BackColor = fondo;
             btn.DefaultCellStyle.ForeColor = Color.Black;
             return btn;
+        }
+
+        public void AplicarEstiloFigma(DataGridView tabla)
+        {
+            Color colorFondo = Color.White;
+            Color colorLineas = Color.FromArgb(235, 235, 235);
+            Color colorTextoCabecera = Color.FromArgb(120, 120, 120);
+
+            tabla.BackgroundColor = colorFondo;
+            tabla.BorderStyle = BorderStyle.None;
+            tabla.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            tabla.GridColor = colorLineas;
+            tabla.EnableHeadersVisualStyles = false;
+            tabla.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            tabla.MultiSelect = false;
+
+            // Estilo Cabecera
+            tabla.ColumnHeadersDefaultCellStyle.BackColor = colorFondo;
+            tabla.ColumnHeadersDefaultCellStyle.ForeColor = colorTextoCabecera;
+            tabla.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            tabla.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            tabla.ColumnHeadersDefaultCellStyle.SelectionBackColor = colorFondo; // IMPORTANTE: evita el blanco al clickear cabecera
+            tabla.ColumnHeadersHeight = 45;
+
+            // Estilo Filas
+            tabla.DefaultCellStyle.BackColor = colorFondo;
+            tabla.DefaultCellStyle.SelectionBackColor = Color.FromArgb(248, 248, 248); // Gris casi blanco para la fila seleccionada
+            tabla.DefaultCellStyle.SelectionForeColor = Color.FromArgb(50, 50, 50);
+            tabla.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            tabla.RowTemplate.Height = 45;
+            tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            tabla.ClearSelection();
         }
     }
 }

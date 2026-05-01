@@ -16,36 +16,68 @@ namespace Manejadores
         public void Mostrar(string consulta, DataGridView tabla, string dato, bool estado)
         {
             tabla.Columns.Clear();
+            tabla.RowHeadersVisible = false; // ¡Exorcismo al fantasma!
             tabla.DataSource = b.Consultar(consulta, dato).Tables[0];
 
-            // Ocultar columnas internas del sistema
-            tabla.Columns["estado"].Visible = false;
-            tabla.Columns["created_at"].Visible = false;
-            tabla.Columns["updated_at"].Visible = false;
+            // 1. OCULTAMOS COLUMNAS INTERNAS
+            if (tabla.Columns.Contains("estado")) tabla.Columns["estado"].Visible = false;
+            if (tabla.Columns.Contains("created_at")) tabla.Columns["created_at"].Visible = false;
+            if (tabla.Columns.Contains("updated_at")) tabla.Columns["updated_at"].Visible = false;
 
-            // Formato visual para el ID (ej. M-0001)
-            tabla.Columns["idEquipo"].DefaultCellStyle.Format = "M-0000";
-
-            if (tabla.Rows.Count > 0)
+            // 2. MAGIA VISUAL: NOMBRES PROFESIONALES Y FORMATOS
+            if (tabla.Columns.Contains("idEquipo"))
             {
-                if (estado) // Equipos Activos
-                {
-                    tabla.Columns.Insert(6, Boton("Editar", Color.Green));
-                    tabla.Columns.Insert(7, Boton("Mantenimiento", Color.Orange));
-                    tabla.Columns.Insert(8, Boton("Desactivar", Color.Red));
-                }
-                else // Equipos Inactivos
-                {
-                    // Se muestran en gris para indicar que están deshabilitados
-                    tabla.Columns.Insert(6, Boton("Editar", Color.LightGray));
-                    tabla.Columns.Insert(7, Boton("Mantenimiento", Color.LightGray));
-                    tabla.Columns.Insert(8, Boton("Activar", Color.Blue));
-                }
+                tabla.Columns["idEquipo"].HeaderText = "Folio";
+                tabla.Columns["idEquipo"].DefaultCellStyle.Format = "M-0000";
             }
 
-            tabla.AutoResizeColumns();
-            tabla.AutoResizeRows();
-            tabla.ClearSelection(); // Evita que el primer registro se resalte por defecto al cargar
+            if (tabla.Columns.Contains("nombre_maquina"))
+                tabla.Columns["nombre_maquina"].HeaderText = "Equipo";
+
+            if (tabla.Columns.Contains("categoria"))
+                tabla.Columns["categoria"].HeaderText = "Categoría";
+
+            if (tabla.Columns.Contains("fecha_adquisicion"))
+                tabla.Columns["fecha_adquisicion"].HeaderText = "Adquisición";
+
+            if (tabla.Columns.Contains("ultimo_mantenimiento"))
+                tabla.Columns["ultimo_mantenimiento"].HeaderText = "Último Mantenimiento";
+
+            if (tabla.Columns.Contains("mantenimiento_programado"))
+                tabla.Columns["mantenimiento_programado"].HeaderText = "Próx. Mantenimiento";
+
+            // 3. AGREGAMOS LOS BOTONES DE FORMA DINÁMICA
+            if (tabla.Rows.Count > 0)
+            {
+                int colIndex = tabla.Columns.Count; // Siempre los pone al final, sin importar cuántas columnas haya
+
+                // Botón Editar
+                DataGridViewButtonColumn btnEditar = Boton("Editar", estado ? Color.Green : Color.LightGray);
+                btnEditar.HeaderText = "Modificar";
+                tabla.Columns.Insert(colIndex, btnEditar);
+
+                // Botón Mantenimiento
+                DataGridViewButtonColumn btnMantenimiento = Boton("Mantenimiento", estado ? Color.Orange : Color.LightGray);
+                btnMantenimiento.HeaderText = "Servicio";
+                tabla.Columns.Insert(colIndex + 1, btnMantenimiento);
+
+                // Botón Estado (Desactivar/Activar)
+                DataGridViewButtonColumn btnEstado = Boton(estado ? "Desactivar" : "Activar", estado ? Color.Red : Color.Blue);
+                btnEstado.HeaderText = "Acción";
+                tabla.Columns.Insert(colIndex + 2, btnEstado);
+            }
+
+            // 4. TRUCO DE DISEÑO ANTI-SCROLL
+            tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+            // Hacemos que la columna del Equipo rellene todo el espacio gris vacío
+            if (tabla.Columns.Contains("nombre_maquina"))
+            {
+                tabla.Columns["nombre_maquina"].MinimumWidth = 150; // Salvavidas
+                tabla.Columns["nombre_maquina"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
+            tabla.ClearSelection();
         }
 
         // --- MÉTODOS CRUD DE EQUIPOS ---
