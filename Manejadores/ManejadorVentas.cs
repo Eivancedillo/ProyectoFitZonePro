@@ -51,6 +51,7 @@ namespace Manejadores
             tabla.DataSource = b.Consultar(consulta, datos).Tables[0];
             tabla.Columns["idProducto"].Visible = false;
             tabla.Columns["estado"].Visible = false;
+            tabla.Columns["Descripcion"].Visible = false;
             tabla.Columns.Insert(5, Boton("+", Color.DarkGreen));
             tabla.AutoResizeColumns();
             tabla.AutoResizeRows();
@@ -67,8 +68,8 @@ namespace Manejadores
         //Llenar grid carrito
         public void GridCarrito(DataGridView tabla)
         {
-            tabla.AutoResizeColumns();
-            tabla.AutoResizeRows();
+            // Limpia antes de configurar para evitar errores si se vuelve a llamar
+            tabla.Columns.Clear();
 
             tabla.Columns.Add("idProducto", "idProducto");
             tabla.Columns["idProducto"].Visible = false;
@@ -83,11 +84,27 @@ namespace Manejadores
             tabla.Columns["Precio"].ReadOnly = true;
 
             tabla.Columns.Add("Total", "Total");
-            tabla.Columns["Precio"].ReadOnly = true;
+            tabla.Columns["Total"].ReadOnly = true; // <-- Corregido, antes decía Precio
 
             tabla.Columns["Precio"].DefaultCellStyle.Format = "C2";
             tabla.Columns["Total"].DefaultCellStyle.Format = "C2";
-            tabla.Columns.Insert(5, Boton("-", Color.DarkRed));
+
+            // --- AQUÍ ESTÁ EL TRUCO PARA EL BOTÓN ---
+            var btnEliminar = Boton("-", Color.DarkRed);
+            tabla.Columns.Insert(5, btnEliminar);
+
+            // Configuramos el ancho del botón MANUALMENTE para que sea corto
+            tabla.Columns[5].Width = 35;
+            tabla.Columns[5].Resizable = DataGridViewTriState.False;
+
+            // Centramos el "-" para que no se vea pegado a un lado
+            tabla.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // El AutoResize debe ir AL FINAL para que respete lo que acabamos de configurar
+            tabla.AutoResizeColumns();
+            // Pero forzamos que el de la columna 5 NO cambie tras el AutoResize
+            tabla.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            tabla.AutoResizeRows();
         }
 
         //Guardar venta

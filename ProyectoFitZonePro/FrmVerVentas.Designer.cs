@@ -168,6 +168,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmVerVentas";
             this.Load += new System.EventHandler(this.FrmVerVentas_Load);
+            this.Shown += new System.EventHandler(this.FrmVerVentas_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.DtgVentas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgDetalleVenta)).EndInit();
             this.PSom2.ResumeLayout(false);

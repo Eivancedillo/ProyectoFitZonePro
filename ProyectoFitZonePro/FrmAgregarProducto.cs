@@ -154,5 +154,10 @@ namespace Manejadores
             ruta.CloseFigure(); // Cerramos la figura uniendo los arcos
             return ruta;
         }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

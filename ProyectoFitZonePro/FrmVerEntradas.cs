@@ -19,6 +19,7 @@ namespace ProyectoFitZonePro
         {
             InitializeComponent();
             mi = new ManejadorInventarios();
+            this.Shown += FrmVerEntradas_Shown;
         }
 
         private void DtgEntradas_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -38,6 +39,12 @@ namespace ProyectoFitZonePro
                 double total = mi.CalcularTotal(DtgDetalleEntrada);
                 LblTotalVenta.Text = $"Total de la Entrada: {total:C2}";
             }
+        }
+
+        private void FrmVerEntradas_Shown(object sender, EventArgs e)
+        {
+            string fechaDeHoy = DateTime.Now.ToString("yyyy-MM-dd");
+            mi.VerEntradas($"select * from v_entradas where `Fecha de la Entrada`  = '{fechaDeHoy}'", DtgEntradas, "tbl_entradas");
         }
 
         private void DtpFecha_ValueChanged(object sender, EventArgs e)

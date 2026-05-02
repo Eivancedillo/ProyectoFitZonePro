@@ -212,6 +212,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "895, 611";
             this.Load += new System.EventHandler(this.FrmRealizarVenta_Load);
+            this.Shown += new System.EventHandler(this.FrmRealizarVenta_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.DtgProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgCarrito)).EndInit();
             this.PSom.ResumeLayout(false);

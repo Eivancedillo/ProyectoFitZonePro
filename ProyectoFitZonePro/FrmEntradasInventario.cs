@@ -23,6 +23,7 @@ namespace ProyectoFitZonePro
             InitializeComponent();
             mi = new ManejadorInventarios();
             mi.GridEntrada(DtgEntrada);
+            this.Shown += FrmEntradasInventario_Shown;
         }
 
         private void ActualizarTabla()
@@ -178,6 +179,11 @@ namespace ProyectoFitZonePro
 
             ruta.CloseFigure(); // Cerramos la figura uniendo los arcos
             return ruta;
+        }
+
+        private void FrmEntradasInventario_Shown(object sender, EventArgs e)
+        {
+            ActualizarTabla();
         }
 
         private void DtgProductos_CellEnter(object sender, DataGridViewCellEventArgs e)

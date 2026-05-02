@@ -21,12 +21,18 @@ namespace ProyectoFitZonePro
         {
             InitializeComponent();
             mv = new ManejadorVentas();
+            this.Shown += FrmVerVentas_Shown;
         }
 
         private void DtpFecha_ValueChanged(object sender, EventArgs e)
         {
+            ActualizarTabla();
+        }
+
+        private void ActualizarTabla()
+        {
             string fechaFiltrada = DtpFecha.Value.ToString("yyyy-MM-dd");
-            mv.VerVentas($"select * from v_ventas where `Fecha de la Venta`  = '{fechaFiltrada}'",DtgVentas,"tbl_ventas");
+            mv.VerVentas($"select * from v_ventas where `Fecha de la Venta`  = '{fechaFiltrada}'", DtgVentas, "tbl_ventas");
         }
 
         private void DtgVentas_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -71,6 +77,12 @@ namespace ProyectoFitZonePro
 
             ruta.CloseFigure(); // Cerramos la figura uniendo los arcos
             return ruta;
+        }
+
+        private void FrmVerVentas_Shown(object sender, EventArgs e)
+        {
+            string fechaDeHoy = DateTime.Now.ToString("yyyy-MM-dd");
+            mv.VerVentas($"select * from v_ventas where `Fecha de la Venta`  = '{fechaDeHoy}'", DtgVentas, "tbl_ventas");
         }
 
         private void DtgVentas_CellEnter(object sender, DataGridViewCellEventArgs e)

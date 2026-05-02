@@ -24,6 +24,7 @@ namespace ProyectoFitZonePro
             InitializeComponent();
             mp = new ManejadorVentas();
             mp.GridCarrito(DtgCarrito);
+            this.Shown += FrmRealizarVenta_Shown;
         }
 
         private void BtnAgregarProducto_Click(object sender, EventArgs e)
@@ -44,11 +45,6 @@ namespace ProyectoFitZonePro
         {
             FrmCorteCaja fcc = new FrmCorteCaja();
             fcc.ShowDialog();
-        }
-
-        private void TxtBusqueda_TextChanged(object sender, EventArgs e)
-        {
-            ActualizarTabla();
         }
 
         //Actualizar tabla al escribir en el cuadro de búsqueda
@@ -126,6 +122,7 @@ namespace ProyectoFitZonePro
                     DtgCarrito.Rows.Add(idProducto, nombreProducto, 1, precio, precio);
                 }
                 ActualizarEtiquetaTotal();
+                ActualizarTabla();
             }
         }
 
@@ -202,6 +199,16 @@ namespace ProyectoFitZonePro
 
             ruta.CloseFigure(); // Cerramos la figura uniendo los arcos
             return ruta;
+        }
+
+        private void FrmRealizarVenta_Shown(object sender, EventArgs e)
+        {
+            ActualizarTabla();
+        }
+
+        private void TxtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            ActualizarTabla();
         }
 
         private void ActualizarEtiquetaTotal()

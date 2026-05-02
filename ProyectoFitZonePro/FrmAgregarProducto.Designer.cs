@@ -44,7 +44,7 @@
             this.Pdel = new System.Windows.Forms.Panel();
             this.LblEstado = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DtgProductos)).BeginInit();
             this.PSom2.SuspendLayout();
             this.Pdel2.SuspendLayout();
@@ -176,11 +176,11 @@
             this.BtnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnActualizar.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold);
             this.BtnActualizar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnActualizar.Location = new System.Drawing.Point(200, 344);
+            this.BtnActualizar.Location = new System.Drawing.Point(189, 344);
             this.BtnActualizar.Name = "BtnActualizar";
-            this.BtnActualizar.Size = new System.Drawing.Size(184, 46);
+            this.BtnActualizar.Size = new System.Drawing.Size(195, 46);
             this.BtnActualizar.TabIndex = 18;
-            this.BtnActualizar.Text = "Finalizar venta";
+            this.BtnActualizar.Text = "Actualizar Producto";
             this.BtnActualizar.UseVisualStyleBackColor = false;
             this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
             // 
@@ -221,14 +221,15 @@
             this.label4.TabIndex = 20;
             this.label4.Text = "Vista de ventas";
             // 
-            // button1
+            // BtnCancelar
             // 
-            this.button1.Location = new System.Drawing.Point(787, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Location = new System.Drawing.Point(776, 30);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(86, 25);
+            this.BtnCancelar.TabIndex = 22;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // FrmAgregarProducto
             // 
@@ -236,7 +237,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(895, 611);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.LblEstado);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.PSom2);
@@ -277,6 +278,6 @@
         private System.Windows.Forms.Label LblEstado;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button BtnActualizar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }

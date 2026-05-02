@@ -19,6 +19,7 @@ namespace ProyectoFitZonePro
         {
             InitializeComponent();
             mi = new ManejadorInventarios();
+            this.Shown += FrmInventario_Shown;
         }
 
         private void TxtBusqueda_TextChanged(object sender, EventArgs e)
@@ -56,6 +57,11 @@ namespace ProyectoFitZonePro
 
             ruta.CloseFigure(); // Cerramos la figura uniendo los arcos
             return ruta;
+        }
+
+        private void FrmInventario_Shown(object sender, EventArgs e)
+        {
+            ActualizarTabla();
         }
     }
 }

@@ -100,6 +100,7 @@
             this.Name = "FrmVerEntradas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmVerEntradas";
+            this.Shown += new System.EventHandler(this.FrmVerEntradas_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.DtgDetalleEntrada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgEntradas)).EndInit();
             this.ResumeLayout(false);

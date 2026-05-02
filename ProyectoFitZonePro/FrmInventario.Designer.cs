@@ -112,6 +112,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmInventario";
             this.Load += new System.EventHandler(this.FrmInventario_Load);
+            this.Shown += new System.EventHandler(this.FrmInventario_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.DtgInventario)).EndInit();
             this.PSom.ResumeLayout(false);
             this.Pdel.ResumeLayout(false);
