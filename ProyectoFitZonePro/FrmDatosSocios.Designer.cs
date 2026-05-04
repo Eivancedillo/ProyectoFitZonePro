@@ -55,6 +55,7 @@
             // 
             // TxtMembresia
             // 
+            this.TxtMembresia.Enabled = false;
             this.TxtMembresia.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtMembresia.Location = new System.Drawing.Point(217, 231);
             this.TxtMembresia.Name = "TxtMembresia";
@@ -63,6 +64,7 @@
             // 
             // TxtNombre
             // 
+            this.TxtNombre.Enabled = false;
             this.TxtNombre.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtNombre.Location = new System.Drawing.Point(217, 129);
             this.TxtNombre.Name = "TxtNombre";
