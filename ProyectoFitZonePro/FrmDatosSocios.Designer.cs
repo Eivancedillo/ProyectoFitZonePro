@@ -91,6 +91,7 @@
             // 
             // CmbDuracion
             // 
+            this.CmbDuracion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbDuracion.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmbDuracion.FormattingEnabled = true;
             this.CmbDuracion.Location = new System.Drawing.Point(30, 231);
