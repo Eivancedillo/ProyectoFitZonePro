@@ -24,7 +24,13 @@ namespace ProyectoFitZonePro
             mp.LlenarUsarios(CmbSocios);
         }
 
-        private void BtnAceptar_Click(object sender, EventArgs e)
+        private void BtnCancelar_Click_1(object sender, EventArgs e)
+        {
+            FrmRealizarVenta.carrito.Clear();
+            Close();
+        }
+
+        private void BtnGuardar_Click(object sender, EventArgs e)
         {
             // --- CANDADO DE RESPALDO ---
             if (!Sesion.TienePermiso("Tienda", "crear"))
@@ -67,12 +73,6 @@ namespace ProyectoFitZonePro
             {
                 MessageBox.Show($"Ocurrió un error inesperado al intentar procesar la transacción.\n\nDetalles técnicos para soporte: {ex.Message}", "Error de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void BtnCancelar_Click(object sender, EventArgs e)
-        {
-            FrmRealizarVenta.carrito.Clear();
-            Close();
         }
     }
 }

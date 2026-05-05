@@ -32,6 +32,7 @@ namespace Manejadores
             tabla.Columns.Clear();
             tabla.DataSource = b.Consultar(consulta, datos).Tables[0];
             tabla.Columns["idProducto"].Visible = false;
+            tabla.Columns["estado"].Visible = false;
             tabla.AutoResizeColumns();
             tabla.AutoResizeRows();
         }
