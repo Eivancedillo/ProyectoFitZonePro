@@ -24,13 +24,7 @@ namespace ProyectoFitZonePro
             mi = new ManejadorInventarios();
         }
 
-        private void BtnCancelar_Click(object sender, EventArgs e)
-        {
-            FrmEntradasInventario.de.Clear();
-            Close();
-        }
-
-        private void BtnGuardar_Click(object sender, EventArgs e)
+        private void BtnGuardar_Click_1(object sender, EventArgs e)
         {
             // --- CANDADO: ¿Tiene permiso para meter inventario? ---
             if (!Sesion.TienePermiso("Tienda", "crear")) // O si le creaste un módulo "Inventario", cambias la palabra "Tienda" por "Inventario"
@@ -66,6 +60,12 @@ namespace ProyectoFitZonePro
             {
                 MessageBox.Show($"Ocurrió un error al guardar en la base de datos:\n\n{ex.Message}", "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void BtnCancelar_Click_1(object sender, EventArgs e)
+        {
+            FrmEntradasInventario.de.Clear();
+            Close();
         }
     }
 }

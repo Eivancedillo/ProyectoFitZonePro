@@ -33,13 +33,22 @@
             this.DtgEntradas = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.LblTotalVenta = new System.Windows.Forms.Label();
+            this.PSom = new System.Windows.Forms.Panel();
+            this.Pdel = new System.Windows.Forms.Panel();
+            this.PSom2 = new System.Windows.Forms.Panel();
+            this.Pdel2 = new System.Windows.Forms.Panel();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DtgDetalleEntrada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgEntradas)).BeginInit();
+            this.PSom.SuspendLayout();
+            this.Pdel.SuspendLayout();
+            this.PSom2.SuspendLayout();
+            this.Pdel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // DtpFecha
             // 
-            this.DtpFecha.Location = new System.Drawing.Point(69, 50);
+            this.DtpFecha.Location = new System.Drawing.Point(76, 51);
             this.DtpFecha.Name = "DtpFecha";
             this.DtpFecha.Size = new System.Drawing.Size(391, 26);
             this.DtpFecha.TabIndex = 5;
@@ -49,20 +58,22 @@
             // 
             this.DtgDetalleEntrada.AllowUserToAddRows = false;
             this.DtgDetalleEntrada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DtgDetalleEntrada.Location = new System.Drawing.Point(466, 85);
+            this.DtgDetalleEntrada.Location = new System.Drawing.Point(18, 20);
             this.DtgDetalleEntrada.Name = "DtgDetalleEntrada";
             this.DtgDetalleEntrada.ReadOnly = true;
-            this.DtgDetalleEntrada.Size = new System.Drawing.Size(630, 436);
+            this.DtgDetalleEntrada.RowHeadersWidth = 51;
+            this.DtgDetalleEntrada.Size = new System.Drawing.Size(366, 365);
             this.DtgDetalleEntrada.TabIndex = 4;
             // 
             // DtgEntradas
             // 
             this.DtgEntradas.AllowUserToAddRows = false;
             this.DtgEntradas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DtgEntradas.Location = new System.Drawing.Point(12, 85);
+            this.DtgEntradas.Location = new System.Drawing.Point(15, 23);
             this.DtgEntradas.Name = "DtgEntradas";
             this.DtgEntradas.ReadOnly = true;
-            this.DtgEntradas.Size = new System.Drawing.Size(448, 436);
+            this.DtgEntradas.RowHeadersWidth = 51;
+            this.DtgEntradas.Size = new System.Drawing.Size(366, 365);
             this.DtgEntradas.TabIndex = 3;
             this.DtgEntradas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgEntradas_CellClick);
             this.DtgEntradas.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgEntradas_CellEnter);
@@ -78,31 +89,81 @@
             // 
             // LblTotalVenta
             // 
-            this.LblTotalVenta.Location = new System.Drawing.Point(462, 539);
+            this.LblTotalVenta.Location = new System.Drawing.Point(469, 530);
             this.LblTotalVenta.Name = "LblTotalVenta";
-            this.LblTotalVenta.Size = new System.Drawing.Size(634, 20);
+            this.LblTotalVenta.Size = new System.Drawing.Size(370, 20);
             this.LblTotalVenta.TabIndex = 8;
             this.LblTotalVenta.Text = ".....";
             this.LblTotalVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PSom
+            // 
+            this.PSom.Controls.Add(this.Pdel);
+            this.PSom.Location = new System.Drawing.Point(16, 91);
+            this.PSom.Name = "PSom";
+            this.PSom.Size = new System.Drawing.Size(408, 425);
+            this.PSom.TabIndex = 17;
+            // 
+            // Pdel
+            // 
+            this.Pdel.Controls.Add(this.DtgEntradas);
+            this.Pdel.Location = new System.Drawing.Point(4, 4);
+            this.Pdel.Name = "Pdel";
+            this.Pdel.Size = new System.Drawing.Size(400, 417);
+            this.Pdel.TabIndex = 9;
+            // 
+            // PSom2
+            // 
+            this.PSom2.Controls.Add(this.Pdel2);
+            this.PSom2.Location = new System.Drawing.Point(451, 91);
+            this.PSom2.Name = "PSom2";
+            this.PSom2.Size = new System.Drawing.Size(408, 425);
+            this.PSom2.TabIndex = 18;
+            // 
+            // Pdel2
+            // 
+            this.Pdel2.Controls.Add(this.DtgDetalleEntrada);
+            this.Pdel2.Location = new System.Drawing.Point(4, 4);
+            this.Pdel2.Name = "Pdel2";
+            this.Pdel2.Size = new System.Drawing.Size(400, 417);
+            this.Pdel2.TabIndex = 9;
+            // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.Location = new System.Drawing.Point(769, 12);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(86, 25);
+            this.BtnCancelar.TabIndex = 23;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // FrmVerEntradas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1108, 657);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(880, 573);
+            this.Controls.Add(this.BtnCancelar);
+            this.Controls.Add(this.PSom2);
+            this.Controls.Add(this.PSom);
             this.Controls.Add(this.LblTotalVenta);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DtpFecha);
-            this.Controls.Add(this.DtgDetalleEntrada);
-            this.Controls.Add(this.DtgEntradas);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmVerEntradas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmVerEntradas";
+            this.Load += new System.EventHandler(this.FrmVerEntradas_Load);
             this.Shown += new System.EventHandler(this.FrmVerEntradas_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.DtgDetalleEntrada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgEntradas)).EndInit();
+            this.PSom.ResumeLayout(false);
+            this.Pdel.ResumeLayout(false);
+            this.PSom2.ResumeLayout(false);
+            this.Pdel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,5 +176,10 @@
         private System.Windows.Forms.DataGridView DtgEntradas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LblTotalVenta;
+        private System.Windows.Forms.Panel PSom;
+        private System.Windows.Forms.Panel Pdel;
+        private System.Windows.Forms.Panel PSom2;
+        private System.Windows.Forms.Panel Pdel2;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }
