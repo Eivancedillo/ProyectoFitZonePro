@@ -45,7 +45,7 @@
             this.TxtBuscar.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBuscar.Location = new System.Drawing.Point(20, 28);
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(547, 26);
+            this.TxtBuscar.Size = new System.Drawing.Size(547, 31);
             this.TxtBuscar.TabIndex = 12;
             this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
@@ -85,7 +85,7 @@
             this.LblEstado.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.LblEstado.Location = new System.Drawing.Point(12, 30);
             this.LblEstado.Name = "LblEstado";
-            this.LblEstado.Size = new System.Drawing.Size(266, 16);
+            this.LblEstado.Size = new System.Drawing.Size(342, 20);
             this.LblEstado.TabIndex = 16;
             this.LblEstado.Text = "FitZone Pro sistema de administración";
             // 
@@ -95,7 +95,7 @@
             this.label3.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 21);
+            this.label3.Size = new System.Drawing.Size(216, 27);
             this.label3.TabIndex = 15;
             this.label3.Text = "Vista de miembros";
             // 
@@ -106,17 +106,17 @@
             this.BtnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCrear.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold);
             this.BtnCrear.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnCrear.Location = new System.Drawing.Point(596, 12);
+            this.BtnCrear.Location = new System.Drawing.Point(569, 12);
             this.BtnCrear.Name = "BtnCrear";
-            this.BtnCrear.Size = new System.Drawing.Size(253, 34);
+            this.BtnCrear.Size = new System.Drawing.Size(280, 34);
             this.BtnCrear.TabIndex = 14;
-            this.BtnCrear.Text = "Crear nuevo usuario";
+            this.BtnCrear.Text = "Registrar Asistencia";
             this.BtnCrear.UseVisualStyleBackColor = false;
             this.BtnCrear.Click += new System.EventHandler(this.BtnCrear_Click);
             // 
             // FrmAsistencias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(895, 611);
