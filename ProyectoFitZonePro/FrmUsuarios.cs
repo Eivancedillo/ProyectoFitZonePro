@@ -227,9 +227,9 @@ namespace ProyectoFitZonePro
             return ruta;
         }
 
-        private void TxtBuscar_Click(object sender, EventArgs e)
+        private void TxtBuscar_TextChanged_1(object sender, EventArgs e)
         {
-            TxtBuscar.Text = string.Empty;
+            ActualizarTabla();
         }
     }
 }

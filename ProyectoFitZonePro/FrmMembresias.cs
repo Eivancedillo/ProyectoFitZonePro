@@ -33,7 +33,7 @@ namespace ProyectoFitZonePro
         private void ActualizarTodo()
         {
             // 1. Llenamos la tabla general
-            mb.Mostrar("SELECT * FROM tbl_membresias", DtgDatos, "Membresias");
+            mb.Mostrar("SELECT * FROM tbl_membresias where estatus = 'Activo'", DtgDatos, "Membresias");
             DtgDatos.ClearSelection();
 
             // MAGIA DE LIMPIEZA VISUAL

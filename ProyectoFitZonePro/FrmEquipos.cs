@@ -35,11 +35,6 @@ namespace ProyectoFitZonePro
             ActualizarTabla();
         }
 
-        private void TxtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            ActualizarTabla();
-        }
-
         private void ActualizarTabla()
         {
             string busqueda = TxtBuscar.Text;
@@ -175,6 +170,11 @@ namespace ProyectoFitZonePro
 
             ruta.CloseFigure(); // Cerramos la figura uniendo los arcos
             return ruta;
+        }
+
+        private void TxtBuscar_TextChanged_1(object sender, EventArgs e)
+        {
+            ActualizarTabla();
         }
     }
 }

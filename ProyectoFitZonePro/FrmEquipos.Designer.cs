@@ -61,7 +61,7 @@
             this.CmbEstado.FormattingEnabled = true;
             this.CmbEstado.Location = new System.Drawing.Point(429, 27);
             this.CmbEstado.Name = "CmbEstado";
-            this.CmbEstado.Size = new System.Drawing.Size(121, 29);
+            this.CmbEstado.Size = new System.Drawing.Size(121, 35);
             this.CmbEstado.TabIndex = 13;
             // 
             // PSom
@@ -87,8 +87,9 @@
             this.TxtBuscar.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBuscar.Location = new System.Drawing.Point(20, 28);
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(403, 26);
+            this.TxtBuscar.Size = new System.Drawing.Size(403, 31);
             this.TxtBuscar.TabIndex = 13;
+            this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged_1);
             // 
             // LblEstado
             // 
@@ -97,7 +98,7 @@
             this.LblEstado.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.LblEstado.Location = new System.Drawing.Point(12, 30);
             this.LblEstado.Name = "LblEstado";
-            this.LblEstado.Size = new System.Drawing.Size(266, 16);
+            this.LblEstado.Size = new System.Drawing.Size(342, 20);
             this.LblEstado.TabIndex = 16;
             this.LblEstado.Text = "FitZone Pro sistema de administración";
             // 
@@ -107,7 +108,7 @@
             this.label3.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(154, 21);
+            this.label3.Size = new System.Drawing.Size(204, 27);
             this.label3.TabIndex = 15;
             this.label3.Text = "Vista de equipos";
             // 
@@ -128,7 +129,7 @@
             // 
             // FrmEquipos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(895, 611);
