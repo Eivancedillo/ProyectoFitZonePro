@@ -65,5 +65,56 @@ namespace AccesoDatos
 
             return ds;
         }
+
+
+        public int ConsultarEscalarInt(string query, bool mantenerConexion = false)
+        {
+            int resultado = 0;
+            try
+            {
+                if (con.State != ConnectionState.Open) con.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                object res = cmd.ExecuteScalar();
+
+                if (res != null && res != DBNull.Value)
+                {
+                    resultado = Convert.ToInt32(res);
+                }
+
+                if (!mantenerConexion) con.Close();
+            }
+            catch (Exception)
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                throw;
+            }
+            return resultado;
+        }
+
+        public decimal ConsultarEscalarDecimal(string query, bool mantenerConexion = false)
+        {
+            decimal resultado = 0;
+            try
+            {
+                if (con.State != ConnectionState.Open) con.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                object res = cmd.ExecuteScalar();
+
+                if (res != null && res != DBNull.Value)
+                {
+                    resultado = Convert.ToDecimal(res);
+                }
+
+                if (!mantenerConexion) con.Close();
+            }
+            catch (Exception)
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+                throw;
+            }
+            return resultado;
+        }
     }
 }

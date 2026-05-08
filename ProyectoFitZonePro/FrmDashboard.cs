@@ -20,6 +20,7 @@ namespace ProyectoFitZonePro
         {
             InitializeComponent();
             md = new ManejadorDashboard();
+            this.Shown += FrmDashboard_Shown;
         }
 
         private void FrmDashboard_Load(object sender, EventArgs e)
@@ -64,6 +65,94 @@ namespace ProyectoFitZonePro
 
             ruta.CloseFigure(); // Cerramos la figura uniendo los arcos
             return ruta;
+        }
+
+        private void FrmDashboard_Shown(object sender, EventArgs e)
+        {
+            CargarDashboardSinBatallar();
+        }
+
+        private void CargarDashboardSinBatallar()
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                int totalMiembros = md.ConsultarMiembrosTotales();
+                int activosHoy = md.ConsultarActivosHoy();
+                decimal ventasSemana = md.ConsultarVentasSemana();
+
+                LblTotalMiembros.Text = totalMiembros.ToString();
+                LblActivosHoy.Text = activosHoy.ToString();
+                LblVentasSemana.Text = ventasSemana.ToString("C2");
+
+                DataTable dtRecientes = md.ConsultarEntradasSalidasRecientes();
+
+                if (dtRecientes != null && dtRecientes.Rows.Count > 0)
+                {
+                    DtgEntradasSalidas.DataSource = dtRecientes;
+                    DtgEntradasSalidas.ClearSelection();
+
+                    // 1. Esconder la columna técnica y cabeceras
+                    DtgEntradasSalidas.Columns["TipoMovimiento"].Visible = false;
+                    DtgEntradasSalidas.ColumnHeadersVisible = false; // Oculta el título "Mensaje"
+                    DtgEntradasSalidas.RowHeadersVisible = false;    // Oculta la flecha de la izquierda
+
+                    // 2. Quitar bordes y estilos viejos
+                    DtgEntradasSalidas.BorderStyle = BorderStyle.None;
+                    DtgEntradasSalidas.CellBorderStyle = DataGridViewCellBorderStyle.None; // Sin líneas divisorias para que parezca una lista limpia
+                    DtgEntradasSalidas.BackgroundColor = Color.White; // Color de fondo de tu tarjeta del dashboard
+
+                    // 3. Estilo de las filas
+                    DtgEntradasSalidas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Que llene todo el ancho disponible
+                    DtgEntradasSalidas.RowTemplate.Height = 40; // Filas más altas para que respire el texto y se vea moderno
+                    DtgEntradasSalidas.AllowUserToAddRows = false;
+                    DtgEntradasSalidas.ReadOnly = true;
+
+                    // 4. Quitar el color azul feo cuando el usuario le dé clic
+                    DtgEntradasSalidas.DefaultCellStyle.SelectionBackColor = Color.White;
+                    DtgEntradasSalidas.DefaultCellStyle.SelectionForeColor = Color.Black;
+                    DtgEntradasSalidas.DefaultCellStyle.Padding = new Padding(15, 0, 0, 0); // Un margen a la izquierda para que no esté pegado al borde
+
+                }
+                else
+                {
+                    DtgEntradasSalidas.DataSource = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo falló al cargar: " + ex.Message);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void DtgEntradasSalidas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Verificamos que sea una fila válida y que estemos formateando la columna "Mensaje"
+            if (e.RowIndex >= 0 && DtgEntradasSalidas.Columns[e.ColumnIndex].Name == "Mensaje")
+            {
+                // Obtenemos el tipo de movimiento desde nuestra columna oculta
+                string tipo = DtgEntradasSalidas.Rows[e.RowIndex].Cells["TipoMovimiento"].Value.ToString();
+
+                // Aplicamos el color de letra según corresponda para que combine con tu UI
+                if (tipo == "Entrada")
+                {
+                    e.CellStyle.ForeColor = Color.MediumSeaGreen; // Un verde elegante
+                }
+                else if (tipo == "Salida")
+                {
+                    e.CellStyle.ForeColor = Color.IndianRed; // Un rojo suave, no tan chillón
+                }
+            }
+        }
+
+        private void TmrActualizarDashboard_Tick(object sender, EventArgs e)
+        {
+            CargarDashboardSinBatallar();
         }
     }
 }

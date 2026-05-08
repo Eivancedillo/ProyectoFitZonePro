@@ -28,26 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LblEstado = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.PSom = new System.Windows.Forms.Panel();
             this.Pdel = new System.Windows.Forms.Panel();
+            this.LblTotalMiembros = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.PSom3 = new System.Windows.Forms.Panel();
             this.Pdel3 = new System.Windows.Forms.Panel();
+            this.LblVentasSemana = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.PSom2 = new System.Windows.Forms.Panel();
             this.Pdel2 = new System.Windows.Forms.Panel();
+            this.LblActivosHoy = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.PSom4 = new System.Windows.Forms.Panel();
             this.Pdel4 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.PSom5 = new System.Windows.Forms.Panel();
             this.Pdel5 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.DtgEntradasSalidas = new System.Windows.Forms.DataGridView();
+            this.TmrActualizarDashboard = new System.Windows.Forms.Timer(this.components);
             this.PSom.SuspendLayout();
             this.Pdel.SuspendLayout();
             this.PSom3.SuspendLayout();
@@ -58,6 +61,7 @@
             this.Pdel4.SuspendLayout();
             this.PSom5.SuspendLayout();
             this.Pdel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgEntradasSalidas)).BeginInit();
             this.SuspendLayout();
             // 
             // LblEstado
@@ -77,9 +81,9 @@
             this.label3.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(9, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 21);
+            this.label3.Size = new System.Drawing.Size(181, 21);
             this.label3.TabIndex = 17;
-            this.label3.Text = "Vista de miembros";
+            this.label3.Text = "Vista del dashboard";
             // 
             // PSom
             // 
@@ -92,12 +96,32 @@
             // Pdel
             // 
             this.Pdel.BackColor = System.Drawing.Color.White;
-            this.Pdel.Controls.Add(this.label7);
+            this.Pdel.Controls.Add(this.LblTotalMiembros);
             this.Pdel.Controls.Add(this.label1);
             this.Pdel.Location = new System.Drawing.Point(4, 4);
             this.Pdel.Name = "Pdel";
             this.Pdel.Size = new System.Drawing.Size(250, 171);
             this.Pdel.TabIndex = 9;
+            // 
+            // LblTotalMiembros
+            // 
+            this.LblTotalMiembros.AutoSize = true;
+            this.LblTotalMiembros.Location = new System.Drawing.Point(30, 80);
+            this.LblTotalMiembros.Name = "LblTotalMiembros";
+            this.LblTotalMiembros.Size = new System.Drawing.Size(51, 20);
+            this.LblTotalMiembros.TabIndex = 1;
+            this.LblTotalMiembros.Text = "label7";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(30, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(153, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Miembros totales";
             // 
             // PSom3
             // 
@@ -110,12 +134,32 @@
             // Pdel3
             // 
             this.Pdel3.BackColor = System.Drawing.Color.White;
-            this.Pdel3.Controls.Add(this.label9);
+            this.Pdel3.Controls.Add(this.LblVentasSemana);
             this.Pdel3.Controls.Add(this.label4);
             this.Pdel3.Location = new System.Drawing.Point(4, 4);
             this.Pdel3.Name = "Pdel3";
             this.Pdel3.Size = new System.Drawing.Size(250, 171);
             this.Pdel3.TabIndex = 9;
+            // 
+            // LblVentasSemana
+            // 
+            this.LblVentasSemana.AutoSize = true;
+            this.LblVentasSemana.Location = new System.Drawing.Point(30, 80);
+            this.LblVentasSemana.Name = "LblVentasSemana";
+            this.LblVentasSemana.Size = new System.Drawing.Size(51, 20);
+            this.LblVentasSemana.TabIndex = 1;
+            this.LblVentasSemana.Text = "label7";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(30, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 20);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Venta semanal";
             // 
             // PSom2
             // 
@@ -128,12 +172,32 @@
             // Pdel2
             // 
             this.Pdel2.BackColor = System.Drawing.Color.White;
-            this.Pdel2.Controls.Add(this.label8);
+            this.Pdel2.Controls.Add(this.LblActivosHoy);
             this.Pdel2.Controls.Add(this.label2);
             this.Pdel2.Location = new System.Drawing.Point(4, 4);
             this.Pdel2.Name = "Pdel2";
             this.Pdel2.Size = new System.Drawing.Size(250, 171);
             this.Pdel2.TabIndex = 9;
+            // 
+            // LblActivosHoy
+            // 
+            this.LblActivosHoy.AutoSize = true;
+            this.LblActivosHoy.Location = new System.Drawing.Point(30, 80);
+            this.LblActivosHoy.Name = "LblActivosHoy";
+            this.LblActivosHoy.Size = new System.Drawing.Size(51, 20);
+            this.LblActivosHoy.TabIndex = 1;
+            this.LblActivosHoy.Text = "label7";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(30, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 20);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Activos hoy";
             // 
             // PSom4
             // 
@@ -146,11 +210,23 @@
             // Pdel4
             // 
             this.Pdel4.BackColor = System.Drawing.Color.White;
+            this.Pdel4.Controls.Add(this.DtgEntradasSalidas);
             this.Pdel4.Controls.Add(this.label5);
             this.Pdel4.Location = new System.Drawing.Point(4, 4);
             this.Pdel4.Name = "Pdel4";
             this.Pdel4.Size = new System.Drawing.Size(540, 276);
             this.Pdel4.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label5.Location = new System.Drawing.Point(15, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(261, 20);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Entradas / salidas recientes";
             // 
             // PSom5
             // 
@@ -169,50 +245,6 @@
             this.Pdel5.Size = new System.Drawing.Size(250, 276);
             this.Pdel5.TabIndex = 9;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(30, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Miembros totales";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(30, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 20);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Activos hoy";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(30, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 20);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Venta semanal";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(15, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(261, 20);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Entradas / salidas recientes";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -224,32 +256,23 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Distribucion de \r\nmembresias";
             // 
-            // label7
+            // DtgEntradasSalidas
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(30, 80);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 20);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "label7";
+            this.DtgEntradasSalidas.AllowUserToAddRows = false;
+            this.DtgEntradasSalidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgEntradasSalidas.Location = new System.Drawing.Point(19, 38);
+            this.DtgEntradasSalidas.Name = "DtgEntradasSalidas";
+            this.DtgEntradasSalidas.ReadOnly = true;
+            this.DtgEntradasSalidas.RowTemplate.Height = 24;
+            this.DtgEntradasSalidas.Size = new System.Drawing.Size(504, 223);
+            this.DtgEntradasSalidas.TabIndex = 1;
+            this.DtgEntradasSalidas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DtgEntradasSalidas_CellFormatting);
             // 
-            // label8
+            // TmrActualizarDashboard
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(30, 80);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 20);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "label7";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(30, 80);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 20);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "label7";
+            this.TmrActualizarDashboard.Enabled = true;
+            this.TmrActualizarDashboard.Interval = 5000;
+            this.TmrActualizarDashboard.Tick += new System.EventHandler(this.TmrActualizarDashboard_Tick);
             // 
             // FrmDashboard
             // 
@@ -271,6 +294,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = " ";
             this.Load += new System.EventHandler(this.FrmDashboard_Load);
+            this.Shown += new System.EventHandler(this.FrmDashboard_Shown);
             this.PSom.ResumeLayout(false);
             this.Pdel.ResumeLayout(false);
             this.Pdel.PerformLayout();
@@ -286,6 +310,7 @@
             this.PSom5.ResumeLayout(false);
             this.Pdel5.ResumeLayout(false);
             this.Pdel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgEntradasSalidas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,8 +335,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label LblTotalMiembros;
+        private System.Windows.Forms.Label LblVentasSemana;
+        private System.Windows.Forms.Label LblActivosHoy;
+        private System.Windows.Forms.DataGridView DtgEntradasSalidas;
+        private System.Windows.Forms.Timer TmrActualizarDashboard;
     }
 }
