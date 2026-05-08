@@ -45,11 +45,16 @@
             this.LblEstado = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.BtnCancelar = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.DtgProductos)).BeginInit();
             this.PSom2.SuspendLayout();
             this.Pdel2.SuspendLayout();
             this.PSom.SuspendLayout();
             this.Pdel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -147,7 +152,7 @@
             // PSom2
             // 
             this.PSom2.Controls.Add(this.Pdel2);
-            this.PSom2.Location = new System.Drawing.Point(454, 93);
+            this.PSom2.Location = new System.Drawing.Point(452, 105);
             this.PSom2.Name = "PSom2";
             this.PSom2.Size = new System.Drawing.Size(408, 425);
             this.PSom2.TabIndex = 17;
@@ -187,7 +192,7 @@
             // PSom
             // 
             this.PSom.Controls.Add(this.Pdel);
-            this.PSom.Location = new System.Drawing.Point(26, 93);
+            this.PSom.Location = new System.Drawing.Point(24, 105);
             this.PSom.Name = "PSom";
             this.PSom.Size = new System.Drawing.Size(408, 425);
             this.PSom.TabIndex = 16;
@@ -205,7 +210,7 @@
             this.LblEstado.AutoSize = true;
             this.LblEstado.Font = new System.Drawing.Font("Cascadia Code", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblEstado.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.LblEstado.Location = new System.Drawing.Point(12, 30);
+            this.LblEstado.Location = new System.Drawing.Point(9, 30);
             this.LblEstado.Name = "LblEstado";
             this.LblEstado.Size = new System.Drawing.Size(266, 16);
             this.LblEstado.TabIndex = 21;
@@ -215,7 +220,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 9);
+            this.label4.Location = new System.Drawing.Point(9, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 21);
             this.label4.TabIndex = 20;
@@ -223,31 +228,64 @@
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(776, 30);
+            this.BtnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(166)))), ((int)(((byte)(121)))));
+            this.BtnCancelar.FlatAppearance.BorderSize = 0;
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelar.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold);
+            this.BtnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BtnCancelar.Location = new System.Drawing.Point(665, 25);
             this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(86, 25);
-            this.BtnCancelar.TabIndex = 22;
+            this.BtnCancelar.Size = new System.Drawing.Size(195, 46);
+            this.BtnCancelar.TabIndex = 18;
             this.BtnCancelar.Text = "Cancelar";
-            this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.UseVisualStyleBackColor = false;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(895, 611);
+            this.panel1.TabIndex = 22;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.PSom);
+            this.panel3.Controls.Add(this.BtnCancelar);
+            this.panel3.Controls.Add(this.PSom2);
+            this.panel3.Controls.Add(this.LblEstado);
+            this.panel3.Location = new System.Drawing.Point(2, 2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(891, 607);
+            this.panel3.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.GrayText;
+            this.panel2.Location = new System.Drawing.Point(5, 5);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(895, 611);
+            this.panel2.TabIndex = 23;
             // 
             // FrmAgregarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(895, 611);
-            this.Controls.Add(this.BtnCancelar);
-            this.Controls.Add(this.LblEstado);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.PSom2);
-            this.Controls.Add(this.PSom);
+            this.BackColor = System.Drawing.Color.Magenta;
+            this.ClientSize = new System.Drawing.Size(901, 617);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmAgregarProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAgregarProducto";
+            this.TransparencyKey = System.Drawing.Color.Magenta;
             this.Load += new System.EventHandler(this.FrmAgregarProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DtgProductos)).EndInit();
             this.PSom2.ResumeLayout(false);
@@ -255,8 +293,10 @@
             this.Pdel2.PerformLayout();
             this.PSom.ResumeLayout(false);
             this.Pdel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -279,5 +319,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button BtnActualizar;
         private System.Windows.Forms.Button BtnCancelar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
     }
 }

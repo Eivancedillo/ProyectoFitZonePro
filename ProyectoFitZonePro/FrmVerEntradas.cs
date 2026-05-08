@@ -54,13 +54,13 @@ namespace ProyectoFitZonePro
             int radioBorde = 5;
             GraphicsPath rutaPanel3 = CrearRutaRedondeada(new Rectangle(0, 0, Pdel.Width, Pdel.Height), radioBorde);
             GraphicsPath rutaPanel4 = CrearRutaRedondeada(new Rectangle(0, 0, PSom.Width, PSom.Height), radioBorde);
-
+            GraphicsPath rutaBoton1 = CrearRutaRedondeada(new Rectangle(0, 0, BtnCancelar.Width, BtnCancelar.Height), radioBorde);
 
             Pdel.Region = new Region(rutaPanel3);
             PSom.Region = new Region(rutaPanel4);
             PSom2.Region = new Region(rutaPanel3);
             PSom2.Region = new Region(rutaPanel4);
-
+            BtnCancelar.Region = new Region(rutaBoton1);
 
             Pdel.BackColor = Color.White;
             Pdel2.BackColor = Color.White;

@@ -131,6 +131,7 @@ namespace Manejadores
             PSom.Region = new Region(rutaPanel4);
             PSom2.Region = new Region(rutaPanel3);
             PSom2.Region = new Region(rutaPanel4);
+            BtnCancelar.Region = new Region(rutaBoton1);
             BtnActualizar.Region = new Region(rutaBoton1);
             BtnAgregar.Region = new Region(rutaBoton2);
             BtnEliminar.Region = new Region(rutaBoton2);
