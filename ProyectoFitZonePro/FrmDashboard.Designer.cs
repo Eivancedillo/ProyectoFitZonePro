@@ -51,6 +51,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.DtgEntradasSalidas = new System.Windows.Forms.DataGridView();
             this.TmrActualizarDashboard = new System.Windows.Forms.Timer(this.components);
+            this.DtgDistribucion = new System.Windows.Forms.DataGridView();
             this.PSom.SuspendLayout();
             this.Pdel.SuspendLayout();
             this.PSom3.SuspendLayout();
@@ -62,6 +63,7 @@
             this.PSom5.SuspendLayout();
             this.Pdel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DtgEntradasSalidas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgDistribucion)).BeginInit();
             this.SuspendLayout();
             // 
             // LblEstado
@@ -239,6 +241,7 @@
             // Pdel5
             // 
             this.Pdel5.BackColor = System.Drawing.Color.White;
+            this.Pdel5.Controls.Add(this.DtgDistribucion);
             this.Pdel5.Controls.Add(this.label6);
             this.Pdel5.Location = new System.Drawing.Point(4, 4);
             this.Pdel5.Name = "Pdel5";
@@ -273,6 +276,17 @@
             this.TmrActualizarDashboard.Enabled = true;
             this.TmrActualizarDashboard.Interval = 5000;
             this.TmrActualizarDashboard.Tick += new System.EventHandler(this.TmrActualizarDashboard_Tick);
+            // 
+            // DtgDistribucion
+            // 
+            this.DtgDistribucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgDistribucion.Enabled = false;
+            this.DtgDistribucion.Location = new System.Drawing.Point(19, 58);
+            this.DtgDistribucion.Name = "DtgDistribucion";
+            this.DtgDistribucion.RowTemplate.Height = 24;
+            this.DtgDistribucion.Size = new System.Drawing.Size(210, 203);
+            this.DtgDistribucion.TabIndex = 1;
+            this.DtgDistribucion.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DtgDistribucion_CellPainting);
             // 
             // FrmDashboard
             // 
@@ -311,6 +325,7 @@
             this.Pdel5.ResumeLayout(false);
             this.Pdel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DtgEntradasSalidas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgDistribucion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,5 +355,6 @@
         private System.Windows.Forms.Label LblActivosHoy;
         private System.Windows.Forms.DataGridView DtgEntradasSalidas;
         private System.Windows.Forms.Timer TmrActualizarDashboard;
+        private System.Windows.Forms.DataGridView DtgDistribucion;
     }
 }

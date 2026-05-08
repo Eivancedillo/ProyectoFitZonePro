@@ -33,5 +33,11 @@ namespace Manejadores
             string query = "SELECT Mensaje, TipoMovimiento FROM v_dashboard_entradas_salidas;";
             return b.Consultar(query, "recientes").Tables[0];
         }
+
+        public DataTable ConsultarDistribucionMembresias()
+        {
+            string query = "SELECT nombre, Cantidad, Porcentaje FROM v_dashboard_distribucion_membresias;";
+            return b.Consultar(query, "distribucion").Tables[0];
+        }
     }
 }

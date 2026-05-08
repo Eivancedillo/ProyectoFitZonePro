@@ -93,31 +93,49 @@ namespace ProyectoFitZonePro
                     DtgEntradasSalidas.DataSource = dtRecientes;
                     DtgEntradasSalidas.ClearSelection();
 
-                    // 1. Esconder la columna técnica y cabeceras
                     DtgEntradasSalidas.Columns["TipoMovimiento"].Visible = false;
-                    DtgEntradasSalidas.ColumnHeadersVisible = false; // Oculta el título "Mensaje"
-                    DtgEntradasSalidas.RowHeadersVisible = false;    // Oculta la flecha de la izquierda
+                    DtgEntradasSalidas.ColumnHeadersVisible = false; 
+                    DtgEntradasSalidas.RowHeadersVisible = false;   
 
-                    // 2. Quitar bordes y estilos viejos
                     DtgEntradasSalidas.BorderStyle = BorderStyle.None;
-                    DtgEntradasSalidas.CellBorderStyle = DataGridViewCellBorderStyle.None; // Sin líneas divisorias para que parezca una lista limpia
-                    DtgEntradasSalidas.BackgroundColor = Color.White; // Color de fondo de tu tarjeta del dashboard
+                    DtgEntradasSalidas.CellBorderStyle = DataGridViewCellBorderStyle.None;
+                    DtgEntradasSalidas.BackgroundColor = Color.White; 
 
-                    // 3. Estilo de las filas
-                    DtgEntradasSalidas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Que llene todo el ancho disponible
-                    DtgEntradasSalidas.RowTemplate.Height = 40; // Filas más altas para que respire el texto y se vea moderno
+                    DtgEntradasSalidas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    DtgEntradasSalidas.RowTemplate.Height = 40;
                     DtgEntradasSalidas.AllowUserToAddRows = false;
                     DtgEntradasSalidas.ReadOnly = true;
 
-                    // 4. Quitar el color azul feo cuando el usuario le dé clic
                     DtgEntradasSalidas.DefaultCellStyle.SelectionBackColor = Color.White;
                     DtgEntradasSalidas.DefaultCellStyle.SelectionForeColor = Color.Black;
-                    DtgEntradasSalidas.DefaultCellStyle.Padding = new Padding(15, 0, 0, 0); // Un margen a la izquierda para que no esté pegado al borde
+                    DtgEntradasSalidas.DefaultCellStyle.Padding = new Padding(15, 0, 0, 0);
 
                 }
                 else
                 {
                     DtgEntradasSalidas.DataSource = null;
+                }
+
+                DataTable dtMembresias = md.ConsultarDistribucionMembresias();
+
+                if (dtMembresias != null && dtMembresias.Rows.Count > 0)
+                {
+                    DtgDistribucion.DataSource = dtMembresias;
+                    DtgDistribucion.ClearSelection();
+
+                    DtgDistribucion.Columns["Porcentaje"].Visible = false; 
+                    DtgDistribucion.Columns["Porcentaje"].Visible = false;
+                    DtgDistribucion.Columns["Cantidad"].Visible = false;
+                    DtgDistribucion.ColumnHeadersVisible = false;
+                    DtgDistribucion.RowHeadersVisible = false;
+                    DtgDistribucion.BackgroundColor = Color.White;
+                    DtgDistribucion.BorderStyle = BorderStyle.None;
+                    DtgDistribucion.CellBorderStyle = DataGridViewCellBorderStyle.None;
+                    DtgDistribucion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                else
+                {
+                    DtgDistribucion.DataSource = null;
                 }
             }
             catch (Exception ex)
@@ -132,20 +150,17 @@ namespace ProyectoFitZonePro
 
         private void DtgEntradasSalidas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // Verificamos que sea una fila válida y que estemos formateando la columna "Mensaje"
             if (e.RowIndex >= 0 && DtgEntradasSalidas.Columns[e.ColumnIndex].Name == "Mensaje")
             {
-                // Obtenemos el tipo de movimiento desde nuestra columna oculta
                 string tipo = DtgEntradasSalidas.Rows[e.RowIndex].Cells["TipoMovimiento"].Value.ToString();
 
-                // Aplicamos el color de letra según corresponda para que combine con tu UI
                 if (tipo == "Entrada")
                 {
-                    e.CellStyle.ForeColor = Color.MediumSeaGreen; // Un verde elegante
+                    e.CellStyle.ForeColor = Color.MediumSeaGreen; 
                 }
                 else if (tipo == "Salida")
                 {
-                    e.CellStyle.ForeColor = Color.IndianRed; // Un rojo suave, no tan chillón
+                    e.CellStyle.ForeColor = Color.IndianRed;
                 }
             }
         }
@@ -153,6 +168,35 @@ namespace ProyectoFitZonePro
         private void TmrActualizarDashboard_Tick(object sender, EventArgs e)
         {
             CargarDashboardSinBatallar();
+        }
+
+        private void DtgDistribucion_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                e.PaintBackground(e.CellBounds, true);
+                if (DtgDistribucion.Columns[e.ColumnIndex].Name == "nombre")
+                {
+                    e.PaintBackground(e.CellBounds, true);
+
+                    var valorNombre = DtgDistribucion.Rows[e.RowIndex].Cells["nombre"].Value;
+                    var valorPorcentaje = DtgDistribucion.Rows[e.RowIndex].Cells["Porcentaje"].Value;
+
+                    if (valorNombre == null || valorNombre == DBNull.Value || valorPorcentaje == DBNull.Value)
+                    {
+                        return;
+                    }
+
+                    float porcentaje = Convert.ToSingle(valorPorcentaje);
+                    string nombreMembresia = Convert.ToString(valorNombre);
+                    int anchoBarra = (int)((e.CellBounds.Width - 20) * (porcentaje / 100f));
+                    if (anchoBarra <= 0) anchoBarra = 4; 
+                    Rectangle rectBarra = new Rectangle(e.CellBounds.X + 5, e.CellBounds.Y + 22, anchoBarra, 12);
+                    e.Graphics.FillRectangle(Brushes.MediumSeaGreen, rectBarra);
+                    e.Graphics.DrawString(nombreMembresia, new Font("Consolas", 9, FontStyle.Regular), Brushes.Black, e.CellBounds.X + 5, e.CellBounds.Y + 3);
+                    e.Handled = true;
+                }
+            }
         }
     }
 }
