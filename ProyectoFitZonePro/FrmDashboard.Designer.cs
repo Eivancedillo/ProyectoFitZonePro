@@ -45,13 +45,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.PSom4 = new System.Windows.Forms.Panel();
             this.Pdel4 = new System.Windows.Forms.Panel();
+            this.DtgEntradasSalidas = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.PSom5 = new System.Windows.Forms.Panel();
             this.Pdel5 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.DtgEntradasSalidas = new System.Windows.Forms.DataGridView();
-            this.TmrActualizarDashboard = new System.Windows.Forms.Timer(this.components);
             this.DtgDistribucion = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TmrActualizarDashboard = new System.Windows.Forms.Timer(this.components);
             this.PSom.SuspendLayout();
             this.Pdel.SuspendLayout();
             this.PSom3.SuspendLayout();
@@ -60,9 +60,9 @@
             this.Pdel2.SuspendLayout();
             this.PSom4.SuspendLayout();
             this.Pdel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgEntradasSalidas)).BeginInit();
             this.PSom5.SuspendLayout();
             this.Pdel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DtgEntradasSalidas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgDistribucion)).BeginInit();
             this.SuspendLayout();
             // 
@@ -219,6 +219,18 @@
             this.Pdel4.Size = new System.Drawing.Size(540, 276);
             this.Pdel4.TabIndex = 9;
             // 
+            // DtgEntradasSalidas
+            // 
+            this.DtgEntradasSalidas.AllowUserToAddRows = false;
+            this.DtgEntradasSalidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgEntradasSalidas.Location = new System.Drawing.Point(19, 38);
+            this.DtgEntradasSalidas.Name = "DtgEntradasSalidas";
+            this.DtgEntradasSalidas.ReadOnly = true;
+            this.DtgEntradasSalidas.RowTemplate.Height = 24;
+            this.DtgEntradasSalidas.Size = new System.Drawing.Size(504, 223);
+            this.DtgEntradasSalidas.TabIndex = 1;
+            this.DtgEntradasSalidas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DtgEntradasSalidas_CellFormatting);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -248,6 +260,17 @@
             this.Pdel5.Size = new System.Drawing.Size(250, 276);
             this.Pdel5.TabIndex = 9;
             // 
+            // DtgDistribucion
+            // 
+            this.DtgDistribucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgDistribucion.Enabled = false;
+            this.DtgDistribucion.Location = new System.Drawing.Point(19, 58);
+            this.DtgDistribucion.Name = "DtgDistribucion";
+            this.DtgDistribucion.RowTemplate.Height = 24;
+            this.DtgDistribucion.Size = new System.Drawing.Size(210, 203);
+            this.DtgDistribucion.TabIndex = 1;
+            this.DtgDistribucion.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DtgDistribucion_CellPainting);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -259,34 +282,11 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Distribucion de \r\nmembresias";
             // 
-            // DtgEntradasSalidas
-            // 
-            this.DtgEntradasSalidas.AllowUserToAddRows = false;
-            this.DtgEntradasSalidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DtgEntradasSalidas.Location = new System.Drawing.Point(19, 38);
-            this.DtgEntradasSalidas.Name = "DtgEntradasSalidas";
-            this.DtgEntradasSalidas.ReadOnly = true;
-            this.DtgEntradasSalidas.RowTemplate.Height = 24;
-            this.DtgEntradasSalidas.Size = new System.Drawing.Size(504, 223);
-            this.DtgEntradasSalidas.TabIndex = 1;
-            this.DtgEntradasSalidas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DtgEntradasSalidas_CellFormatting);
-            // 
             // TmrActualizarDashboard
             // 
             this.TmrActualizarDashboard.Enabled = true;
             this.TmrActualizarDashboard.Interval = 5000;
             this.TmrActualizarDashboard.Tick += new System.EventHandler(this.TmrActualizarDashboard_Tick);
-            // 
-            // DtgDistribucion
-            // 
-            this.DtgDistribucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DtgDistribucion.Enabled = false;
-            this.DtgDistribucion.Location = new System.Drawing.Point(19, 58);
-            this.DtgDistribucion.Name = "DtgDistribucion";
-            this.DtgDistribucion.RowTemplate.Height = 24;
-            this.DtgDistribucion.Size = new System.Drawing.Size(210, 203);
-            this.DtgDistribucion.TabIndex = 1;
-            this.DtgDistribucion.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DtgDistribucion_CellPainting);
             // 
             // FrmDashboard
             // 
@@ -321,10 +321,10 @@
             this.PSom4.ResumeLayout(false);
             this.Pdel4.ResumeLayout(false);
             this.Pdel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgEntradasSalidas)).EndInit();
             this.PSom5.ResumeLayout(false);
             this.Pdel5.ResumeLayout(false);
             this.Pdel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DtgEntradasSalidas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgDistribucion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
