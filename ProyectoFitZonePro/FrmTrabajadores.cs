@@ -27,7 +27,7 @@ namespace ProyectoFitZonePro
         private void ActualizarTabla()
         {
             // Carga de la lista completa de trabajadores desde la base de datos
-            mt.Mostrar("SELECT * FROM tbl_trabajadores", DtgDatos, "Trabajadores");
+            mt.Mostrar($"SELECT * FROM tbl_trabajadores WHERE nombre LIKE '%{TxtBuscar.Text}%'", DtgDatos, "Trabajadores");
         }
 
         private void BtnCrear_Click(object sender, EventArgs e)
@@ -126,6 +126,11 @@ namespace ProyectoFitZonePro
 
             ruta.CloseFigure(); // Cerramos la figura uniendo los arcos
             return ruta;
+        }
+
+        private void TxtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            ActualizarTabla();
         }
     }
 }

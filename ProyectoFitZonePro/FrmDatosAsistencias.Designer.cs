@@ -31,9 +31,7 @@
             this.TxtVigencia = new System.Windows.Forms.TextBox();
             this.TxtMembresia = new System.Windows.Forms.TextBox();
             this.TxtNombre = new System.Windows.Forms.TextBox();
-            this.TxtIdSocio = new System.Windows.Forms.TextBox();
             this.LblEstado = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -71,19 +69,10 @@
             // 
             this.TxtNombre.Enabled = false;
             this.TxtNombre.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtNombre.Location = new System.Drawing.Point(301, 129);
+            this.TxtNombre.Location = new System.Drawing.Point(30, 126);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(212, 26);
             this.TxtNombre.TabIndex = 8;
-            // 
-            // TxtIdSocio
-            // 
-            this.TxtIdSocio.Enabled = false;
-            this.TxtIdSocio.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtIdSocio.Location = new System.Drawing.Point(30, 129);
-            this.TxtIdSocio.Name = "TxtIdSocio";
-            this.TxtIdSocio.Size = new System.Drawing.Size(212, 26);
-            this.TxtIdSocio.TabIndex = 7;
             // 
             // LblEstado
             // 
@@ -94,21 +83,11 @@
             this.LblEstado.Size = new System.Drawing.Size(0, 21);
             this.LblEstado.TabIndex = 14;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(30, 105);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 21);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "ID del socio";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(297, 105);
+            this.label2.Location = new System.Drawing.Point(26, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 21);
             this.label2.TabIndex = 14;
@@ -151,8 +130,6 @@
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.TxtIdSocio);
-            this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.TxtNombre);
             this.panel3.Controls.Add(this.LblEstado);
             this.panel3.Controls.Add(this.TxtMembresia);
@@ -247,9 +224,7 @@
         private System.Windows.Forms.TextBox TxtVigencia;
         private System.Windows.Forms.TextBox TxtMembresia;
         private System.Windows.Forms.TextBox TxtNombre;
-        private System.Windows.Forms.TextBox TxtIdSocio;
         private System.Windows.Forms.Label LblEstado;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
