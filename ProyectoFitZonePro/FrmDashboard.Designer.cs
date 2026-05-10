@@ -223,6 +223,7 @@
             // 
             this.DtgEntradasSalidas.AllowUserToAddRows = false;
             this.DtgEntradasSalidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgEntradasSalidas.Enabled = false;
             this.DtgEntradasSalidas.Location = new System.Drawing.Point(19, 38);
             this.DtgEntradasSalidas.Name = "DtgEntradasSalidas";
             this.DtgEntradasSalidas.ReadOnly = true;
