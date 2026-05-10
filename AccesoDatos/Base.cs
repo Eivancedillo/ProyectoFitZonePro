@@ -116,5 +116,43 @@ namespace AccesoDatos
             }
             return resultado;
         }
+
+        // Método dentro de tu clase Base de datos
+        public bool EjecutarProcedimientoHuella(int idUsuario, byte[] huellaBinaria, bool mantenerConexion = false)
+        {
+            bool exito = false;
+            try
+            {
+                // Usamos TU variable de conexión global 'con'
+                if (con.State != ConnectionState.Open)
+                    con.Open();
+
+                // Le pasamos 'con' al comando en lugar de crear una nueva
+                MySqlCommand cmd = new MySqlCommand("p_registrarHuella", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Parámetros seguros para evitar inyección SQL y poder mandar el BLOB
+                cmd.Parameters.AddWithValue("_idUsuario", idUsuario);
+                cmd.Parameters.AddWithValue("_huella", huellaBinaria);
+
+                // Ejecutamos la consulta
+                int filasAfectadas = cmd.ExecuteNonQuery();
+                exito = (filasAfectadas > 0);
+
+                // Respetamos tu regla de cerrar la conexión si no se pide mantenerla
+                if (!mantenerConexion)
+                    con.Close();
+            }
+            catch (Exception ex)
+            {
+                // Respetamos tu manejo de errores
+                if (con.State == ConnectionState.Open)
+                    con.Close();
+
+                throw new Exception("Error al guardar la huella en la BD: " + ex.Message);
+            }
+
+            return exito;
+        }
     }
 }

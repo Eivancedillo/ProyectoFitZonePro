@@ -4,6 +4,8 @@ using System.Data;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Collections.Generic; // Para usar el Diccionario
+using DPFP;
 
 namespace Manejadores
 {
@@ -63,42 +65,58 @@ namespace Manejadores
             tabla.ClearSelection();
         }
 
-        // --- LA MAGIA DEL ESCÁNER ---
-        public string[] ProcesarAcceso(string idEscaneado)
+        public Dictionary<int, DPFP.Template> ObtenerHuellasBD()
         {
-            // 1. Limpiamos lo que escribió (Si escribió "S-0015", nos quedamos solo con "15")
-            string idLimpio = Regex.Replace(idEscaneado, "[^0-9]", "");
-            if (string.IsNullOrEmpty(idLimpio)) return new string[] { "ERROR", "Por favor ingrese un ID válido." };
+            Dictionary<int, DPFP.Template> diccionarioHuellas = new Dictionary<int, DPFP.Template>();
+            try
+            {
+                // Llamamos al procedure que me pasaste antes
+                DataTable dtHuellas = b.Consultar("CALL p_obtenerHuellasActivas();", "Huellas").Tables[0];
 
-            // 2. Buscamos esa suscripción usando la vista que ya teníamos de socios
-            string querySuscripcion = $"SELECT fkIdUsuario, Cliente, Paquete, fecha_fin, estado FROM v_vista_suscripciones WHERE idSuscripcion = {idLimpio}";
-            DataTable dtSocio = b.Consultar(querySuscripcion, "InfoSocio").Tables[0];
+                foreach (DataRow fila in dtHuellas.Rows)
+                {
+                    if (fila["huella_dactilar"] != DBNull.Value)
+                    {
+                        int idUsuario = Convert.ToInt32(fila["idUsuario"]);
+                        byte[] huellaBytes = (byte[])fila["huella_dactilar"];
+
+                        // Convertimos el BLOB de bytes a una Plantilla que el sensor entienda
+                        DPFP.Template plantilla = new DPFP.Template();
+                        plantilla.DeSerialize(huellaBytes);
+
+                        diccionarioHuellas.Add(idUsuario, plantilla);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cargar las huellas: " + ex.Message);
+            }
+            return diccionarioHuellas;
+        }
+
+        public string[] ProcesarAcceso(int idUsuario)
+        {
+            // Buscamos la suscripción ACTIVA de este usuario específico
+            string query = $"SELECT fkIdUsuario, Cliente, Paquete, fecha_fin, estado FROM v_vista_suscripciones WHERE fkIdUsuario = {idUsuario} AND estado = 'activo' ORDER BY idSuscripcion DESC LIMIT 1";
+            DataTable dtSocio = b.Consultar(query, "InfoSocio").Tables[0];
 
             if (dtSocio.Rows.Count == 0)
             {
-                return new string[] { "ERROR", "Suscripción no encontrada. Verifique el número." };
+                return new string[] { "DENEGADO", "El usuario de esta huella no tiene ninguna membresía activa." };
             }
 
             DataRow fila = dtSocio.Rows[0];
-            string estado = fila["estado"].ToString().ToLower();
             string nombre = fila["Cliente"].ToString();
             string paquete = fila["Paquete"].ToString();
             string vigencia = Convert.ToDateTime(fila["fecha_fin"]).ToString("dd/MMM/yyyy");
 
-            // 3. Verificamos si está activo
-            if (estado != "activo")
-            {
-                return new string[] { "DENEGADO", $"¡Membresía {estado.ToUpper()}! No puede pasar.", nombre, paquete, vigencia };
-            }
-
-            // 4. Si está activo, llamamos al procedure inteligente para marcar entrada/salida
-            int idUsuario = Convert.ToInt32(fila["fkIdUsuario"]);
+            // Si está activo, llamamos al procedure para marcar entrada/salida
             DataTable dtAsistencia = b.Consultar($"call p_registrarAsistencia({idUsuario})", "Registro").Tables[0];
 
             string mensajeDB = dtAsistencia.Rows[0]["Mensaje"].ToString();
-            string tipoRegistro = dtAsistencia.Rows[0]["TipoRegistro"].ToString(); // ENTRADA o SALIDA
+            string tipoRegistro = dtAsistencia.Rows[0]["TipoRegistro"].ToString();
 
-            // Devolvemos el arreglo con todos los datos para que el Formulario los pinte
             return new string[] { tipoRegistro, mensajeDB, nombre, paquete, vigencia };
         }
     }

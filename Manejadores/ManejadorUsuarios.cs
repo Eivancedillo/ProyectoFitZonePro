@@ -85,9 +85,31 @@ namespace Manejadores
             tabla.ClearSelection();
         }
 
-        public void CrearUsuario(Usuarios u)
+        public bool RegistrarUsuarioConHuella(string nombre, string curp, string tel, string email, string fechaNac, byte[] huella)
         {
-            b.Comando($"call p_insertUsuarios('{u.Nombre}', '{u.CURP}', '{u.Telefono}', '{u.Email}', '{u.FechaNacimiento}')");
+            try
+            {
+                // 1. Insertamos al usuario y obtenemos su ID
+                // Nota: Tu método Consultar debe poder recibir los parámetros. 
+                // Si tu clase Base es muy simple, tendrás que concatenar (con cuidado) o usar parámetros.
+                string queryInsert = $"CALL p_insertUsuarios('{nombre}', '{curp}', '{tel}', '{email}', '{fechaNac}');";
+                DataSet ds = b.Consultar(queryInsert, "temp");
+
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    int nuevoId = Convert.ToInt32(ds.Tables[0].Rows[0]["id"]);
+
+                    // 2. Ahora guardamos la huella usando el ID obtenido
+                    // IMPORTANTE: Para mandar el BLOB (byte[]), tu clase Base necesita un método que acepte parámetros de MySQL
+                    // Si no lo tienes, aquí te doy la lógica para ejecutar el procedimiento de la huella:
+                    return b.EjecutarProcedimientoHuella(nuevoId, huella);
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el manejador al registrar usuario: " + ex.Message);
+            }
         }
 
         public void EditarUsuario(Usuarios u)

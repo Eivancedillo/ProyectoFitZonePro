@@ -56,7 +56,7 @@ namespace ProyectoFitZonePro
         private void ActualizarTabla()
         {
             string busqueda = TxtBuscar.Text;
-            string consulta = $"SELECT * FROM tbl_usuarios WHERE nombre LIKE '%{busqueda}%'";
+            string consulta = $"SELECT idUsuario, nombre, curp, telefono, email, fecha_nacimiento, estatus FROM tbl_usuarios WHERE nombre LIKE '%{busqueda}%'";
 
             if (filtroActual != "Todos")
             {

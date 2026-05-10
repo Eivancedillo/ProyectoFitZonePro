@@ -78,6 +78,7 @@
             // 
             // TxtIdSocio
             // 
+            this.TxtIdSocio.Enabled = false;
             this.TxtIdSocio.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtIdSocio.Location = new System.Drawing.Point(30, 129);
             this.TxtIdSocio.Name = "TxtIdSocio";
@@ -231,6 +232,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmDatosAsistencias";
             this.TransparencyKey = System.Drawing.Color.Magenta;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDatosAsistencias_FormClosed);
             this.Load += new System.EventHandler(this.FrmDatosAsistencias_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
