@@ -15,7 +15,7 @@ namespace ProyectoFitZonePro
         private DPFP.Processing.Enrollment Enrolador;
         private DPFP.Template PlantillaHuella;
         private ManejadorUsuarios mu;
-
+        private bool huellaYaRegistrada = false;
         public FrmDatosUsuarios()
         {
             InitializeComponent();
@@ -36,7 +36,7 @@ namespace ProyectoFitZonePro
         {
             if (string.IsNullOrWhiteSpace(TxtNombre.Text) || string.IsNullOrWhiteSpace(TxtCURP.Text) || string.IsNullOrWhiteSpace(TxtTelefono.Text))
             {
-                MessageBox.Show("¡Baka! No dejes los campos clave vacíos.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No dejes los campos clave vacíos.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -75,7 +75,13 @@ namespace ProyectoFitZonePro
             else
             {
                 mu.EditarUsuario(new Usuarios(FrmUsuarios.usuario.IdUsuario, TxtNombre.Text, TxtCURP.Text, TxtTelefono.Text, TxtEmail.Text, fechaNac, "Activo", ""));
-                MessageBox.Show("Datos del usuario actualizados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (PlantillaHuella != null)
+                {
+                    byte[] nuevaHuellaBytes = PlantillaHuella.Bytes;
+                    mu.ActualizarSoloHuella(FrmUsuarios.usuario.IdUsuario, nuevaHuellaBytes);
+                }
+
+                MessageBox.Show("Datos actualizados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }
@@ -144,6 +150,8 @@ namespace ProyectoFitZonePro
 
         protected void ProcesarToque(DPFP.Sample Sample)
         {
+            if (huellaYaRegistrada) return;
+
             DPFP.Processing.FeatureExtraction extractor = new DPFP.Processing.FeatureExtraction();
             DPFP.Capture.CaptureFeedback feedback = DPFP.Capture.CaptureFeedback.None;
             DPFP.FeatureSet caracteristicas = new DPFP.FeatureSet();
@@ -158,19 +166,30 @@ namespace ProyectoFitZonePro
                 }
                 finally
                 {
-                    CambiarTextoUI($"Sigue tocando el sensor. Faltan {Enrolador.FeaturesNeeded} toques.");
+                    CambiarTextoUI($"Toque el Sensor. Faltan {Enrolador.FeaturesNeeded} toques.");
+
                     switch (Enrolador.TemplateStatus)
                     {
                         case DPFP.Processing.Enrollment.Status.Ready:
+                            // ¡BLOQUEO DE SEGURIDAD ACTIVADO!
+                            huellaYaRegistrada = true;
+
                             PlantillaHuella = Enrolador.Template;
-                            CambiarTextoUI("¡Huella lista! Ya puedes guardar al usuario.");
-                            Capturador.StopCapture();
+                            CambiarTextoUI("¡Huella bloqueada y lista para guardar!");
+
+                            // Apagamos el lector de inmediato para que el foquito azul se apague
+                            if (Capturador != null)
+                            {
+                                Capturador.StopCapture();
+                                Capturador.EventHandler = null; // Le quitamos el contrato de eventos para que quede sordo
+                            }
                             break;
 
                         case DPFP.Processing.Enrollment.Status.Failed:
                             Enrolador.Clear();
-                            Capturador.StopCapture();
-                            CambiarTextoUI("La huella no sirvió. Limpia tu dedo y vuelve a empezar.");
+                            if (Capturador != null) Capturador.StopCapture();
+                            huellaYaRegistrada = false;
+                            CambiarTextoUI("La huella falló. Vuelve a empezar.");
                             IniciarLector();
                             break;
                     }
@@ -178,7 +197,7 @@ namespace ProyectoFitZonePro
             }
             else
             {
-                CambiarTextoUI("Lectura de mala calidad. Pon el dedo firme y centrado.");
+                CambiarTextoUI("Lectura de mala calidad. Pon el dedo firme.");
             }
         }
 
@@ -191,6 +210,29 @@ namespace ProyectoFitZonePro
         public void OnComplete(object Capture, string ReaderSerialNumber, DPFP.Sample Sample)
         {
             ProcesarToque(Sample);
+        }
+
+        private void ApagarLectorCompleto()
+        {
+            if (Capturador != null)
+            {
+                try
+                {
+                    Capturador.StopCapture(); // Apaga la luz
+                    Capturador.EventHandler = null; // Lo deja sordo
+                    Capturador.Dispose(); // ¡ESTO ES LO IMPORTANTE! Libera el USB por completo
+                    Capturador = null; // Lo borra de la memoria
+                }
+                catch
+                {
+                    // Si hay un error al intentar apagarlo, aquí SÍ lo ignoramos calladitos
+                }
+            }
+        }
+
+        private void FrmDatosUsuarios_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ApagarLectorCompleto();
         }
     }
 }

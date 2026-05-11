@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36915.13
+# Visual Studio Version 18
+VisualStudioVersion = 18.5.11723.231 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoFitZonePro", "ProyectoFitZonePro\ProyectoFitZonePro.csproj", "{B11EF00F-4918-4D79-B152-4729FC7D1D39}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{F2731720-6E37-4665-A13C-2E119AC60163}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\AccesoDatos.csproj", "{A0D589DF-133B-4E83-874A-B26D9078A8B5}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "InstaladorFitZonePro", "InstaladorFitZonePro\InstaladorFitZonePro.vdproj", "{0DDC8B2F-F7D0-DFCC-F34C-F99A98DD849B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,8 @@ Global
 		{A0D589DF-133B-4E83-874A-B26D9078A8B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0D589DF-133B-4E83-874A-B26D9078A8B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0D589DF-133B-4E83-874A-B26D9078A8B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DDC8B2F-F7D0-DFCC-F34C-F99A98DD849B}.Debug|Any CPU.ActiveCfg = Debug
+		{0DDC8B2F-F7D0-DFCC-F34C-F99A98DD849B}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

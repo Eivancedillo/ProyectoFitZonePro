@@ -129,6 +129,19 @@ namespace Manejadores
             }
         }
 
+        public bool ActualizarSoloHuella(int idUsuario, byte[] nuevaHuella)
+        {
+            try
+            {
+                // Reutilizamos el método que ya pusimos en tu clase Base
+                return b.EjecutarProcedimientoHuella(idUsuario, nuevaHuella);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar la huella: " + ex.Message);
+            }
+        }
+
         private static DataGridViewButtonColumn Boton(string titulo, Color fondo)
         {
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn

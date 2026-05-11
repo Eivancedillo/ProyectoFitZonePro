@@ -35,6 +35,7 @@
             this.DtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.LblEstatusHuella = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@
             this.LblEstado = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.LblEstatusHuella = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -123,6 +123,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(590, 511);
             this.panel3.TabIndex = 7;
+            // 
+            // LblEstatusHuella
+            // 
+            this.LblEstatusHuella.AutoSize = true;
+            this.LblEstatusHuella.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEstatusHuella.Location = new System.Drawing.Point(58, 384);
+            this.LblEstatusHuella.Name = "LblEstatusHuella";
+            this.LblEstatusHuella.Size = new System.Drawing.Size(46, 21);
+            this.LblEstatusHuella.TabIndex = 10;
+            this.LblEstatusHuella.Text = "....";
             // 
             // label6
             // 
@@ -244,16 +254,6 @@
             this.panel2.Size = new System.Drawing.Size(594, 515);
             this.panel2.TabIndex = 8;
             // 
-            // LblEstatusHuella
-            // 
-            this.LblEstatusHuella.AutoSize = true;
-            this.LblEstatusHuella.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblEstatusHuella.Location = new System.Drawing.Point(58, 384);
-            this.LblEstatusHuella.Name = "LblEstatusHuella";
-            this.LblEstatusHuella.Size = new System.Drawing.Size(46, 21);
-            this.LblEstatusHuella.TabIndex = 10;
-            this.LblEstatusHuella.Text = "....";
-            // 
             // FrmDatosUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -269,6 +269,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmDatosUsuarios";
             this.TransparencyKey = System.Drawing.Color.Magenta;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDatosUsuarios_FormClosed);
             this.Load += new System.EventHandler(this.FrmDatosUsuarios_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
